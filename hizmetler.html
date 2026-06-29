@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hizmetlerimiz | DK Copy — 3 Günde Teslim Garantili Dijital Baskı</title>
+  <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.">
+  <meta property="og:title" content="Hizmetlerimiz | DK Copy — 3 Günde Teslim Garantili Dijital Baskı">
+  <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dkcopy.com.tr/hizmetler.html">
+  <meta property="og:image" content="https://dkcopy.com.tr/images/logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://dkcopy.com.tr/hizmetler.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+  <style>
+    /* ===== CSS Custom Properties (Tasarım Sistemi) ===== */
+    :root {
+      /* Renkler */
+      --color-primary: #1A1A2E;
+      --color-accent: #C89B3C;
+      --color-bg: #F8F5EE;
+      --color-surface: #FFFFFF;
+      --color-text: #1A1A2E;
+      --color-muted: #9C9AA6;
+      --color-on-dark: #F8F5EE;
+      /* Tipografi */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      /* Spacing (4px grid) */
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      /* Fluid type scale */
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      --text-3xl: clamp(3.5rem, 2rem + 6vw, 8rem);
+      /* Diğer */
+      --radius: 8px;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      --container: 1200px;
+      --section-y: 80px;
+    }
+
+    /* ===== Reset & Base ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+    .section {
+      padding: var(--section-y) 0;
+    }
+
+    /* ===== Tipografi ===== */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-primary);
+    }
+    h1 {
+      font-size: var(--text-2xl);
+    }
+    h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-l);
+    }
+    h3 {
+      font-size: var(--text-lg);
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    .section-title span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-s);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200, 155, 60, 0.2);
+      transition: background 0.3s ease;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-m) var(--space-l);
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .header__logo img {
+      height: 40px;
+      width: auto;
+    }
+    .header__logo span {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-on-dark);
+      font-weight: 700;
+    }
+    .header__nav {
+      display: flex;
+      gap: var(--space-l);
+    }
+    .header__nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-on-dark);
+      opacity: 0.8;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+    .header__nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+    .header__nav a:hover,
+    .header__nav a.active {
+      opacity: 1;
+      color: var(--color-accent);
+    }
+    .header__nav a:hover::after,
+    .header__nav a.active::after {
+      width: 100%;
+    }
+    .header__nav a.active {
+      opacity: 1;
+      color: var(--color-accent);
+    }
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      background: var(--color-accent);
+      color: var(--color-primary);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .header__cta:hover {
+      background: #b8892e;
+      transform: translateY(-1px);
+    }
+    /* Mobile menu toggle */
+    .header__toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-on-dark);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ===== Hero (alt sayfa) ===== */
+    .hero-sub {
+      padding-top: 120px;
+      padding-bottom: var(--space-xl);
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-sub::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg') center/cover no-repeat;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .hero-sub .container {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-sub h1 {
+      color: var(--color-on-dark);
+      margin-bottom: var(--space-m);
+    }
+    .hero-sub p {
+      font-size: var(--text-lg);
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+
+    /* ===== Hizmetler Grid ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--space-l);
+    }
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .service-card {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-l);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+      border: 1px solid rgba(200, 155, 60, 0.1);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border-color: var(--color-accent);
+    }
+    .service-card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg);
+      border-radius: var(--radius);
+      color: var(--color-accent);
+    }
+    .service-card__icon svg {
+      width: 28px;
+      height: 28px;
+    }
+    .service-card h3 {
+      font-size: var(--text-lg);
+      color: var(--color-primary);
+    }
+    .service-card p {
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ===== WhatsApp Floating Button ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: var(--text-sm);
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+    }
+    .whatsapp-float svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      padding: var(--space-xl) 0 var(--space-l);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+    @media (min-width: 768px) {
+      .footer__grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+    }
+    .footer__brand img {
+      height: 36px;
+      margin-bottom: var(--space-s);
+    }
+    .footer__brand p {
+      font-size: var(--text-sm);
+      opacity: 0.7;
+      max-width: 300px;
+    }
+    .footer__col h4 {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-m);
+    }
+    .footer__col a {
+      display: block;
+      font-size: var(--text-sm);
+      opacity: 0.7;
+      margin-bottom: var(--space-s);
+      transition: opacity 0.3s ease;
+    }
+    .footer__col a:hover {
+      opacity: 1;
+      color: var(--color-accent);
+    }
+    .footer__bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: var(--space-l);
+      padding-top: var(--space-m);
+      text-align: center;
+      font-size: var(--text-sm);
+      opacity: 0.5;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 767px) {
+      .header__nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.98);
+        padding: var(--space-m) var(--space-l);
+        gap: var(--space-m);
+        border-bottom: 1px solid rgba(200, 155, 60, 0.2);
+      }
+      .header__nav.open {
+        display: flex;
+      }
+      .header__toggle {
+        display: block;
+      }
+      .header__cta {
+        display: none;
+      }
+      .hero-sub h1 {
+        font-size: var(--text-xl);
+      }
+      .section {
+        padding: var(--space-xl) 0;
+      }
+    }
+
+    /* ===== Scroll-Driven Reveal (native) ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        translate: 0 40px;
+      }
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+    .reveal {
+      animation: fadeUp 0.8s ease both;
+    }
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: fadeUp linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+      }
+    }
+
+    /* ===== Accessibility ===== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="DK Copy ana sayfa">
+        <!-- OPAK → logo/vektör: logo.svg -->
+        <img src="images/logo.svg" alt="DK Copy logosu" width="40" height="40">
+        <span>DK Copy</span>
+      </a>
+      <button class="header__toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" id="menuToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <nav class="header__nav" id="mainNav" role="navigation" aria-label="Ana menü">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html" class="active" aria-current="page">Hizmetler</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="urunler.html">Ürünler</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="iletisim.html">İletişim</a>
+      </nav>
+      <a href="tel:05324900313" class="header__cta">Hemen Ara</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO (alt sayfa) ===== -->
+  <section class="hero-sub" aria-labelledby="hero-title">
+    <div class="container">
+      <h1 id="hero-title">Hizmetlerimiz</h1>
+      <p>3 iş gününde teslim garantisiyle, profesyonel dijital baskı çözümleri. Markanızı baskıyla buluşturuyoruz.</p>
+    </div>
+  </section>
+
+  <!-- ===== HİZMETLER GRID ===== -->
+  <section class="section" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-title">
+        <span>Neler Sunuyoruz</span>
+        <h2 id="services-title">Tüm Dijital Baskı İhtiyaçlarınız İçin</h2>
+      </div>
+      <div class="services-grid">
+
+        <!-- Hizmet 1: Ofis & Kurumsal Baskılar -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+          </div>
+          <h3>Ofis & Kurumsal Baskılar</h3>
+          <p>Kurumsal kimlik dosyalarından ofis içi belgelere, antetli kağıttan zarf baskıya kadar tüm ofis ihtiyaçlarınız için profesyonel çözümler. Markanızın kurumsal duruşunu yansıtan kaliteli baskılar.</p>
+        </article>
+
+        <!-- Hizmet 2: Tanıtım & Reklam Ürünleri -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Tanıtım & Reklam Ürünleri</h3>
+          <p>İç ve dış mekânlarda markanızın görünürlüğünü artıracak tanıtım materyalleri. Broşür, el ilanı, poster, afiş ve daha fazlasıyla hedef kitlenize etkili şekilde ulaşın.</p>
+        </article>
+
+        <!-- Hizmet 3: Organizasyon & Davetiye Ürünleri -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Organizasyon & Davetiye Ürünleri</h3>
+          <p>Düğün, nişan, kurumsal etkinlik ve özel organizasyonlarınız için özel tasarım davetiyeler. Her detayı düşünülmüş, kaliteli baskı ve kağıt seçenekleriyle unutulmaz anlar yaratın.</p>
+        </article>
+
+        <!-- Hizmet 4: Restoran & Kafe Baskıları -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Restoran & Kafe Baskıları</h3>
+          <p>Menü kartları, masa üstü reklam malzemeleri, günlük spesiyal tabelaları ve daha fazlası. Restoranınızın veya kafenizin atmosferini tamamlayan özel baskı çözümleri.</p>
+        </article>
+
+        <!-- Hizmet 5: Promosyon Ürünleri -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"/><path d="M15 7h6v6"/></svg>
+          </div>
+          <h3>Promosyon Ürünleri</h3>
+          <p>Markanızı özel baskılı promosyon ürünleriyle geniş kitlelere tanıtın. Kalem, ajanda, çanta, bardak gibi günlük kullanım ürünlerinde logonuzla kalıcı etki yaratın.</p>
+        </article>
+
+        <!-- Hizmet 6: Defter & Kırtasiye Ürünleri -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <h3>Defter & Kırtasiye Ürünleri</h3>
+          <p>Kurumsal hediye setlerinden okul kırtasiyesine, özel tasarım defterlerden ajandalara kadar geniş ürün yelpazesi. Markanızın logosuyla kişiselleştirilmiş kırtasiye çözümleri.</p>
+        </article>
+
+        <!-- Hizmet 7: Araç & Cam Giydirme -->
+        <article class="service-card reveal">
+          <div class="service-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Araç & Cam Giydirme</h3>
+          <p>Filo araçlarınızdan tek bir araca, dükkan camlarından ofis camlarına kadar profesyonel giydirme hizmeti. Yüksek kaliteli vinil malzemelerle uzun ömürlü, dikkat çekici reklam çözümleri.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/905324900313?text=Merhaba%2C%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp'tan bize ulaşın">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span>Fiyat Al</span>
+  </a>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="images/logo.svg" alt="DK Copy logosu" width="40" height="40">
+          <p>Fikrin Değer Kazandığı Yer. 3 günde teslim garantili dijital baskı çözümleri.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Hizmetler</h4>
+          <a href="hizmetler.html">Ofis & Kurumsal</a>
+          <a href="hizmetler.html">Tanıtım & Reklam</a>
+          <a href="hizmetler.html">Organizasyon</a>
+          <a href="hizmetler.html">Restoran & Kafe</a>
+        </div>
+        <div class="footer__col">
+          <h4>Kurumsal</h4>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="galeri.html">Galeri</a>
+          <a href="iletisim.html">İletişim</a>
+        </div>
+        <div class="footer__col">
+          <h4>İletişim</h4>
+          <a href="tel:05324900313">0532 490 03 13</a>
+          <a href="tel:05324301407">0532 430 14 07</a>
+          <a href="mailto:info@dkcopy.com.tr">info@dkcopy.com.tr</a>
+          <p style="font-size:var(--text-sm);opacity:0.7;margin-top:var(--space-s)">Soğanlı Mah. 3. Meltem Sok. No: 15D<br>Osmangazi / Bursa</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 DK Copy. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Mobile menu toggle
+    const toggleBtn = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    if (toggleBtn && nav) {
+      toggleBtn.addEventListener('click', function() {
+        const isOpen = nav.classList.toggle('open');
+        this.setAttribute('aria-expanded', isOpen);
+      });
+      // Close menu on link click (mobile)
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // GSAP fallback for scroll reveal (if native not supported)
+    if (!CSS.supports('animation-timeline: view()')) {
+      // Load GSAP from CDN
+      const gsapScript = document.createElement('script');
+      gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+      gsapScript.onload = function() {
+        const revealElements = document.querySelectorAll('.reveal');
+        if (revealElements.length && typeof gsap !== 'undefined') {
+          gsap.from(revealElements, {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: revealElements,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          });
+        }
+      };
+      document.head.appendChild(gsapScript);
+      // Load ScrollTrigger plugin
+      const stScript = document.createElement('script');
+      stScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+      stScript.onload = function() {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+      };
+      document.head.appendChild(stScript);
+    }
+  </script>
+</body>
+</html>

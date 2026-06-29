@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ürünler | DK Copy — Yakında</title>
+  <meta name="description" content="DK Copy ürün kataloğu hazırlanıyor. Tabela, branda, kartvizit ve dijital baskı ürünlerimiz için bizi takip edin.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS Custom Properties (Tasarım Sistemi) ===== */
+    :root {
+      --color-primary: #1A1A2E;
+      --color-accent: #C89B3C;
+      --color-bg: #F8F5EE;
+      --color-surface: #FFFFFF;
+      --color-text: #1A1A2E;
+      --color-muted: #9C9AA6;
+      --color-on-dark: #F8F5EE;
+      
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 4rem);
+      --text-3xl: clamp(3rem, 2rem + 6vw, 6rem);
+      
+      --radius: 8px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    
+    /* ===== Container ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+    
+    /* ===== Header / Navigation ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--color-primary);
+      padding: var(--space-m) 0;
+      transition: background 0.3s ease;
+    }
+    
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    
+    .header__logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+    
+    .header__logo span {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-on-dark);
+    }
+    
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-l);
+    }
+    
+    .header__nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-on-dark);
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+      position: relative;
+    }
+    
+    .header__nav a:hover,
+    .header__nav a.active {
+      opacity: 1;
+    }
+    
+    .header__nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      padding: var(--space-s) var(--space-m);
+      background: var(--color-accent);
+      color: var(--color-primary);
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    
+    .header__cta:hover {
+      background: #b8892e;
+      transform: translateY(-1px);
+    }
+    
+    /* ===== Hero Section (Coming Soon) ===== */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: var(--space-2xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.3) saturate(0.8);
+    }
+    
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.6) 100%);
+      z-index: 1;
+    }
+    
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 720px;
+      padding: var(--space-xl) var(--space-l);
+    }
+    
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      padding: var(--space-s) var(--space-m);
+      background: rgba(200,155,60,0.15);
+      border: 1px solid rgba(200,155,60,0.3);
+      border-radius: 100px;
+      color: var(--color-accent);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      margin-bottom: var(--space-l);
+    }
+    
+    .hero__badge svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .hero__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-on-dark);
+      line-height: 1.1;
+      margin-bottom: var(--space-m);
+    }
+    
+    .hero__title span {
+      color: var(--color-accent);
+    }
+    
+    .hero__desc {
+      font-size: var(--text-lg);
+      color: rgba(248,245,238,0.8);
+      line-height: 1.7;
+      margin-bottom: var(--space-xl);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-m);
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      padding: var(--space-m) var(--space-l);
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: var(--text-base);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn--primary {
+      background: var(--color-accent);
+      color: var(--color-primary);
+    }
+    
+    .btn--primary:hover {
+      background: #b8892e;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn--secondary {
+      background: transparent;
+      color: var(--color-on-dark);
+      border: 2px solid rgba(248,245,238,0.3);
+    }
+    
+    .btn--secondary:hover {
+      border-color: var(--color-on-dark);
+      background: rgba(248,245,238,0.1);
+    }
+    
+    .btn--whatsapp {
+      background: #25D366;
+      color: #fff;
+      font-size: var(--text-lg);
+      padding: var(--space-m) var(--space-xl);
+    }
+    
+    .btn--whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+    }
+    
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      padding: var(--space-l) 0;
+      text-align: center;
+    }
+    
+    .footer p {
+      font-size: var(--text-sm);
+      opacity: 0.7;
+    }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .header__nav {
+        display: none;
+      }
+      
+      .header__logo span {
+        font-size: var(--text-base);
+      }
+      
+      .hero__title {
+        font-size: var(--text-xl);
+      }
+      
+      .hero__desc {
+        font-size: var(--text-base);
+      }
+      
+      .btn--whatsapp {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    /* ===== Scroll-Driven Animation ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; translate: 0 40px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    
+    .reveal {
+      animation: fadeUp 0.8s ease both;
+    }
+    
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: fadeUp linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+      }
+    }
+    
+    /* ===== Accessibility ===== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="index.html" class="header__logo" aria-label="DK Copy Ana Sayfa">
+        <img src="images/logo.svg" alt="DK Copy Logo" width="48" height="48" loading="eager">
+        <span>DK Copy</span>
+      </a>
+      
+      <nav class="header__nav" role="navigation" aria-label="Ana navigasyon">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="urunler.html" class="active">Ürünler</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="tel:05324900313" class="header__cta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hemen Ara
+        </a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- ===== HERO — Coming Soon ===== -->
+  <section class="hero" role="main">
+    <!-- Arka plan görseli (OPAK) -->
+    <div class="hero__bg">
+      <img 
+        src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" 
+        alt="DK Copy baskı ürünleri" 
+        loading="eager"
+        fetchpriority="high"
+      >
+    </div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    
+    <div class="hero__content reveal">
+      <!-- Yakında rozeti -->
+      <div class="hero__badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Yakında
+      </div>
+      
+      <h1 class="hero__title">
+        Ürün Kataloğumuz <span>Hazırlanıyor</span>
+      </h1>
+      
+      <p class="hero__desc">
+        Tabela, branda, kartvizit, katalog ve tüm dijital baskı ürünlerimiz 
+        için kapsamlı kataloğumuzu hazırlıyoruz. En kısa sürede sizlerle!
+      </p>
+      
+      <div class="hero__actions">
+        <!-- WhatsApp CTA -->
+        <a 
+          href="https://wa.me/905324900313?text=Merhaba+urun+katalogu+hakkinda+bilgi+almak+istiyorum" 
+          class="btn btn--whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp'tan ürün kataloğu hakkında bilgi alın"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp'tan Bilgi Al
+        </a>
+        
+        <!-- İletişim sayfasına link -->
+        <a href="iletisim.html" class="btn btn--secondary">
+          İletişim Sayfası
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>&copy; 2026 DK Copy. Tüm hakları saklıdır. | Fikrin Değer Kazandığı Yer</p>
+    </div>
+  </footer>
+</body>
+</html>
