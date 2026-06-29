@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DK Copy | 3 Günde Teslim Garantili Dijital Baskı</title>
-  <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.">
+  <meta name="description" content="Tabela, branda, kartvizit, katalog baskı. 3 iş gününde teslim garantisi. Profesyonel dijital baskı için hemen fiyat alın.">
   <meta property="og:title" content="DK Copy | 3 Günde Teslim Garantili Dijital Baskı">
-  <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
+  <meta property="og:description" content="Tabela, branda, kartvizit, katalog baskı. 3 iş gününde teslim garantisi. Profesyonel dijital baskı için hemen fiyat alın.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dkcopy.com.tr">
   <meta property="og:image" content="/images/logo.svg">
@@ -838,5 +838,172 @@
       });
     });
   </script>
+
+<!-- ANIMATOR: scroll-triggered stagger reveal | GSAP ScrollTrigger | .hizmetler h2 -->
+<!-- CDN: Lenis + GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@2/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<style>
+  /* Animasyon öncesi gizleme — karakterler başlangıçta görünmez */
+  .hizmetler h2 .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotateX(15deg);
+    filter: blur(8px);
+    will-change: transform, opacity, filter;
+    transition: none; /* GSAP yönetecek */
+  }
+
+  /* Reduced motion: anında göster */
+  @media (prefers-reduced-motion: reduce) {
+    .hizmetler h2 .char {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    'use strict';
+
+    // --- LENIS INIT (sitenin mevcut Lenis'i varsa onu kullan, yoksa başlat) ---
+    let lenis;
+    if (typeof Lenis !== 'undefined' && !window.__lenisInstance) {
+      lenis = new Lenis({
+        smoothWheel: true,
+        wheelMultiplier: 0.8,
+        touchMultiplier: 1.2,
+        infinite: false,
+      });
+      window.__lenisInstance = lenis;
+
+      // Lenis + GSAP entegrasyonu
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else if (window.__lenisInstance) {
+      lenis = window.__lenisInstance;
+    }
+
+    // --- HEDEF ELEMENT: .hizmetler h2 ---
+    const target = document.querySelector('.hizmetler h2');
+    if (!target) {
+      console.warn('[ANIMATOR] .hizmetler h2 bulunamadı. Animasyon iptal.');
+      return;
+    }
+
+    // --- MEVCUT İÇERİĞİ KORU, SADECE KARAKTERLERE BÖL ---
+    // SplitText kullanmıyoruz, manuel span'e bölme (hafif ve kontrollü)
+    const originalText = target.textContent;
+    const words = originalText.split(' '); // kelimeleri korumak için boşluk bazlı
+    
+    // HTML içeriğini temizle, sadece metin al
+    target.textContent = ''; 
+    
+    // Her kelimeyi al, karakterlerine ayır, span'lere sar, kelime aralarına boşluk koy
+    words.forEach((word, wordIndex) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.style.display = 'inline-block'; // kelime bazlı blok
+      wordSpan.style.whiteSpace = 'nowrap'; // kelime içi bölünme olmasın
+      
+      // Kelime içindeki her karakteri span yap
+      for (let i = 0; i < word.length; i++) {
+        const char = word[i];
+        const charSpan = document.createElement('span');
+        charSpan.className = 'char';
+        charSpan.textContent = char;
+        // Boşluk karakterini koru (kelime içi boşluk olmaz ama yine de)
+        wordSpan.appendChild(charSpan);
+      }
+      
+      target.appendChild(wordSpan);
+      
+      // Kelimeler arasına boşluk ekle (son kelimeden sonra değil)
+      if (wordIndex < words.length - 1) {
+        const space = document.createElement('span');
+        space.className = 'char';
+        space.innerHTML = '&nbsp;'; // non-breaking space
+        space.style.opacity = '0'; // boşluk karakteri görünmez ama yer kaplasın
+        space.style.display = 'inline-block';
+        target.appendChild(space);
+      }
+    });
+
+    // --- TÜM KARAKTER SPAN'LARINI TOPLA ---
+    const chars = target.querySelectorAll('.char');
+    if (chars.length === 0) {
+      console.warn('[ANIMATOR] Karakter span\'leri oluşturulamadı.');
+      return;
+    }
+
+    // --- REDUCED MOTION KONTROLÜ ---
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      // Tüm karakterleri anında görünür yap, animasyon yok
+      gsap.set(chars, { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' });
+      console.log('[ANIMATOR] prefers-reduced-motion: reduce — animasyon pasif.');
+      return;
+    }
+
+    // --- GSAP SCROLLTRIGGER STAGGER REVEAL ---
+    // Timeline oluştur
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: target,
+        start: 'top 85%',       // element viewport'un %85'ine geldiğinde başla
+        end: 'top 40%',        // bitiş noktası (stagger süresine göre)
+        toggleActions: 'play none none reverse', // scroll yönüne göre reverse
+        markers: false,        // hata ayıklama için true yapılabilir
+        invalidateOnRefresh: true, // resize'da yeniden hesapla
+        once: false,           // her scroll yönünde tekrar oynasın
+      }
+    });
+
+    // Karakterleri sırayla aç (stagger: her karakter arası 0.03s, kademeli)
+    tl.fromTo(chars, 
+      {
+        opacity: 0,
+        y: 40,
+        rotateX: 15,
+        filter: 'blur(8px)',
+        willChange: 'transform, opacity, filter',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        filter: 'blur(0px)',
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: {
+          each: 0.03,
+          from: 'start', // soldan sağa
+          grid: 'auto',
+        },
+      }
+    );
+
+    // Animasyon bitince will-change kaldır (opsiyonel)
+    tl.eventCallback('onComplete', () => {
+      chars.forEach(char => {
+        char.style.willChange = 'auto';
+      });
+    });
+
+    // ScrollTrigger'ı yenile (Lenis ile uyum)
+    ScrollTrigger.refresh();
+
+    console.log('[ANIMATOR] .hizmetler h2 stagger reveal başarıyla kuruldu.');
+
+  })();
+</script>
+<!-- /ANIMATOR -->
 </body>
 </html>
