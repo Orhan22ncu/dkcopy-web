@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy | 3 Günde Teslim Garantili Dijital Baskı</title>
+  <meta name="description" content="Tabela, branda, kartvizit, katalog baskı. 3 iş gününde teslim garantisi. Profesyonel dijital baskı için hemen fiyat alın.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --color-primary: #1a1a2e;
+      --color-accent: #e94560;
+      --color-accent-light: #ff6b81;
+      --color-neutral: #4a4a5a;
+      --color-surface: #f8f9fa;
+      --color-on-dark: #ffffff;
+      --color-bg-dark: #16213e;
+      --color-gold: #c9a84c;
+      
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      --text-3xl: clamp(3.5rem, 2rem + 6vw, 8rem);
+      
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+      
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-primary);
+      background: var(--color-surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+    
+    /* ===== REVEAL ANIMATION (CSS fallback) ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* ===== BUTTON ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .btn--primary {
+      background: var(--color-accent);
+      color: var(--color-on-dark);
+    }
+    .btn--primary:hover {
+      background: var(--color-accent-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--color-on-dark);
+      border: 2px solid var(--color-on-dark);
+    }
+    .btn--outline:hover {
+      background: var(--color-on-dark);
+      color: var(--color-primary);
+    }
+    
+    /* ===== HEADER / NAV ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: var(--space-m) 0;
+      transition: var(--transition);
+    }
+    .header--scrolled {
+      background: rgba(22, 33, 62, 0.95);
+      backdrop-filter: blur(12px);
+      padding: var(--space-s) 0;
+      box-shadow: var(--shadow-md);
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .header__logo img {
+      height: 48px;
+      width: auto;
+    }
+    .header__logo span {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-on-dark);
+    }
+    .nav__list {
+      display: flex;
+      gap: var(--space-l);
+    }
+    .nav__link {
+      color: rgba(255,255,255,0.8);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: var(--transition);
+    }
+    .nav__link:hover { color: var(--color-on-dark); }
+    .nav__link:hover::after { width: 100%; }
+    
+    .header__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .header__hamburger span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--color-on-dark);
+      transition: var(--transition);
+    }
+    
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--color-bg-dark);
+    }
+    .hero__bg-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 2px;
+      opacity: 0.3;
+      z-index: 1;
+    }
+    .hero__bg-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4) saturate(0.8);
+      transition: filter 0.5s ease;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(22,33,62,0.85) 0%, rgba(26,26,46,0.7) 50%, rgba(22,33,62,0.9) 100%);
+      z-index: 2;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 800px;
+      padding: var(--space-xl) var(--space-l);
+    }
+    .hero__logo {
+      margin: 0 auto var(--space-l);
+      width: 120px;
+      height: auto;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+    }
+    .hero__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      color: var(--color-on-dark);
+      line-height: 1.1;
+      margin-bottom: var(--space-m);
+      letter-spacing: -0.02em;
+    }
+    .hero__title span {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero__subtitle {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: var(--space-l);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .hero__cta {
+      display: flex;
+      gap: var(--space-m);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    /* ===== SECTION COMMON ===== */
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      position: relative;
+    }
+    .section__title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+      margin: var(--space-m) auto 0;
+      border-radius: 2px;
+    }
+    
+    /* ===== SERVICES ===== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-l);
+    }
+    .service-card {
+      background: var(--color-on-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-l);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .service-card__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-m);
+      font-size: 1.5rem;
+    }
+    .service-card__title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin-bottom: var(--space-s);
+      color: var(--color-primary);
+    }
+    .service-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      line-height: 1.7;
+    }
+    
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--color-bg-dark);
+      color: var(--color-on-dark);
+    }
+    .testimonials .section__title { color: var(--color-on-dark); }
+    .testimonials .section__title::after { background: var(--color-gold); }
+    
+    .testimonial-carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .testimonial-card {
+      min-width: 100%;
+      padding: var(--space-l);
+      text-align: center;
+    }
+    .testimonial-card__text {
+      font-size: var(--text-lg);
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: var(--space-m);
+      color: rgba(255,255,255,0.9);
+    }
+    .testimonial-card__author {
+      font-weight: 600;
+      color: var(--color-gold);
+    }
+    .testimonial-card__role {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-m);
+      margin-top: var(--space-l);
+    }
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: var(--color-on-dark);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-btn:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-s);
+      margin-top: var(--space-m);
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+    .carousel-dot.active {
+      background: var(--color-accent);
+      transform: scale(1.3);
+    }
+    
+    /* ===== STATS ===== */
+    .stats {
+      background: var(--color-surface);
+    }
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-l);
+      text-align: center;
+    }
+    .stat-item__number {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .stat-item__label {
+      font-size: var(--text-sm);
+      color: var(--color-neutral);
+      margin-top: var(--space-xs);
+    }
+    
+    /* ===== CONTACT CTA ===== */
+    .contact-cta {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-bg-dark));
+      color: var(--color-on-dark);
+      text-align: center;
+    }
+    .contact-cta__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-m);
+    }
+    .contact-cta__phones {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-l);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-l);
+    }
+    .contact-cta__phone {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-on-dark);
+      transition: var(--transition);
+    }
+    .contact-cta__phone:hover {
+      color: var(--color-accent);
+    }
+    .contact-cta__phone svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.7);
+      padding: var(--space-xl) 0 var(--space-l);
+    }
+    .footer__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-l);
+    }
+    .footer__title {
+      font-weight: 700;
+      color: var(--color-on-dark);
+      margin-bottom: var(--space-m);
+      font-size: var(--text-base);
+    }
+    .footer__link {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-s);
+      transition: var(--transition);
+    }
+    .footer__link:hover { color: var(--color-accent); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: var(--space-l);
+      margin-top: var(--space-l);
+      text-align: center;
+      font-size: var(--text-sm);
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header__hamburger { display: flex; }
+      .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--color-bg-dark);
+        padding: var(--space-2xl) var(--space-l);
+        transition: var(--transition);
+        z-index: 999;
+      }
+      .nav.open { right: 0; }
+      .nav__list {
+        flex-direction: column;
+        gap: var(--space-l);
+      }
+      .nav__link { font-size: var(--text-lg); }
+      
+      .hero__bg-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+      }
+      
+      .services__grid { grid-template-columns: 1fr; }
+      .stats__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 480px) {
+      .hero__title { font-size: var(--text-2xl); }
+      .hero__subtitle { font-size: var(--text-base); }
+      .contact-cta__phones { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo" aria-label="DK Copy Ana Sayfa">
+        <!-- OPAK → logo/vektör -->
+        <img src="images/logo.svg" alt="DK Copy Logo" width="48" height="48">
+        <span>DK Copy</span>
+      </a>
+      
+      <nav class="nav" id="nav" aria-label="Ana navigasyon">
+        <ul class="nav__list">
+          <li><a href="#hero" class="nav__link">Anasayfa</a></li>
+          <li><a href="#services" class="nav__link">Hizmetler</a></li>
+          <li><a href="#about" class="nav__link">Hakkımızda</a></li>
+          <li><a href="#gallery" class="nav__link">Galeri</a></li>
+          <li><a href="#services" class="nav__link">Ürünler</a></li>
+          <li><a href="#contact" class="nav__link">İletişim</a></li>
+        </ul>
+      </nav>
+      
+      <button class="header__hamburger" id="hamburger" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <!-- OPAK → hero/atmosfer/arka-plan: 12 görsel grid -->
+    <div class="hero__bg-grid">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_29.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_26.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25_1.jpeg" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25.jpeg" alt="" loading="lazy" aria-hidden="true">
+    </div>
+    <div class="hero__overlay"></div>
+    
+    <div class="hero__content">
+      <img src="images/logo.svg" alt="DK Copy" class="hero__logo" width="120" height="120">
+      <h1 class="hero__title">Fikrin <span>Değer Kazandığı</span> Yer</h1>
+      <p class="hero__subtitle">Fikirlerinizi yüksek kalite baskı ve kusursuz detay anlayışıyla hayata geçiriyoruz. Her projede estetik, her çıktıda profesyonellik sunuyoruz.</p>
+      <div class="hero__cta">
+        <a href="tel:05324900313" class="btn btn--primary">İletişim Kur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section__title reveal">Dijital Baskıda Güvenilir Adresiniz</h2>
+      <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center; font-size: var(--text-base); color: var(--color-neutral); line-height: 1.8;">
+        <p>DK Copy olarak, tabela, branda, kartvizit ve katalog baskı başta olmak üzere tüm dijital baskı ihtiyaçlarınıza çözüm üretiyoruz. Kaliteli malzeme, hızlı teslimat ve uygun fiyat anlayışımızla işletmenizin görünürlüğünü artırıyoruz. 3 günde teslim garantimizle, zamanınızı değil sonucu düşünmenizi sağlıyoruz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section" id="services" style="background: var(--color-on-dark);">
+    <div class="container">
+      <h2 class="section__title reveal">Hizmetlerimiz</h2>
+      <div class="services__grid">
+        <!-- Kart 1 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">🏢</div>
+          <h3 class="service-card__title">Ofis & Kurumsal Baskılar</h3>
+          <p class="service-card__desc">Antetli kağıt, zarf, fatura, dosya ve kurumsal kimlik baskılarınız profesyonel dokunuşla hazırlanır.</p>
+        </div>
+        <!-- Kart 2 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">📢</div>
+          <h3 class="service-card__title">Tanıtım & Reklam Ürünleri</h3>
+          <p class="service-card__desc">Broşür, el ilanı, poster, afiş ve her türlü tanıtım materyali ile markanızı geniş kitlelere ulaştırın.</p>
+        </div>
+        <!-- Kart 3 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">🎉</div>
+          <h3 class="service-card__title">Organizasyon & Davetiye Ürünleri</h3>
+          <p class="service-card__desc">Düğün, nişan, kurumsal etkinlik davetiyeleri ve özel gün baskılarıyla anılarınızı ölümsüzleştirin.</p>
+        </div>
+        <!-- Kart 4 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">🍽️</div>
+          <h3 class="service-card__title">Restoran & Kafe Baskıları</h3>
+          <p class="service-card__desc">Menü kartı, masa üstü malzemeleri, etiket ve restoranınıza özel baskı çözümleri.</p>
+        </div>
+        <!-- Kart 5 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">🎁</div>
+          <h3 class="service-card__title">Promosyon Ürünleri</h3>
+          <p class="service-card__desc">Kalem, ajanda, çanta, bardak gibi promosyon ürünlerine logonuzu baskılayarak marka bilinirliğinizi artırın.</p>
+        </div>
+        <!-- Kart 6 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">📓</div>
+          <h3 class="service-card__title">Defter & Kırtasiye Ürünleri</h3>
+          <p class="service-card__desc">Özel tasarım defterler, bloknotlar, ajandalar ve kırtasiye ürünleriyle kişisel dokunuşlar yaratın.</p>
+        </div>
+        <!-- Kart 7 -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">🚗</div>
+          <h3 class="service-card__title">Araç & Cam Giydirme</h3>
+          <p class="service-card__desc">Araç giydirme, cam folyo ve vitrin giydirme ile hareket halindeyken bile markanızı tanıtın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="section stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat-item reveal">
+          <div class="stat-item__number">00+</div>
+          <div class="stat-item__label">Mutlu Müşteri</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-item__number">00+</div>
+          <div class="stat-item__label">Tamamlanan Proje</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-item__number">00+</div>
+          <div class="stat-item__label">Yıllık Deneyim</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-item__number">3</div>
+          <div class="stat-item__label">Günde Teslim</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section__title reveal">Müşteri Yorumları</h2>
+      
+      <div class="testimonial-carousel reveal" id="testimonialCarousel">
+        <div class="testimonial-track" id="testimonialTrack">
+          <!-- Yorum 1 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"DK Copy ile çalışmak gerçekten büyük bir ayrıcalık. Tabela baskımızı 3 günde teslim ettiler ve kalite mükemmeldi. Kesinlikle tavsiye ederim."</p>
+            <div class="testimonial-card__author">Ahmet K.</div>
+            <div class="testimonial-card__role">Restoran İşletmecisi</div>
+          </div>
+          <!-- Yorum 2 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"Kartvizit baskımızı çok hızlı ve kaliteli yaptılar. Renkler canlı, kağıt kalitesi harika. Profesyonel ekip, güler yüzlü hizmet."</p>
+            <div class="testimonial-card__author">Elif Y.</div>
+            <div class="testimonial-card__role">Grafik Tasarımcı</div>
+          </div>
+          <!-- Yorum 3 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"Katalog baskımız için DK Copy'yi tercih ettik. Sayfa sayımız fazlaydı ama hiç sorun yaşamadık. Teslimat süresi ve kalite harikaydı."</p>
+            <div class="testimonial-card__author">Mehmet T.</div>
+            <div class="testimonial-card__role">İhracatçı</div>
+          </div>
+          <!-- Yorum 4 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"Düğün davetiyelerimizi DK Copy'ye hazırlattık. Herkes çok beğendi. Kağıt kalitesi ve baskı detayları mükemmeldi. Teşekkürler!"</p>
+            <div class="testimonial-card__author">Burcu A.</div>
+            <div class="testimonial-card__role">Müşteri</div>
+          </div>
+          <!-- Yorum 5 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"Araç giydirme işimizi DK Copy'ye yaptırdık. Folyo kalitesi ve işçilik süper. Aracımız şimdi her yerde dikkat çekiyor. Çok memnunuz."</p>
+            <div class="testimonial-card__author">Hasan D.</div>
+            <div class="testimonial-card__role">Firma Sahibi</div>
+          </div>
+          <!-- Yorum 6 -->
+          <div class="testimonial-card">
+            <p class="testimonial-card__text">"Branda baskımızı son günde yetiştirmeleri gerekiyordu, hiç tereddüt etmeden kabul ettiler ve zamanında teslim ettiler. Profesyonel ekip."</p>
+            <div class="testimonial-card__author">Sercan Ö.</div>
+            <div class="testimonial-card__role">Etkinlik Organizatörü</div>
+          </div>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Önceki yorum">←</button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Sonraki yorum">→</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT CTA ===== -->
+  <section class="section contact-cta" id="contact">
+    <div class="container">
+      <h2 class="contact-cta__title reveal">Bize Ulaşın</h2>
+      <p class="reveal" style="color: rgba(255,255,255,0.8); margin-bottom: var(--space-l); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Fiyat almak, projenizi anlatmak veya sorularınızı iletmek için bizi arayın. 3 günde teslim garantili

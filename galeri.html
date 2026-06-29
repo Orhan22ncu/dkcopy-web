@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy | 3 Günde Teslim Garantili Dijital Baskı</title>
+  <meta name="description" content="Tabela, branda, kartvizit, katalog baskı. 3 iş gününde teslim garantisi. Profesyonel dijital baskı için hemen fiyat alın.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ===== CSS Custom Properties ===== */
+    :root {
+      --color-primary: #1a3c6e;
+      --color-accent: #e8a838;
+      --color-neutral: #2d2d2d;
+      --color-surface: #f8f6f2;
+      --color-on-dark: #ffffff;
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Inter', serif;
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      --text-3xl: clamp(3.5rem, 2rem + 6vw, 8rem);
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-neutral);
+      background: var(--color-surface);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== Container ===== */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: var(--space-m) 0;
+      transition: transform 0.3s ease;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header__logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+    }
+    .header__logo span { color: var(--color-accent); }
+    .header__nav { display: flex; gap: var(--space-l); align-items: center; }
+    .header__nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-neutral);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .header__nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.3s;
+    }
+    .header__nav a:hover::after { width: 100%; }
+    .header__nav a:hover { color: var(--color-primary); }
+    .header__cta {
+      background: var(--color-accent);
+      color: var(--color-neutral);
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: var(--text-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .header__cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,168,56,0.3); }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-2xl) var(--space-l);
+      margin-top: 0;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    .hero__bg img.active { opacity: 1; }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,60,110,0.85) 0%, rgba(26,60,110,0.4) 100%);
+      z-index: 1;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      color: var(--color-on-dark);
+    }
+    .hero__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: var(--space-l);
+      letter-spacing: -0.03em;
+    }
+    .hero__title span { color: var(--color-accent); }
+    .hero__sub {
+      font-size: var(--text-lg);
+      opacity: 0.9;
+      margin-bottom: var(--space-xl);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      background: var(--color-accent);
+      color: var(--color-neutral);
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: var(--text-base);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero__cta:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(232,168,56,0.4); }
+
+    /* ===== Sections ===== */
+    .section { padding: var(--space-2xl) 0; }
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      letter-spacing: -0.02em;
+    }
+    .section__title span { color: var(--color-accent); }
+
+    /* ===== About ===== */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    .about__text p {
+      font-size: var(--text-base);
+      color: var(--color-neutral);
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+    .about__image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .about__image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* ===== Services ===== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-l);
+    }
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: var(--space-l);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .service-card__icon {
+      width: 56px;
+      height: 56px;
+      background: var(--color-surface);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-m);
+      color: var(--color-primary);
+    }
+    .service-card__title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--color-primary);
+      margin-bottom: var(--space-s);
+    }
+    .service-card__desc {
+      font-size: var(--text-sm);
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* ===== Gallery (Masonry + Lightbox) ===== */
+    .gallery {
+      padding: var(--space-2xl) 0;
+      background: white;
+    }
+    .gallery__grid {
+      column-count: 4;
+      column-gap: var(--space-m);
+      margin-top: var(--space-l);
+    }
+    .gallery__item {
+      break-inside: avoid;
+      margin-bottom: var(--space-m);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .gallery__item:hover { transform: scale(1.02); }
+    .gallery__item img {
+      width: 100%;
+      display: block;
+      transition: filter 0.3s;
+    }
+    .gallery__item:hover img { filter: brightness(0.85); }
+    .gallery__item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,60,110,0.3);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery__item:hover .gallery__item-overlay { opacity: 1; }
+    .gallery__item-overlay i { color: white; width: 32px; height: 32px; }
+
+    /* ===== Lightbox ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: var(--space-l);
+      right: var(--space-l);
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+    }
+    .lightbox__close i { width: 32px; height: 32px; }
+
+    /* ===== Contact ===== */
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    .contact__info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-l);
+    }
+    .contact__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-m);
+    }
+    .contact__item i {
+      width: 24px;
+      height: 24px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .contact__item h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--color-primary);
+      margin-bottom: var(--space-xs);
+    }
+    .contact__item p, .contact__item a {
+      font-size: var(--text-sm);
+      opacity: 0.85;
+    }
+    .contact__item a:hover { color: var(--color-accent); }
+    .contact__map {
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 300px;
+    }
+    .contact__map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      border: 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      padding: var(--space-l) 0;
+      text-align: center;
+    }
+    .footer p { font-size: var(--text-sm); opacity: 0.7; }
+
+    /* ===== Scroll Reveal ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery__grid { column-count: 3; }
+    }
+    @media (max-width: 768px) {
+      .header__nav { display: none; }
+      .about__grid { grid-template-columns: 1fr; }
+      .services__grid { grid-template-columns: 1fr; }
+      .contact__grid { grid-template-columns: 1fr; }
+      .gallery__grid { column-count: 2; }
+      .hero__title { font-size: var(--text-2xl); }
+    }
+    @media (max-width: 480px) {
+      .gallery__grid { column-count: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">DK <span>Copy</span></a>
+      <nav class="header__nav">
+        <a href="#about">Hakkımızda</a>
+        <a href="#services">Hizmetler</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#contact">İletişim</a>
+        <a href="tel:05324900313" class="header__cta">Hemen Fiyat Al</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" id="heroBg">
+      <!-- 22 gerçek görsel — hepsi [OPAK → hero/atmosfer/arka-plan] etiketli -->
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" alt="DK Copy baskı çalışması" class="active">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_29.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_26.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25_1.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/WhatsApp_Image_2026-06-24_at_12_52_24.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0303.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0302.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0301_2.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0300.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0299.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0298.jpeg" alt="DK Copy baskı çalışması">
+      <img src="images/IMG_0297.jpeg" alt="DK Copy baskı çalışması">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">DK Copy <span>|</span> 3 Günde Teslim Garantili Dijital Baskı</h1>
+      <p class="hero__sub">Tabelanızdan kataloğunuza, markanızı baskıyla buluşturuyoruz. 3 iş günü içinde teslim garantisiyle, profesyonel dijital baskı hizmeti.</p>
+      <a href="tel:05324900313" class="hero__cta">
+        Hemen Fiyat Al
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section__title reveal">Dijital Baskıda <span>Güvenilir Adresiniz</span></h2>
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>DK Copy olarak, tabela, branda, kartvizit ve katalog baskı başta olmak üzere tüm dijital baskı ihtiyaçlarınıza çözüm üretiyoruz. Kaliteli malzeme, hızlı teslimat ve uygun fiyat anlayışımızla işletmenizin görünürlüğünü artırıyoruz. 3 günde teslim garantimizle, zamanınızı değil sonucu düşünmenizi sağlıyoruz.</p>
+        </div>
+        <div class="about__image reveal">
+          <img src="images/IMG_0297.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section" id="services" style="background: white;">
+    <div class="container">
+      <h2 class="section__title reveal">Hizmetlerimiz</h2>
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="store"></i></div>
+          <h3 class="service-card__title">Tabela Baskı</h3>
+          <p class="service-card__desc">İşletmenizin vitrini tabelanızdır. İç ve dış mekan tabela, ışıklı tabela, harf tabela çözümlerimizle markanızı öne çıkarın.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="image"></i></div>
+          <h3 class="service-card__title">Branda Baskı</h3>
+          <p class="service-card__desc">Reklam brandası, şantiye brandası, fuar brandası. Her boyutta, her ortamda dikkat çeken baskılar.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="credit-card"></i></div>
+          <h3 class="service-card__title">Kartvizit Baskı</h3>
+          <p class="service-card__desc">İlk izlenim kartvizitle başlar. Kaliteli kağıt, net baskı, hızlı teslimat. 3 günde kartvizitiniz hazır.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="book-open"></i></div>
+          <h3 class="service-card__title">Katalog Baskı</h3>
+          <p class="service-card__desc">Ürünlerinizi, hizmetlerinizi profesyonel kataloglarla anlatın. Sayfa sayısı ve adet fark etmez, hızlı çözüm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section__title reveal">Galeri</h2>
+      <div class="gallery__grid" id="galleryGrid">
+        <!-- 22 görsel masonry grid -->
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_29.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_29.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_26.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_26.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_25_1.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25_1.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_25.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_25.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/WhatsApp_Image_2026-06-24_at_12_52_24.jpeg">
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_24.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0303.jpeg">
+          <img src="images/IMG_0303.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0302.jpeg">
+          <img src="images/IMG_0302.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0301_2.jpeg">
+          <img src="images/IMG_0301_2.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0300.jpeg">
+          <img src="images/IMG_0300.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0299.jpeg">
+          <img src="images/IMG_0299.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0298.jpeg">
+          <img src="images/IMG_0298.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+        <div class="gallery__item reveal" data-src="images/IMG_0297.jpeg">
+          <img src="images/IMG_0297.jpeg" alt="DK Copy baskı çalışması" loading="lazy">
+          <div class="gallery__item-overlay"><i data-lucide="search"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose"><i data-lucide="x"></i></button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="DK Copy baskı çalışması">
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section__title reveal">Bize <span>Ulaşın</span></h2>
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <p style="margin-bottom: var(--space-m); opacity: 0.85;">Fiyat almak, projenizi anlatmak veya sorularınızı iletmek için bizi arayın. 3 günde teslim garantili dijital baskı için hemen iletişime geçin.</p>
+          <div class="contact__item">
+            <i data-lucide="phone"></i>
+            <div>
+              <h4>Telefon</h4>
+              <a href="tel:053249003
