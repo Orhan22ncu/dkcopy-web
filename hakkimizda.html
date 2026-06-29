@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy | Hakkımızda — 3 Günde Teslim Garantili Dijital Baskı</title>
+  <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.">
+  <meta property="og:title" content="DK Copy | Hakkımızda — 3 Günde Teslim Garantili Dijital Baskı">
+  <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dkcopy.com.tr/hakkimizda.html">
+  <meta property="og:image" content="https://dkcopy.com.tr/images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://dkcopy.com.tr/hakkimizda.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --color-primary: #1A1A2E;
+      --color-accent: #C89B3C;
+      --color-neutral: #9C9AA6;
+      --color-surface: #F8F5EE;
+      --color-bg: #FFFFFF;
+      --color-text: #1A1A2E;
+      --color-muted: #9C9AA6;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      --text-3xl: clamp(3.5rem, 2rem + 6vw, 8rem);
+      --radius: 8px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --container: 1200px;
+      --section-y: 80px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    h1 { font-size: var(--text-2xl); }
+    h2 { font-size: var(--text-xl); margin-bottom: var(--space-m); }
+    h3 { font-size: var(--text-lg); margin-bottom: var(--space-s); }
+    p { margin-bottom: var(--space-m); color: var(--color-text); }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: background 0.3s;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .header__logo img { height: 40px; width: auto; }
+    .header__nav {
+      display: flex;
+      gap: var(--space-l);
+      align-items: center;
+    }
+    .header__nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .header__nav a:hover,
+    .header__nav a.active { color: var(--color-accent); }
+    .header__nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; width: 100%; height: 2px;
+      background: var(--color-accent);
+    }
+    .header__cta {
+      background: var(--color-accent);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      transition: background 0.2s;
+    }
+    .header__cta:hover { background: #b8892e; }
+    .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .mobile-toggle span { width: 24px; height: 2px; background: var(--color-primary); transition: 0.3s; }
+
+    /* ===== HERO (About) ===== */
+    .hero-about {
+      padding-top: 120px;
+      padding-bottom: var(--space-xl);
+      background: var(--color-surface);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    .hero-about__content h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-m);
+      color: var(--color-primary);
+    }
+    .hero-about__content h1 span { color: var(--color-accent); }
+    .hero-about__content p {
+      font-size: var(--text-base);
+      color: var(--color-text);
+      max-width: 540px;
+    }
+    .hero-about__visual {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+    }
+    .hero-about__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== MISSION SECTION ===== */
+    .mission {
+      padding: var(--section-y) 0;
+      background: var(--color-bg);
+    }
+    .mission__inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mission__inner h2 {
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+    }
+    .mission__inner h2 span { color: var(--color-accent); }
+    .mission__inner p {
+      font-size: var(--text-base);
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    /* ===== VALUES ===== */
+    .values {
+      padding: var(--section-y) 0;
+      background: var(--color-surface);
+    }
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-l);
+    }
+    .values__card {
+      background: var(--color-bg);
+      padding: var(--space-l);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .values__card:hover { transform: translateY(-4px); }
+    .values__card .icon {
+      width: 48px; height: 48px;
+      margin: 0 auto var(--space-m);
+      color: var(--color-accent);
+    }
+    .values__card h3 { font-size: var(--text-lg); }
+    .values__card p { font-size: var(--text-sm); color: var(--color-muted); }
+
+    /* ===== GALLERY STRIP ===== */
+    .gallery-strip {
+      padding: var(--section-y) 0;
+      background: var(--color-bg);
+    }
+    .gallery-strip h2 {
+      text-align: center;
+      margin-bottom: var(--space-l);
+    }
+    .gallery-strip__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-s);
+    }
+    .gallery-strip__item {
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .gallery-strip__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-strip__item:hover img { transform: scale(1.05); }
+
+    /* ===== CONTACT CTA ===== */
+    .contact-cta {
+      padding: var(--section-y) 0;
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+    }
+    .contact-cta h2 {
+      font-size: var(--text-xl);
+      color: #fff;
+      margin-bottom: var(--space-m);
+    }
+    .contact-cta p {
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 0 auto var(--space-l);
+    }
+    .contact-cta .btn {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: var(--text-base);
+      transition: background 0.2s;
+    }
+    .contact-cta .btn:hover { background: #b8892e; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.7);
+      padding: var(--space-xl) 0 var(--space-l);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-l);
+      margin-bottom: var(--space-l);
+    }
+    .footer__brand img { height: 36px; margin-bottom: var(--space-s); }
+    .footer__brand p { font-size: var(--text-sm); color: rgba(255,255,255,0.6); }
+    .footer__col h4 { color: #fff; font-size: var(--text-base); margin-bottom: var(--space-m); }
+    .footer__col a {
+      display: block;
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.6);
+      margin-bottom: var(--space-s);
+      transition: color 0.2s;
+    }
+    .footer__col a:hover { color: var(--color-accent); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: var(--space-m);
+      text-align: center;
+      font-size: var(--text-sm);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header__nav {
+        position: fixed;
+        top: 72px; left: 0; width: 100%;
+        background: rgba(255,255,255,0.98);
+        flex-direction: column;
+        padding: var(--space-l);
+        gap: var(--space-m);
+        transform: translateY(-120%);
+        transition: transform 0.3s;
+        box-shadow: var(--shadow);
+      }
+      .header__nav.open { transform: translateY(0); }
+      .mobile-toggle { display: flex; }
+      .hero-about__grid { grid-template-columns: 1fr; }
+      .hero-about__visual { aspect-ratio: 16/9; }
+      .values__grid { grid-template-columns: 1fr; }
+      .gallery-strip__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .gallery-strip__grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo" aria-label="DK Copy ana sayfa">
+        <!-- OPAK → logo/vektör: logo.svg -->
+        <img src="images/logo.svg" alt="DK Copy logosu" width="40" height="40">
+        DK Copy
+      </a>
+      <button class="mobile-toggle" aria-label="Menüyü aç/kapat" id="mobileToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header__nav" id="mainNav" role="navigation" aria-label="Ana menü">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="hakkimizda.html" class="active">Hakkımızda</a>
+        <a href="urunler.html">Ürünler</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="iletisim.html" class="header__cta">Hemen Fiyat Al</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO (About) ===== -->
+    <section class="hero-about" aria-labelledby="hero-title">
+      <div class="container hero-about__grid">
+        <div class="hero-about__content reveal">
+          <h1 id="hero-title">Hakkımızda — <span>Fikrin Değer Kazandığı Yer</span></h1>
+          <p>Her projede estetik, her baskıda disiplin. Kurumsal baskı ve reklam çözümlerinde, markaların ihtiyaç duyduğu tüm hizmetleri tek çatı altında sunuyoruz. Ofis & kurumsal baskılardan tanıtım ve reklam ürünlerine, organizasyon ve davetiye çalışmalarından restoran & kafe baskılarına kadar her aşamada; kaliteli malzeme, net baskı ve profesyonel uygulama anlayışıyla hareket ediyoruz. Tasarımdan baskıya kadar tüm süreci titizlikle yöneterek, işletmenizin hem kurumsal duruşunu hem de sahadaki etkisini güçlendiren sonuçlar sunuyoruz.</p>
+        </div>
+        <div class="hero-about__visual reveal">
+          <!-- OPAK → hero/atmosfer/arka-plan: gerçek müşteri fotoğrafı -->
+          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" alt="DK Copy baskı atölyesi ve üretim örneği" loading="lazy" width="800" height="600">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MISSION ===== -->
+    <section class="mission" aria-labelledby="mission-title">
+      <div class="container mission__inner reveal">
+        <h2 id="mission-title">Dijital Baskıda <span>Güvenilir Adresiniz</span></h2>
+        <p>DK Copy olarak, tabela, branda, kartvizit ve katalog baskı başta olmak üzere tüm dijital baskı ihtiyaçlarınıza çözüm üretiyoruz. Kaliteli malzeme, hızlı teslimat ve uygun fiyat anlayışımızla işletmenizin görünürlüğünü artırıyoruz. 3 günde teslim garantimizle, zamanınızı değil sonucu düşünmenizi sağlıyoruz.</p>
+        <p><strong>Konum:</strong> Soğanlı Mah. 3. Meltem Sok. No: 15D Osmangazi/Bursa</p>
+      </div>
+    </section>
+
+    <!-- ===== VALUES ===== -->
+    <section class="values" aria-labelledby="values-title">
+      <div class="container">
+        <h2 id="values-title" class="reveal" style="text-align:center;">Değerlerimiz</h2>
+        <div class="values__grid">
+          <div class="values__card reveal">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Kalite</h3>
+            <p>Her baskıda yüksek çözünürlük ve renk doğruluğu.</p>
+          </div>
+          <div class="values__card reveal">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>3 Günde Teslim</h3>
+            <p>Garantili hızlı teslimat ile işlerinizi aksatmayın.</p>
+          </div>
+          <div class="values__card reveal">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3>Uygun Fiyat</h3>
+            <p>Rekabetçi fiyatlarla profesyonel baskı çözümleri.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY STRIP ===== -->
+    <section class="gallery-strip" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 id="gallery-title" class="reveal">Atölyemizden Kareler</h2>
+        <div class="gallery-strip__grid">
+          <!-- OPAK → hero/atmosfer/arka-plan: gerçek müşteri fotoğrafları -->
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg" alt="DK Copy baskı örneği" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg" alt="DK Copy üretim süreci" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg" alt="DK Copy baskı makinesi" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_29.jpeg" alt="DK Copy atölye görünümü" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg" alt="DK Copy baskı detayı" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg" alt="DK Copy ürün çekimi" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg" alt="DK Copy baskı sonrası" loading="lazy" width="300" height="300"></div>
+          <div class="gallery-strip__item reveal"><img src="images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg" alt="DK Copy ekip çalışması" loading="lazy" width="300" height="300"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT CTA ===== -->
+    <section class="contact-cta reveal" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title">Projenizi Anlatın, 3 Günde Teslim Edelim</h2>
+        <p>Fiyat almak, projenizi anlatmak veya sorularınızı iletmek için bizi arayın. 3 günde teslim garantili dijital baskı için hemen iletişime geçin.</p>
+        <a href="iletisim.html" class="btn">Hemen Fiyat Al</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <!-- OPAK → logo/vektör: logo.svg -->
+          <img src="images/logo.svg" alt="DK Copy logosu" width="120" height="36" loading="lazy">
+          <p>Fikrin Değer Kazandığı Yer. 3 günde teslim garantili dijital baskı çözümleri.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Sayfalar</h4>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetler.html">Hizmetler</a>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="urunler.html">Ürünler</a>
+          <a href="galeri.html">Galeri</a>
+          <a href="iletisim.html">İletişim</a>
+        </div>
+        <div class="footer__col">
+          <h4>İletişim</h4>
+          <a href="tel:05324900313">0532 490 03 13</a>
+          <a href="tel:05324301407">0532 430 14 07</a>
+          <a href="mailto:info@dkcopy.com.tr">info@dkcopy.com.tr</a>
+          <p style="font-size:var(--text-sm); color:rgba(255,255,255,0.6);">Soğanlı Mah. 3. Meltem Sok. No: 15D Osmangazi/Bursa</p>
+        </div>
+        <div class="footer__col">
+          <h4>Çalışma Saatleri</h4>
+          <p style="font-size:var(--text-sm); color:rgba(255,255,255,0.6);">Pazartesi - Cumartesi<br>09:00 - 18:00</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 DK Copy. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== GSAP + SCROLL REVEAL ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile toggle
+      const toggle = document.getElementById('mobileToggle');
+      const nav = document.getElementById('mainNav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+          nav.classList.toggle('open');
+        });
+        // Close on link click
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => nav.classList.remove('open'));
+        });
+      }
+
+      // Scroll reveal with Intersection Observer (GSAP fallback)
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(el => observer.observe(el));
+      } else {
+        // Fallback: show all
+        reveals.forEach(el => el.classList.add('visible'));
+      }
+
+      // GSAP ScrollTrigger for advanced animations (if available)
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        // Subtle parallax for hero visual
+        gsap.fromTo('.hero-about__visual img', 
+          { scale: 1.1 },
+          { scale: 1, scrollTrigger: { trigger: '.hero-about', start: 'top bottom', end: 'bottom top', scrub: 1 } }
+        );
+      }
+    });
+  </script>
+</body>
+</html>

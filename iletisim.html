@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy | İletişim — 3 Günde Teslim Garantili Dijital Baskı</title>
+  <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.">
+  <meta property="og:title" content="DK Copy | İletişim — 3 Günde Teslim Garantili Dijital Baskı">
+  <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dkcopy.com.tr/iletisim.html">
+  <meta property="og:image" content="https://dkcopy.com.tr/images/logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://dkcopy.com.tr/iletisim.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Custom Properties (Design Tokens) ===== */
+    :root {
+      --color-primary: #1A1A2E;
+      --color-accent: #C89B3C;
+      --color-bg: #F8F5EE;
+      --color-surface: #FFFFFF;
+      --color-text: #1A1A2E;
+      --color-muted: #9C9AA6;
+      --color-on-dark: #F8F5EE;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 2rem;
+      --space-xl: 4rem;
+      --space-2xl: 8rem;
+      --text-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+      --text-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+      --text-xl: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+      --text-2xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      --text-3xl: clamp(3.5rem, 2rem + 6vw, 8rem);
+      --radius: 8px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --container: 1200px;
+      --section-y: 80px;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--space-l);
+    }
+    .section { padding: var(--section-y) 0; }
+
+    /* ===== Typography ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-primary);
+    }
+    h1 { font-size: var(--text-2xl); margin-bottom: var(--space-m); }
+    h2 { font-size: var(--text-xl); margin-bottom: var(--space-m); }
+    h3 { font-size: var(--text-lg); margin-bottom: var(--space-s); }
+    p { margin-bottom: var(--space-m); color: var(--color-text); }
+
+    /* ===== Header / Nav ===== */
+    .header {
+      background: var(--color-primary);
+      padding: var(--space-m) 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .header-logo span {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      color: var(--color-on-dark);
+      font-weight: 600;
+    }
+    .nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m) var(--space-l);
+    }
+    .nav-list a {
+      color: var(--color-on-dark);
+      font-weight: 500;
+      font-size: var(--text-sm);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.3s;
+    }
+    .nav-list a:hover::after,
+    .nav-list a.active::after { width: 100%; }
+    .nav-list a:hover { color: var(--color-accent); }
+    .nav-list a.active { color: var(--color-accent); }
+
+    /* ===== Hero (small, page intro) ===== */
+    .hero-iletisim {
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      text-align: center;
+      padding: var(--space-xl) 0 var(--space-l);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-iletisim h1 {
+      color: var(--color-on-dark);
+      font-size: var(--text-2xl);
+    }
+    .hero-iletisim p {
+      color: var(--color-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: var(--text-base);
+    }
+
+    /* ===== İletişim Grid ===== */
+    .iletisim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .iletisim-grid { grid-template-columns: 1fr; }
+    }
+    .iletisim-bilgi h2 {
+      margin-bottom: var(--space-l);
+    }
+    .bilgi-kart {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-l);
+      box-shadow: var(--shadow);
+      margin-bottom: var(--space-m);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-m);
+    }
+    .bilgi-kart svg {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      color: var(--color-accent);
+      margin-top: 4px;
+    }
+    .bilgi-kart h3 {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-xs);
+    }
+    .bilgi-kart p, .bilgi-kart a {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+    .bilgi-kart a:hover { color: var(--color-accent); }
+
+    /* ===== Form ===== */
+    .form-card {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--space-l);
+      box-shadow: var(--shadow);
+    }
+    .form-card h2 {
+      margin-bottom: var(--space-l);
+    }
+    .form-group {
+      margin-bottom: var(--space-m);
+    }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-xs);
+      color: var(--color-primary);
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      background: var(--color-bg);
+      transition: border 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(200,155,60,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: var(--text-base);
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background: #b8892e;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Harita ===== */
+    .harita-wrapper {
+      margin-top: var(--space-xl);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .harita-wrapper iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      display: block;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-primary);
+      color: var(--color-on-dark);
+      padding: var(--space-l) 0;
+      text-align: center;
+    }
+    .footer p { color: var(--color-muted); font-size: var(--text-sm); margin: 0; }
+    .footer a { color: var(--color-accent); }
+
+    /* ===== WhatsApp Floating ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #25D366;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    /* ===== Scroll Reveal (native) ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; translate: 0 40px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    .reveal {
+      animation: fadeUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @supports not (animation-timeline: view()) {
+      .reveal { opacity: 1; translate: 0 0; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .header .container { flex-direction: column; align-items: flex-start; }
+      .nav-list { gap: var(--space-s) var(--space-m); }
+      .iletisim-grid { gap: var(--space-l); }
+      .harita-wrapper iframe { height: 280px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 var(--space-m); }
+      .bilgi-kart { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="header-logo" aria-label="DK Copy ana sayfa">
+        <img src="images/logo.svg" alt="DK Copy logosu">
+        <span>DK Copy</span>
+      </a>
+      <nav aria-label="Ana menü">
+        <ul class="nav-list">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hizmetler.html">Hizmetler</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="urunler.html">Ürünler</a></li>
+          <li><a href="iletisim.html" class="active" aria-current="page">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO (sayfa girişi) ===== -->
+  <section class="hero-iletisim">
+    <div class="container">
+      <h1>Bize Ulaşın</h1>
+      <p>Fiyat almak, projenizi anlatmak veya sorularınızı iletmek için bizi arayın. 3 günde teslim garantili dijital baskı için hemen iletişime geçin.</p>
+    </div>
+  </section>
+
+  <!-- ===== İLETİŞİM İÇERİĞİ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="iletisim-grid">
+
+        <!-- Sol: İletişim Bilgileri -->
+        <div class="iletisim-bilgi reveal">
+          <h2>İletişim Bilgileri</h2>
+
+          <!-- Adres -->
+          <div class="bilgi-kart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <h3>Adres</h3>
+              <p>Soğanlı Mah. 3. Meltem Sok. No: 15D<br>Osmangazi / Bursa</p>
+            </div>
+          </div>
+
+          <!-- Telefon 1 -->
+          <div class="bilgi-kart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <h3>Telefon 1</h3>
+              <a href="tel:05324900313">0532 490 03 13</a>
+            </div>
+          </div>
+
+          <!-- Telefon 2 -->
+          <div class="bilgi-kart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <h3>Telefon 2</h3>
+              <a href="tel:05324301407">0532 430 14 07</a>
+            </div>
+          </div>
+
+          <!-- E-posta -->
+          <div class="bilgi-kart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <div>
+              <h3>E-posta</h3>
+              <a href="mailto:info@dkcopy.com.tr">info@dkcopy.com.tr</a>
+            </div>
+          </div>
+
+          <!-- Çalışma Saatleri -->
+          <div class="bilgi-kart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <h3>Çalışma Saatleri</h3>
+              <p>Pazartesi - Cumartesi<br>09:00 - 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sağ: Form -->
+        <div class="form-card reveal">
+          <h2>Hızlı Fiyat Teklifi</h2>
+          <form action="https://formspree.io/f/xqapwqap" method="POST">
+            <div class="form-group">
+              <label for="ad">Adınız Soyadınız</label>
+              <input type="text" id="ad" name="ad" required placeholder="Adınız Soyadınız">
+            </div>
+            <div class="form-group">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" required placeholder="05XX XXX XX XX">
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta</label>
+              <input type="email" id="email" name="email" required placeholder="ornek@mail.com">
+            </div>
+            <div class="form-group">
+              <label for="mesaj">Mesajınız</label>
+              <textarea id="mesaj" name="mesaj" required placeholder="Projeniz hakkında kısa bilgi verin..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Gönder</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- ===== HARİTA ===== -->
+      <div class="harita-wrapper reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.5!2d29.0435!3d40.2143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEyJzUxLjUiTiAyOcKwMDInMzYuNiJF!5e0!3m2!1str!2str!4v1680000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="DK Copy konumu"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 DK Copy — <a href="index.html">Fikrin Değer Kazandığı Yer</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/905324900313" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp ile iletişime geçin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ===== GSAP Fallback (scroll reveal desteklemeyen tarayıcılar için) ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script>
+    // GSAP fallback: native scroll-driven animation desteklenmiyorsa devreye girer
+    document.addEventListener('DOMContentLoaded', function() {
+      const supportsScrollAnim = CSS.supports('animation-timeline', 'view()');
+      if (!supportsScrollAnim) {
+        // GSAP yüklendiyse kullan
+        const checkGsap = setInterval(function() {
+          if (typeof gsap !== 'undefined') {
+            clearInterval(checkGsap);
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.reveal').forEach(el => {
+              gsap.fromTo(el, 
+                { opacity: 0, y: 40 },
+                { 
+                  opacity: 1, y: 0, 
+                  duration: 0.8, 
+                  ease: 'power2.out',
+                  scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                  }
+                }
+              );
+            });
+          }
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
