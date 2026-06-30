@@ -36,7 +36,6 @@
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
-    /* === Header === */
     .header {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
       background: var(--color-primary);
@@ -62,10 +61,8 @@
     .header__cta:hover { background: #b8892e; transform: translateY(-1px); }
     .header__cta svg { flex-shrink: 0; }
 
-    /* === Main Layout === */
     .page-body { padding-top: var(--header-h); flex: 1; display: flex; flex-direction: column; }
 
-    /* === Shop Bar (sticky) === */
     .shop-bar {
       position: sticky; top: var(--header-h); z-index: 150;
       background: var(--color-primary);
@@ -82,9 +79,7 @@
     }
     #search::placeholder { color: rgba(255,255,255,.5); }
     #search:focus { background: rgba(255,255,255,.22); }
-
     .grid-info-bar { flex: 1; color: rgba(255,255,255,.55); font-size: .8rem; padding-left: .5rem; }
-
     .cart-btn {
       flex-shrink: 0;
       background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.22);
@@ -101,7 +96,6 @@
     }
     #cart-count.visible { display: inline-block; }
 
-    /* === Category Tabs === */
     .cat-tabs-wrap { background: var(--color-surface); border-bottom: 1px solid rgba(0,0,0,.08); }
     .cat-tabs {
       max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
@@ -120,7 +114,6 @@
     .tab:hover { color: var(--color-text); }
     .tab.active { color: var(--color-primary); font-weight: 600; border-bottom-color: var(--color-accent); }
 
-    /* === Product Grid === */
     .grid-section { flex: 1; padding: 1.5rem; max-width: 1200px; margin: 0 auto; width: 100%; }
     #product-grid {
       display: grid;
@@ -128,7 +121,6 @@
       gap: 1.25rem;
     }
 
-    /* === Product Card === */
     .card {
       background: var(--color-surface); border-radius: var(--radius);
       box-shadow: var(--shadow); transition: box-shadow .25s, transform .25s;
@@ -139,7 +131,7 @@
 
     .card-img {
       position: relative; overflow: hidden;
-      background: var(--color-bg); height: 200px;
+      background: var(--color-bg); height: 260px;
       cursor: zoom-in;
     }
     .card-img img {
@@ -155,7 +147,7 @@
       flex: 1;
     }
     .btn-add {
-      margin-top: .4rem;
+      margin-top: auto;
       padding: .55rem; border-radius: 8px; border: none;
       background: var(--color-accent); color: var(--color-primary);
       font-family: var(--font-body); font-size: .8rem; font-weight: 600;
@@ -164,7 +156,6 @@
     .btn-add:hover { background: #b8892e; transform: translateY(-1px); }
     .btn-add.added { background: #2ecc71; color: #fff; cursor: default; }
 
-    /* === Lens === */
     .lens {
       display: none; position: absolute; pointer-events: none;
       width: 140px; height: 140px; border-radius: 50%;
@@ -173,13 +164,11 @@
       background-repeat: no-repeat; z-index: 10;
     }
 
-    /* === Cart Sidebar === */
     .cart-overlay {
       display: none; position: fixed; inset: 0; background: rgba(0,0,0,.35);
       z-index: 300;
     }
     .cart-overlay.open { display: block; }
-
     .cart-sidebar {
       position: fixed; top: 0; right: -340px; height: 100%;
       width: var(--sidebar-w); background: var(--color-surface);
@@ -188,7 +177,6 @@
       transition: right .3s ease;
     }
     .cart-sidebar.open { right: 0; }
-
     .sidebar-head {
       background: var(--color-primary); color: var(--color-on-dark);
       padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
@@ -197,7 +185,6 @@
     .sidebar-head button { background: none; border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.7); padding: .3rem .7rem; border-radius: 6px; font-size: .75rem; cursor: pointer; }
     .sidebar-head button:hover { background: rgba(255,255,255,.1); }
     .sidebar-close-btn { background: none !important; border: none !important; color: rgba(255,255,255,.8) !important; font-size: 1.25rem !important; cursor: pointer; line-height: 1; padding: .25rem !important; }
-
     .cart-empty {
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: .75rem; color: var(--color-muted); font-size: .9rem;
@@ -217,7 +204,6 @@
       font-size: 1.1rem; cursor: pointer; line-height: 1; padding: .2rem;
     }
     .cart-item-remove:hover { color: #e74c3c; }
-
     .sidebar-footer { padding: 1rem; border-top: 1px solid rgba(0,0,0,.08); }
     .btn-wa {
       display: flex; align-items: center; justify-content: center; gap: .6rem;
@@ -228,42 +214,103 @@
     .btn-wa:hover:not(.disabled) { background: #1da851; transform: translateY(-1px); }
     .btn-wa.disabled { background: #ccc; cursor: not-allowed; pointer-events: none; }
 
-    /* === No Results === */
     .no-results {
       display: none; text-align: center; color: var(--color-muted);
       padding: 3rem 1rem; font-size: .95rem;
     }
     .no-results.visible { display: block; }
 
-    /* === Lightbox === */
-    #lb {
+    /* === Lightbox 2 === */
+    .lb2 {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,.88); z-index: 500;
+      background: rgba(0,0,0,.8); z-index: 500;
       align-items: center; justify-content: center;
+      padding: 1rem;
     }
-    #lb.open { display: flex; }
-    #lb-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 4px; }
-    #lb-close {
-      position: absolute; top: 1rem; right: 1.25rem;
-      background: none; border: none; color: #fff; font-size: 2rem;
-      cursor: pointer; line-height: 1; opacity: .75;
+    .lb2.open { display: flex; }
+    .lb2-panel {
+      position: relative;
+      background: var(--color-surface); border-radius: 12px;
+      display: flex; overflow: hidden;
+      max-width: 900px; width: 100%; max-height: 90vh;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
     }
-    #lb-close:hover { opacity: 1; }
+    .lb2-close {
+      position: absolute; top: .75rem; right: .75rem; z-index: 10;
+      background: rgba(0,0,0,.55); border: none; color: #fff;
+      font-size: 1.4rem; width: 2.25rem; height: 2.25rem; border-radius: 50%;
+      cursor: pointer; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb2-close:hover { background: rgba(0,0,0,.85); }
+    .lb2-left {
+      flex: 0 0 55%; display: flex; flex-direction: column;
+      background: var(--color-bg); min-height: 0;
+    }
+    .lb2-img-area {
+      flex: 1; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 0; padding: 1rem;
+    }
+    .lb2-main-img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      cursor: zoom-in; transition: transform .25s ease;
+      display: block; user-select: none;
+    }
+    .lb2-main-img.zoomed { transform: scale(2.5); cursor: zoom-out; }
+    .lb2-thumbs {
+      display: flex; gap: .5rem; padding: .6rem .75rem;
+      justify-content: center; flex-wrap: wrap; flex-shrink: 0;
+    }
+    .lb2-thumb {
+      width: 56px; height: 56px; border-radius: 6px; overflow: hidden;
+      border: 2px solid transparent; background: #fff;
+      cursor: pointer; padding: 0; transition: border-color .2s;
+      flex-shrink: 0;
+    }
+    .lb2-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .lb2-thumb.active { border-color: var(--color-accent); }
+    .lb2-thumb:hover { border-color: var(--color-primary); opacity: .85; }
+    .lb2-right {
+      flex: 0 0 45%; padding: 1.75rem 1.25rem 1.25rem;
+      display: flex; flex-direction: column; gap: .75rem;
+      overflow-y: auto; border-left: 1px solid rgba(0,0,0,.08);
+    }
+    .lb2-cat {
+      font-size: .72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--color-accent);
+    }
+    .lb2-code {
+      font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700;
+      color: var(--color-primary); line-height: 1;
+    }
+    .lb2-feats {
+      font-size: .85rem; color: var(--color-muted); line-height: 1.7; flex: 1;
+    }
+    .lb2-add {
+      margin-top: .5rem; padding: .75rem 1rem; font-size: .9rem;
+      border-radius: 10px;
+    }
 
-    /* === Footer === */
     .footer { background: var(--color-primary); color: var(--color-on-dark); padding: 1.5rem 0; text-align: center; }
     .footer p { font-size: .8rem; opacity: .65; }
 
-    /* === Mobile === */
     @media (max-width: 768px) {
       .header__nav { display: none; }
       .header__logo span { font-size: 1.1rem; }
       #product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-      .card-img { height: 160px; }
+      .card-img { height: 200px; }
       .grid-info-bar { display: none; }
       .cart-sidebar { width: 100%; right: -100%; }
     }
-
+    @media (max-width: 640px) {
+      .lb2-panel { flex-direction: column; max-height: 95vh; border-radius: 8px; }
+      .lb2-left { flex: 0 0 50%; }
+      .lb2-right { flex: 1; padding: 1rem; border-left: none; border-top: 1px solid rgba(0,0,0,.08); }
+      .lb2-code { font-size: 1.6rem; }
+      .lb2-img-area { padding: .5rem; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
@@ -271,7 +318,6 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="header" role="banner">
   <div class="container">
     <a href="index.html" class="header__logo" aria-label="DK Copy Ana Sayfa">
@@ -295,13 +341,12 @@
 
 <div class="page-body">
 
-  <!-- ===== SHOP BAR ===== -->
   <div class="shop-bar">
     <div class="search-wrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search" type="search" placeholder="Ürün kodu veya özellik ara…" autocomplete="off" aria-label="Ürün ara">
     </div>
-    <span class="grid-info-bar" id="grid-info">158 ürün — hover: büyüteç · tıkla: tam ekran</span>
+    <span class="grid-info-bar" id="grid-info">158 ürün — hover: büyüteç · tıkla: detay</span>
     <button class="cart-btn" onclick="toggleCart()" aria-label="Sepeti aç">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Sepetim
@@ -309,22 +354,20 @@
     </button>
   </div>
 
-  <!-- ===== CATEGORY TABS ===== -->
   <div class="cat-tabs-wrap">
     <div class="cat-tabs" role="tablist" aria-label="Kategoriler">
       <button class="tab active" data-cat="all" role="tab" aria-selected="true">Tümü <span>(158)</span></button>
       <button class="tab" data-cat="ajandalar">Ajandalar <span>(22)</span></button>
-    <button class="tab" data-cat="geri_donusumlu_urunler">Geri Dönüşümlü <span>(16)</span></button>
-    <button class="tab" data-cat="kalem_setleri">Kalem Setleri <span>(24)</span></button>
-    <button class="tab" data-cat="metal_kalemler">Metal Kalemler <span>(10)</span></button>
-    <button class="tab" data-cat="organizerler">Organizerler <span>(10)</span></button>
-    <button class="tab" data-cat="roller_kalemler">Roller Kalemler <span>(24)</span></button>
-    <button class="tab" data-cat="tarihsiz_defterler">Tarihsiz Defterler <span>(38)</span></button>
-    <button class="tab" data-cat="tohumlu_ve_kursun_kalemler">Tohumlu & Kurşun <span>(14)</span></button>
+      <button class="tab" data-cat="geri_donusumlu_urunler">Geri Dönüşümlü <span>(16)</span></button>
+      <button class="tab" data-cat="kalem_setleri">Kalem Setleri <span>(24)</span></button>
+      <button class="tab" data-cat="metal_kalemler">Metal Kalemler <span>(10)</span></button>
+      <button class="tab" data-cat="organizerler">Organizerler <span>(10)</span></button>
+      <button class="tab" data-cat="roller_kalemler">Roller Kalemler <span>(24)</span></button>
+      <button class="tab" data-cat="tarihsiz_defterler">Tarihsiz Defterler <span>(38)</span></button>
+      <button class="tab" data-cat="tohumlu_ve_kursun_kalemler">Tohumlu &amp; Kurşun <span>(14)</span></button>
     </div>
   </div>
 
-  <!-- ===== PRODUCT GRID ===== -->
   <section class="grid-section" aria-label="Ürün listesi">
     <div id="product-grid"></div>
     <p class="no-results" id="no-results">Aradığınız ürün bulunamadı.</p>
@@ -332,14 +375,13 @@
 
 </div>
 
-<!-- ===== CART OVERLAY ===== -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <aside class="cart-sidebar" id="cart-sidebar" role="complementary" aria-label="Sepet">
   <div class="sidebar-head">
     <span>Sepetim</span>
     <div style="display:flex;gap:.5rem;align-items:center">
       <button onclick="clearCart()">Temizle</button>
-      <button class="sidebar-close-btn" onclick="toggleCart()" aria-label="Kapat">×</button>
+      <button class="sidebar-close-btn" onclick="toggleCart()" aria-label="Kapat">&#215;</button>
     </div>
   </div>
   <div class="cart-empty" id="cart-empty">
@@ -359,13 +401,24 @@
   </div>
 </aside>
 
-<!-- ===== LIGHTBOX ===== -->
-<div id="lb" onclick="closeLB()">
-  <img id="lb-img" src="" alt="Ürün" onclick="event.stopPropagation()">
-  <button id="lb-close" onclick="closeLB()" aria-label="Kapat">×</button>
+<div id="lb2" class="lb2" role="dialog" aria-modal="true" aria-label="Ürün detayı" onclick="lb2BackdropClick(event)">
+  <div class="lb2-panel">
+    <button class="lb2-close" onclick="closeLB2()" aria-label="Kapat">&#215;</button>
+    <div class="lb2-left">
+      <div class="lb2-img-area">
+        <img id="lb2-main" class="lb2-main-img" src="" alt="" onclick="lb2ToggleZoom(this,event)">
+      </div>
+      <div class="lb2-thumbs" id="lb2-thumbs"></div>
+    </div>
+    <div class="lb2-right">
+      <div class="lb2-cat" id="lb2-cat"></div>
+      <div class="lb2-code" id="lb2-code"></div>
+      <div class="lb2-feats" id="lb2-feats"></div>
+      <button class="btn-add lb2-add" id="lb2-add" onclick="lb2AddCart()">Sepete Ekle</button>
+    </div>
+  </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer" role="contentinfo">
   <div style="max-width:1200px;margin:0 auto;padding:0 2rem">
     <p>&copy; 2026 DK Copy. Tüm hakları saklıdır. | Fikrin Değer Kazandığı Yer</p>
@@ -373,18 +426,36 @@
 </footer>
 
 <script>
-const PRODUCTS = [{"kod":"6240","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6240_01.webp","features":""},{"kod":"6245","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6245_01.webp","features":"Ebat : 17 x 24 cm  (Fam)\nKağıt : 70 Gr Krem .\nSayfa : 336 - Çizgili\nKapak : Termo Deri L\nBaskı : Gofre & UV"},{"kod":"6248","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6248_01.webp","features":""},{"kod":"6250","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6250_01.webp","features":"Ebat : 17 x 24\nKagit : 70 Gr\nSayfa : 336 - Cizgili\nKapak : Termo\nBaskı : Gofre & UV >"},{"kod":"6255","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6255_01.webp","features":"Ebat : 17 x 24\nKagit : 70 Gr\nSayfa : 336 - Ciggili\nKapak : Termo\nBaskı : Gofre & UV Sie"},{"kod":"6260","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6260_01.webp","features":"Ebat :17x24\nKağıt : 70 Gr Krem ee)\nSayfa : 336 - Çizgili\nKapak : Termo Deri ~~\nBaskı : Gofre & UV"},{"kod":"6264","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6264_01.webp","features":"Ebat : 16 x 24\nKağıt : Krem\nSayfa : 320 - Çizgili  /\nKapak : Termo\nBaskı : Gofre & UV lee"},{"kod":"6268","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6268_01.webp","features":""},{"kod":"6275","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6275_01.webp","features":"Ebat : 16,5 x 22 cm Ee\nKagit : 70 Gr Krem g i  . g\nSayfa : 336 - Çizgili a ıı\nKapak : Termo Deri b\nBaskı : -Serigrafi- _ N 5\naskı : Gofre-Serigrafi-UV ei  }"},{"kod":"6280","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6280_01.webp","features":"Ebat : 16,5 x 22 cm 15h\nKağıt : 70 Gr Krem\nSayfa : 336 - Çizgili £ 0\nKapak : Termo Deri ç MES — ;\nBaskı : Gofre &"},{"kod":"6284","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6284_01.webp","features":"Ebat:16x 24cm\nKağıt :\nSayfa : 320 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6290","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6290_01.webp","features":"Ebat : 17 x 24 cm\nKagit : 70 Gr\nSayfa : 336 - Çizgili\nKapak : Termo Deri\nBaskı : Gofre & UV [ae"},{"kod":"6295","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6295_01.webp","features":""},{"kod":"6300","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6300_01.webp","features":"Ebat : 17 x 24 cm : +\nKağıt : 70 Gr Krem 2\nSayfa : 336 - Çizgili :\nKapak : Termo Deri al\nBaskı : Gofre &"},{"kod":"6305","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6305_01.webp","features":"Ebat : 17,5 x24\nKağıt : 70 Gr Krem\nSayfa : 336 - Çizgili\nKapak : Termo Deri\nBaskı : Gofre-Serigrafi-UV MN."},{"kod":"6310","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6310_01.webp","features":"Ebat : 17,5 x 24\nKağıt : 70 Gr\nSayfa : 336 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6312","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6312_01.webp","features":"Ebat:16x24cm\nKağıt : 70 Gr\nSayfa : 336 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6315","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6315_01.webp","features":"Ebat :17x24cm /\nKağıt : 70 Gr Krem q i  j 4\nSayfa : 336 - Çizgili l\nKapak : Termo Deri a a j ;\nBaskı : Gofre & UV a  <A"},{"kod":"6330","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6330_01.webp","features":""},{"kod":"6333","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6333_01.webp","features":"Ebat:20x28\nKağıt : 70 Gr\nSayfa : 336 - Çizgili\nKapak : Termo\n_ Baskı : Gofre &"},{"kod":"6334","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6334_01.webp","features":"Ebat : 20 x 28\nKagit : 70 Gr\nSayfa : 336 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6335","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6335_01.webp","features":""},{"kod":"11200","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11200_01.webp","features":"Baskı: UV & Serigraf\nKapak : Deri Kapak"},{"kod":"11202","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11202_01.webp","features":"Ebat: 13X10 Cm  —a\nBaskı : Serigraf\nKapak : Termo Deri Kapak"},{"kod":"11205","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11205_01.webp","features":"Ebat : 13x8,5\nBaskı : UV & Serigraf\nKapak : Deri Kapak"},{"kod":"11220","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11220_01.webp","features":"Ebat : 17,5x12x1,5 Cm D >\nBaskı : UV & Serigraf\nKapak : Kraft Kapak\nSayfa : 70 - Çizgili"},{"kod":"11225","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11225_01.webp","features":"Ebat : 16x22 Cm = liman\nBaskı : UV & Serigraf &\nKapak : Kraft Kapak\nSayfa : 90 Yaprak >>"},{"kod":"11230","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11230_01.webp","features":"Ebat : 6x21,5 Cm N\nBaskı : Tampon & Serigraf \\4\nKapak : Kraft Kapak\nSayfa : 25 Yaprak"},{"kod":"11235","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11235_01.webp","features":"Ebat : 16,5x21,5 Cm i Z\nHie : UV & Serigraf Pp a”\nKapak : Kraft Kapak :\nSayfa : 200 - Çizgili  2"},{"kod":"11250","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11250_01.webp","features":"Ebat : 13x20\nBaskı : UV & Serigraf\nKapak : Kraft Kapak\nSayfa : 80 Sayfa"},{"kod":"11265","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11265_01.webp","features":"Ebat : 16,5x21,5 Cm\nBaskı : UV & Serigraf 4 7\nKapak : Kraft Kapak 7\nSayfa : 200 - Çizgili ~"},{"kod":"11275","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11275_01.webp","features":""},{"kod":"11280","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11280_01.webp","features":"Ebat : 7,8x8x2,5 Cm EFE 4)\nBaskı : UV & Serigraf LZ = ——\nKapak : Taslama\n_ Sayfa : 250 - Çizgisiz"},{"kod":"11290","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11290_01.webp","features":"Ebat : 7,8x8x2,5\nBaskı : UV & Serigrafi\nKapak : Taslama\nSayfa : 250 - Çizgisiz '"},{"kod":"11300","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11300_01.webp","features":"Ebat : 16x11,5 Cm =\nBaskı : UV & Serigrafi =a\nKapak : Kraft Kapak Sa : ; ‘\nSayfa : 90 Yaprak EE Zi)"},{"kod":"11302","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11302_01.webp","features":"Ebat : 12,5x20,5 Cm =\nBaskı : UV & Serigrafi\nKapak : Kraft =\nSayfa : 200 Sayfa"},{"kod":"11305","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11305_01.webp","features":"Ebat : 11,5x13 Cm = ;\nBaskı : UV & Serigraf =\nKapak : Sert Kapak =z\nSayfa : 110 Sayfa"},{"kod":"11306","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11306_01.webp","features":"Ebat : 10x15 Cm J\nBaskı : UV & Serigrafi =\nKapak : Kraft Kapak\nSayfa : 150 - Çizgili"},{"kod":"5800","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5800_01.webp","features":"Baskı : Lager"},{"kod":"5802","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5802_01.webp","features":"Baskı : Lazer"},{"kod":"5805","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5805_01.webp","features":""},{"kod":"5816","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5816_01.webp","features":"Baskı : Lazer"},{"kod":"5819","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5819_01.webp","features":"Baskı : Lager"},{"kod":"5850","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5850_01.webp","features":"Baskı : Lazer"},{"kod":"5856","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5856_01.webp","features":"Baskı : Lager"},{"kod":"5860","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5860_01.webp","features":"Baskı : Lazer"},{"kod":"5865","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5865_01.webp","features":"Baskı İ ae = V İl uw"},{"kod":"5872","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5872_01.webp","features":""},{"kod":"5900","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5900_01.webp","features":"Baskı : Lager"},{"kod":"5904","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5904_01.webp","features":"Baskı : Lager"},{"kod":"5908","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5908_01.webp","features":""},{"kod":"5912","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5912_01.webp","features":""},{"kod":"5914","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5914_01.webp","features":""},{"kod":"5916","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5916_01.webp","features":"Baskı : Lazer"},{"kod":"5918","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5918_01.webp","features":"Baskı : Lazer"},{"kod":"5920","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5920_01.webp","features":"Baskı : Lager"},{"kod":"5928","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5928_01.webp","features":""},{"kod":"5930","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5930_01.webp","features":""},{"kod":"5932","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5932_01.webp","features":""},{"kod":"5870","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5870_01.webp","features":"Baskı : Lazer"},{"kod":"5876","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5876_01.webp","features":"Baskı : Lazer"},{"kod":"5926","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5926_01.webp","features":"Baskı : Lazer"},{"kod":"5315","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5315_01.webp","features":"Mekanizma : Basmalı\nBaskı : Tampon & Lager"},{"kod":"5316","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5316_01.webp","features":"Mekanizma : Çevirmeli\nBaskı : Lazer :"},{"kod":"5318","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5318_01.webp","features":"Mekanizma : Basmalı\nBaskı : Lager :"},{"kod":"5322","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5322_01.webp","features":"Mekanizma : Basmalı\nBaskı : Lager ‘"},{"kod":"5335","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5335_01.webp","features":"Baskı : Tampon & Lager is Eİ"},{"kod":"5350","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5350_01.webp","features":"Mekanizma : Basmalı\nBaskı : Tampon & Lager"},{"kod":"5355","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5355_01.webp","features":""},{"kod":"5370","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5370_01.webp","features":"Mekanizma : Basmalı\nBaskı : Lazer"},{"kod":"5375","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5375_01.webp","features":"Mekanizma : Çevirmeli\nBaskı : Tampon & Lager"},{"kod":"5390","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5390_01.webp","features":"Mekanizma : Çevirmeli\nBaskı : Tampon & Lager  İl"},{"kod":"6355","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6355_01.webp","features":"Ebat :19 x 26,5 cm\nKağıt : 70 Gr Krem H 1\nSayfa : 336 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6358","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6358_01.webp","features":"Ebat : 26,5 x 18 cm — — > — İ ,,, =\nKagit : 70 Gr Krem ‘\nSayfa : 352 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6362","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6362_01.webp","features":"Ebat : 19 x 26,5 cm Sse\nKağıt : 70 Gr Krem\nSayfa : 352 - Çizgili  ;\nKapak : Termo Deri\nBaskı : Gofre & UV — » ....  e iş)"},{"kod":"6370","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6370_01.webp","features":"Ebat - 18 x 23 em\nKağıt : 70 Gr Krem 1\nSayfa : 352 - Çizgili\nKapak : Termo Deri =\nBaskı : Gofre & UV 7"},{"kod":"6386","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6386_01.webp","features":""},{"kod":"6395","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6395_01.webp","features":"Ebat : 18 x 23 cm n\nKağıt : 70 Gr\nSayfa : 336 - Ciggili\nKapak : Termo\nBaskı : Gofre & UV : -"},{"kod":"6400","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6400_01.webp","features":"Ebat : 18 x 23\nKagit : 70 Gr\nSayfa : 336 - Çizgili )\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6405","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6405_01.webp","features":"Ebat : 18 x 23\nKagit : 70 Gr\nSayfa : 336 - Ciggili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6410","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6410_01.webp","features":"Kagit : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo Deri E  >.\nBaskı : Gofre & UV rn e e e"},{"kod":"6420","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6420_01.webp","features":"Ebat : 14,5 x 23cm\nKagit : 80 Gr\nSayfa : 196 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"5480","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5480_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5485","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5485_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Tampon & Lager"},{"kod":"5510","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5510_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Tampon & Lager"},{"kod":"5515","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5515_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5520","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5520_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Tampon & Lazer"},{"kod":"5525","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5525_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5530","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5530_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lager Mm?"},{"kod":"5540","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5540_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5550","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5550_01.webp","features":""},{"kod":"5555","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5555_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lager ği;"},{"kod":"5570","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5570_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5585","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5585_01.webp","features":""},{"kod":"5593","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5593_01.webp","features":""},{"kod":"5594","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5594_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lazer"},{"kod":"5596","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5596_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Tampon & Lager"},{"kod":"5598","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5598_01.webp","features":""},{"kod":"5602","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5602_01.webp","features":""},{"kod":"5604","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5604_01.webp","features":"Mekanizma : Kapaklı ği”"},{"kod":"5606","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5606_01.webp","features":"Mekanizma : Kapaklı —\nBaskı : Lager -"},{"kod":"5608","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5608_01.webp","features":""},{"kod":"5610","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5610_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lager"},{"kod":"5611","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5611_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lager"},{"kod":"5612","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5612_01.webp","features":""},{"kod":"5575","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5575_01.webp","features":"Mekanizma : Kapaklı\nBaskı : Lager"},{"kod":"6020","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6020_01.webp","features":"Ebat :15x21cm   need\nKağıt : 70 Gr\nSayfa : 224 - Ciggili\nKapak : Termo Deri  —\nBaskı : Gofre & UV ie Si)"},{"kod":"6022","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6022_01.webp","features":"Ebat : 15 x21cm\nKağıt : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6030","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6030_01.webp","features":"Ebat : 14,5 x 21cm\nKagit : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6032","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6032_01.webp","features":"Ebat : 14,5 x 21cm\nKagit : 70 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6034","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6034_01.webp","features":"Ebat : 14,5 x21cm\nKağıt : 70 Gr\nSayfa : 160 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6035","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6035_01.webp","features":"Ebat :13x21cm a]\nKagit : 80 Gr\nSayfa : 196 - Çizgili\nKapak : Termo\nBaskı : Gofre & UV @URK"},{"kod":"6038","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6038_01.webp","features":"Ebat : 15,5 x 21,5\nKağıt : 60 Gr\nSayfa : 176 - Çizgili\nKapak : Termo\nBaskı : Gofre & UV bs 7"},{"kod":"6042","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6042_01.webp","features":"Ebat : 14,5 x 21cm\nKağıt : 75 Gr Krem\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6045","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6045_01.webp","features":"Ebat:15x21cm ——\nKağıt : 70 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6050","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6050_01.webp","features":"Ebat:13x21cm 2S]\nKağıt : 80 Gr\nSayfa : 80 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6052","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6052_01.webp","features":"Kağıt : 80 Gr Krem Mar BON  ]\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre & UV  -"},{"kod":"6054","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6054_01.webp","features":"Ebat : 14,5 x21cm\nKağıt : 75 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6056","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6056_01.webp","features":"Ebat : 13 x 21 cm\nKağıt : 80 Gr\nSayfa : 224 - Cizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6058","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6058_01.webp","features":"Ebat:14x21cm ae )\nKağıt : 80 Gr\nSayfa : 196 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6060","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6060_01.webp","features":"Ebat : 13 x 21 em Mo a : =\nKagit : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6062","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6062_01.webp","features":""},{"kod":"6065","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6065_01.webp","features":"Ebat:13x21cm a\nKağıt : 80 Gr Krem D Ie Uv l\nSayfa : 224 - Çizgili\nKapak : Termo Deri\nBaskı : Gofre & UV"},{"kod":"6070","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6070_01.webp","features":"Ebat:13x21cm\nKağıt : 78 Gr\nSayfa : 224 - Kareli\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6072","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6072_01.webp","features":""},{"kod":"6080","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6080_01.webp","features":"Ebat : 13 x 21cm\nKağıt : 60 Gr\nSayfa : 160 - Çizgili\nKapak : Termo Deri akı\nBaskı : Gofre & UV GERİSİ GELİŞ"},{"kod":"6085","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6085_01.webp","features":"Ebat :13x21cm  2 os\nKağıt : 70 Gr Krem a 4 >.\nSayfa : 224 - Çizgili\nKapak : Termo Deri ig —\nBaskı : Gofre & UV i : 7"},{"kod":"6090","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6090_01.webp","features":"Ebat : 13 x 21\nKağıt : 75 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6095","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6095_01.webp","features":""},{"kod":"6098","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6098_01.webp","features":"Ebat : 13 x 21cm\nKagit : 70 Gr Krem\nSayfa : 160 - Çizgili\nKapak : Yumusak - Esnek -\nBaskı: Gofre &"},{"kod":"6100","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6100_01.webp","features":"Ebat : 13 x 21cm\nKağıt : 70 Gr Krem\nSayfa : 160 - Çizgili\nKapak : Termo\nBaskı : Gofre & UV >"},{"kod":"6105","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6105_01.webp","features":"Ebat : 17 x 24 cm 4\nKağıt : 80 Gr Krem a =\nSayfa : 240 - Kareli pi\nKapak : Termo Deri 4 5\nBaskı : Gofre &"},{"kod":"6110","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6110_01.webp","features":"Ebat : 20 x 28 em :  1\nKağıt : 80 Gr Krem Bi  4\nSayfa : 240 - Kareli =\nKapak : Termo Deri\nBaskı : Gofre &"},{"kod":"6115","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6115_01.webp","features":"Ebat : 15 x 21,5 cm (\nKağıt : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo Deri\nBaskı : Gofre 8"},{"kod":"6120","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6120_01.webp","features":"Kagit : 80 Gr\nBaskı : Gofre & UV"},{"kod":"6122","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6122_01.webp","features":"Ebat:15x21cm\nKağıt : 80 Gr\nSayfa : 224 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6125","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6125_01.webp","features":"Ebat : 17 x 24 cm  (yi\nKagit : 80 Gr Krem 2s\nSayfa : 224 - Çizgili\nKapak : Termo Deri % ew\nBaskı : Gofre & UV"},{"kod":"6130","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6130_01.webp","features":"Ebat : 13 x 21\nKagit : 70 Gr\nSayfa : 224 - Ciggili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6135","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6135_01.webp","features":"Ebat : 15 x 21,5 cm : .\nKağıt : 80 Gr Krem a 4\nSayfa : 240 - Cizgili\nKapak : Termo Deri e)\nBaskı : Gofre &"},{"kod":"6140","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6140_01.webp","features":"Ebat : 16 x 24cm\nKağıt :80 Gr Krem\nSayfa : 240 - Kareli\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6145","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6145_01.webp","features":"Ebat:15x21cm\nKağıt : 70 Gr\nSayfa : 192 - Çizgili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6155","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6155_01.webp","features":"Ebat :10x17 cm b Ae\nKagit : 80 Gr\nSayfa : 196 - Çizgili gf <=\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6160","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6160_01.webp","features":"Ebat : 9x 14cm\nKagit : 80 Gr\nSayfa : 196 - Ciggili\nKapak : Termo\nBaskı : Gofre &"},{"kod":"6165","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6165_01.webp","features":""},{"kod":"2250","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2250_01.webp","features":""},{"kod":"2255","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2255_01.webp","features":""},{"kod":"2260","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2260_01.webp","features":""},{"kod":"5615","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5615_01.webp","features":""},{"kod":"5630","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5630_01.webp","features":""},{"kod":"5645","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5645_01.webp","features":""},{"kod":"5670","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5670_01.webp","features":""},{"kod":"5690","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5690_01.webp","features":"Mekanizma : Yuvarlak v.\nBaskı : Tampon &"},{"kod":"5695","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5695_01.webp","features":""},{"kod":"5700","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5700_01.webp","features":"Mekanigma : Yuvarlak N :  Ky  i Li\nBaskı : Tampon & Lager ME oo) a 1"},{"kod":"5705","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5705_01.webp","features":"Mekanizma : Köşeli !\nBaskı : Tampon & Lager"},{"kod":"5720","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5720_01.webp","features":"Mekanizma : Latalı Yuvarlak\nBaskı : Tampon & Lager"},{"kod":"5750","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5750_01.webp","features":""},{"kod":"5755","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5755_01.webp","features":"Baskı : Tampon &"}];
+const PRODUCTS = [{"kod":"6240","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6240_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6240_01.webp"],"features":""},{"kod":"6245","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6245_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6245_01.webp"],"features":""},{"kod":"6248","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6248_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6248_01.webp"],"features":""},{"kod":"6250","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6250_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6250_01.webp"],"features":""},{"kod":"6255","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6255_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6255_01.webp"],"features":""},{"kod":"6260","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6260_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6260_01.webp"],"features":""},{"kod":"6264","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6264_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6264_01.webp"],"features":""},{"kod":"6268","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6268_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6268_01.webp"],"features":""},{"kod":"6275","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6275_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6275_01.webp"],"features":""},{"kod":"6280","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6280_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6280_01.webp"],"features":""},{"kod":"6284","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6284_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6284_01.webp"],"features":""},{"kod":"6290","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6290_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6290_01.webp"],"features":""},{"kod":"6295","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6295_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6295_01.webp"],"features":""},{"kod":"6300","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6300_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6300_01.webp"],"features":""},{"kod":"6305","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6305_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6305_01.webp"],"features":""},{"kod":"6310","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6310_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6310_01.webp"],"features":""},{"kod":"6312","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6312_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6312_01.webp"],"features":""},{"kod":"6315","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6315_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6315_01.webp"],"features":""},{"kod":"6330","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6330_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6330_01.webp"],"features":""},{"kod":"6333","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6333_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6333_01.webp"],"features":""},{"kod":"6334","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6334_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6334_01.webp"],"features":""},{"kod":"6335","kat":"ajandalar","label":"Ajandalar","img":"images/katalog/ajandalar/ajandalar_6335_01.webp","imgs":["images/katalog/ajandalar/ajandalar_6335_01.webp"],"features":""},{"kod":"11200","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11200_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11200_01.webp"],"features":""},{"kod":"11202","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11202_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11202_01.webp"],"features":""},{"kod":"11205","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11205_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11205_01.webp"],"features":""},{"kod":"11220","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11220_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11220_01.webp"],"features":""},{"kod":"11225","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11225_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11225_01.webp"],"features":""},{"kod":"11230","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11230_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11230_01.webp"],"features":""},{"kod":"11235","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11235_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11235_01.webp"],"features":""},{"kod":"11250","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11250_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11250_01.webp"],"features":""},{"kod":"11265","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11265_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11265_01.webp"],"features":""},{"kod":"11275","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11275_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11275_01.webp"],"features":""},{"kod":"11280","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11280_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11280_01.webp"],"features":""},{"kod":"11290","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11290_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11290_01.webp"],"features":""},{"kod":"11300","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11300_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11300_01.webp"],"features":""},{"kod":"11302","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11302_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11302_01.webp"],"features":""},{"kod":"11305","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11305_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11305_01.webp"],"features":""},{"kod":"11306","kat":"geri_donusumlu_urunler","label":"Geri Dönüşümlü","img":"images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11306_01.webp","imgs":["images/katalog/geri_donusumlu_urunler/geri_donusumlu_urunler_11306_01.webp"],"features":""},{"kod":"5800","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5800_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5800_01.webp"],"features":""},{"kod":"5802","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5802_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5802_01.webp"],"features":""},{"kod":"5805","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5805_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5805_01.webp"],"features":""},{"kod":"5816","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5816_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5816_01.webp"],"features":""},{"kod":"5819","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5819_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5819_01.webp"],"features":""},{"kod":"5850","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5850_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5850_01.webp"],"features":""},{"kod":"5856","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5856_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5856_01.webp"],"features":""},{"kod":"5860","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5860_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5860_01.webp"],"features":""},{"kod":"5865","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5865_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5865_01.webp"],"features":""},{"kod":"5872","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5872_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5872_01.webp"],"features":""},{"kod":"5900","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5900_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5900_01.webp"],"features":""},{"kod":"5904","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5904_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5904_01.webp"],"features":""},{"kod":"5908","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5908_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5908_01.webp"],"features":""},{"kod":"5912","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5912_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5912_01.webp"],"features":""},{"kod":"5914","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5914_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5914_01.webp"],"features":""},{"kod":"5916","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5916_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5916_01.webp"],"features":""},{"kod":"5918","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5918_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5918_01.webp"],"features":""},{"kod":"5920","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5920_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5920_01.webp"],"features":""},{"kod":"5928","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5928_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5928_01.webp"],"features":""},{"kod":"5930","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5930_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5930_01.webp"],"features":""},{"kod":"5932","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5932_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5932_01.webp"],"features":""},{"kod":"5870","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5870_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5870_01.webp"],"features":""},{"kod":"5876","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5876_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5876_01.webp"],"features":""},{"kod":"5926","kat":"kalem_setleri","label":"Kalem Setleri","img":"images/katalog/kalem_setleri/kalem_setleri_5926_01.webp","imgs":["images/katalog/kalem_setleri/kalem_setleri_5926_01.webp"],"features":""},{"kod":"5315","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5315_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5315_01.webp","images/katalog/metal_kalemler/metal_kalem_5315_02.webp"],"features":"Mekanizma : Basmalı\nBaskı : Tampon & Lager"},{"kod":"5316","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5316_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5316_01.webp","images/katalog/metal_kalemler/metal_kalem_5316_02.webp"],"features":"Mekanizma : Çevirmeli\nBaskı : Lazer :"},{"kod":"5318","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5318_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5318_01.webp","images/katalog/metal_kalemler/metal_kalem_5318_02.webp"],"features":"Mekanizma : Basmalı\nBaskı : Lager :"},{"kod":"5322","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5322_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5322_01.webp","images/katalog/metal_kalemler/metal_kalem_5322_02.webp"],"features":"Mekanizma : Basmalı\nBaskı : Lager ‘"},{"kod":"5335","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5335_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5335_01.webp","images/katalog/metal_kalemler/metal_kalem_5335_02.webp"],"features":"Baskı : Tampon & Lager is Eİ"},{"kod":"5350","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5350_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5350_01.webp"],"features":"Mekanizma : Basmalı\nBaskı : Tampon & Lager"},{"kod":"5355","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5355_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5355_01.webp"],"features":""},{"kod":"5370","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5370_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5370_01.webp","images/katalog/metal_kalemler/metal_kalem_5370_02.webp"],"features":"Mekanizma : Basmalı\nBaskı : Lazer"},{"kod":"5375","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5375_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5375_01.webp","images/katalog/metal_kalemler/metal_kalem_5375_02.webp"],"features":"Mekanizma : Çevirmeli\nBaskı : Tampon & Lager"},{"kod":"5390","kat":"metal_kalemler","label":"Metal Kalemler","img":"images/katalog/metal_kalemler/metal_kalem_5390_01.webp","imgs":["images/katalog/metal_kalemler/metal_kalem_5390_01.webp","images/katalog/metal_kalemler/metal_kalem_5390_02.webp"],"features":"Mekanizma : Çevirmeli\nBaskı : Tampon & Lager  İl"},{"kod":"6355","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6355_01.webp","imgs":["images/katalog/organizerler/organizerler_6355_01.webp"],"features":""},{"kod":"6358","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6358_01.webp","imgs":["images/katalog/organizerler/organizerler_6358_01.webp"],"features":""},{"kod":"6362","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6362_01.webp","imgs":["images/katalog/organizerler/organizerler_6362_01.webp"],"features":""},{"kod":"6370","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6370_01.webp","imgs":["images/katalog/organizerler/organizerler_6370_01.webp"],"features":""},{"kod":"6386","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6386_01.webp","imgs":["images/katalog/organizerler/organizerler_6386_01.webp"],"features":""},{"kod":"6395","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6395_01.webp","imgs":["images/katalog/organizerler/organizerler_6395_01.webp"],"features":""},{"kod":"6400","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6400_01.webp","imgs":["images/katalog/organizerler/organizerler_6400_01.webp"],"features":""},{"kod":"6405","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6405_01.webp","imgs":["images/katalog/organizerler/organizerler_6405_01.webp"],"features":""},{"kod":"6410","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6410_01.webp","imgs":["images/katalog/organizerler/organizerler_6410_01.webp"],"features":""},{"kod":"6420","kat":"organizerler","label":"Organizerler","img":"images/katalog/organizerler/organizerler_6420_01.webp","imgs":["images/katalog/organizerler/organizerler_6420_01.webp"],"features":""},{"kod":"5480","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5480_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5480_01.webp"],"features":""},{"kod":"5485","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5485_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5485_01.webp"],"features":""},{"kod":"5510","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5510_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5510_01.webp"],"features":""},{"kod":"5515","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5515_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5515_01.webp"],"features":""},{"kod":"5520","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5520_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5520_01.webp"],"features":""},{"kod":"5525","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5525_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5525_01.webp"],"features":""},{"kod":"5530","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5530_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5530_01.webp"],"features":""},{"kod":"5540","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5540_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5540_01.webp"],"features":""},{"kod":"5550","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5550_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5550_01.webp"],"features":""},{"kod":"5555","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5555_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5555_01.webp"],"features":""},{"kod":"5570","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5570_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5570_01.webp"],"features":""},{"kod":"5585","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5585_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5585_01.webp"],"features":""},{"kod":"5593","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5593_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5593_01.webp"],"features":""},{"kod":"5594","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5594_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5594_01.webp"],"features":""},{"kod":"5596","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5596_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5596_01.webp"],"features":""},{"kod":"5598","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5598_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5598_01.webp"],"features":""},{"kod":"5602","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5602_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5602_01.webp"],"features":""},{"kod":"5604","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5604_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5604_01.webp"],"features":""},{"kod":"5606","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5606_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5606_01.webp"],"features":""},{"kod":"5608","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5608_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5608_01.webp"],"features":""},{"kod":"5610","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5610_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5610_01.webp"],"features":""},{"kod":"5611","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5611_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5611_01.webp"],"features":""},{"kod":"5612","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5612_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5612_01.webp"],"features":""},{"kod":"5575","kat":"roller_kalemler","label":"Roller Kalemler","img":"images/katalog/roller_kalemler/roller_kalemler_5575_01.webp","imgs":["images/katalog/roller_kalemler/roller_kalemler_5575_01.webp"],"features":""},{"kod":"6020","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6020_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6020_01.webp"],"features":""},{"kod":"6022","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6022_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6022_01.webp"],"features":""},{"kod":"6030","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6030_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6030_01.webp"],"features":""},{"kod":"6032","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6032_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6032_01.webp"],"features":""},{"kod":"6034","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6034_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6034_01.webp"],"features":""},{"kod":"6035","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6035_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6035_01.webp"],"features":""},{"kod":"6038","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6038_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6038_01.webp"],"features":""},{"kod":"6042","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6042_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6042_01.webp"],"features":""},{"kod":"6045","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6045_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6045_01.webp"],"features":""},{"kod":"6050","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6050_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6050_01.webp"],"features":""},{"kod":"6052","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6052_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6052_01.webp"],"features":""},{"kod":"6054","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6054_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6054_01.webp","images/katalog/tarihsiz_defterler/tarihsiz_defterler_6054_02.webp"],"features":""},{"kod":"6056","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6056_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6056_01.webp","images/katalog/tarihsiz_defterler/tarihsiz_defterler_6056_02.webp"],"features":""},{"kod":"6058","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6058_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6058_01.webp","images/katalog/tarihsiz_defterler/tarihsiz_defterler_6058_02.webp"],"features":""},{"kod":"6060","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6060_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6060_01.webp","images/katalog/tarihsiz_defterler/tarihsiz_defterler_6060_02.webp"],"features":""},{"kod":"6062","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6062_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6062_01.webp"],"features":""},{"kod":"6065","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6065_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6065_01.webp"],"features":""},{"kod":"6070","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6070_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6070_01.webp"],"features":""},{"kod":"6072","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6072_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6072_01.webp"],"features":""},{"kod":"6080","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6080_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6080_01.webp"],"features":""},{"kod":"6085","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6085_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6085_01.webp"],"features":""},{"kod":"6090","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6090_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6090_01.webp"],"features":""},{"kod":"6095","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6095_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6095_01.webp"],"features":""},{"kod":"6098","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6098_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6098_01.webp"],"features":""},{"kod":"6100","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6100_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6100_01.webp"],"features":""},{"kod":"6105","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6105_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6105_01.webp"],"features":""},{"kod":"6110","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6110_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6110_01.webp"],"features":""},{"kod":"6115","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6115_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6115_01.webp"],"features":""},{"kod":"6120","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6120_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6120_01.webp"],"features":""},{"kod":"6122","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6122_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6122_01.webp"],"features":""},{"kod":"6125","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6125_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6125_01.webp"],"features":""},{"kod":"6130","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6130_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6130_01.webp"],"features":""},{"kod":"6135","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6135_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6135_01.webp"],"features":""},{"kod":"6140","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6140_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6140_01.webp"],"features":""},{"kod":"6145","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6145_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6145_01.webp"],"features":""},{"kod":"6155","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6155_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6155_01.webp"],"features":""},{"kod":"6160","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6160_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6160_01.webp"],"features":""},{"kod":"6165","kat":"tarihsiz_defterler","label":"Tarihsiz Defterler","img":"images/katalog/tarihsiz_defterler/tarihsiz_defterler_6165_01.webp","imgs":["images/katalog/tarihsiz_defterler/tarihsiz_defterler_6165_01.webp"],"features":""},{"kod":"2250","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2250_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2250_01.webp"],"features":""},{"kod":"2255","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2255_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2255_01.webp"],"features":""},{"kod":"2260","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2260_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_2260_01.webp"],"features":""},{"kod":"5615","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5615_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5615_01.webp"],"features":""},{"kod":"5630","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5630_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5630_01.webp"],"features":""},{"kod":"5645","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5645_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5645_01.webp"],"features":""},{"kod":"5670","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5670_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5670_01.webp"],"features":""},{"kod":"5690","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5690_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5690_01.webp"],"features":""},{"kod":"5695","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5695_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5695_01.webp"],"features":""},{"kod":"5700","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5700_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5700_01.webp"],"features":""},{"kod":"5705","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5705_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5705_01.webp"],"features":""},{"kod":"5720","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5720_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5720_01.webp"],"features":""},{"kod":"5750","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5750_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5750_01.webp"],"features":""},{"kod":"5755","kat":"tohumlu_ve_kursun_kalemler","label":"Tohumlu & Kurşun","img":"images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5755_01.webp","imgs":["images/katalog/tohumlu_ve_kursun_kalemler/tohumlu_ve_kursun_kalemler_5755_01.webp"],"features":""}];
 const WA_NUMBER = "905324900313";
 const cart = new Map();
+const BY_CODE = Object.fromEntries(PRODUCTS.map(p => [p.kod, p]));
+let lb2Code = null;
 
-// ── Kart üret ───────────────────────────────────────────
+// ── Features cleanup ─────────────────────────────────────
+function cleanFeatLines(txt) {
+  if (!txt) return [];
+  return txt.split('\n').map(l => {
+    l = l.trim();
+    l = l.replace(/\s*\([^)]+\)$/, '');
+    l = l.replace(/[^a-zA-ZçğışöüÇĞİŞÖÜ0-9&]+$/, '');
+    l = l.replace(/\s+[A-Za-zÇĞİŞÖÜçğışöü]$/, '');
+    return l.trim();
+  }).filter(l => l.length >= 4 && /[A-Za-zÇĞİŞÖÜçğışöü]{2,}/.test(l));
+}
+
 function featsHTML(txt) {
-  if (!txt) return '';
-  const lines = txt.split('\n').map(l => l.trim()).filter(l => l.length > 3);
+  const lines = cleanFeatLines(txt);
   if (!lines.length) return '';
   return '<div class="card-features">' + lines.join('<br>') + '</div>';
 }
 
+function featsForLB(txt) {
+  const lines = cleanFeatLines(txt);
+  return lines.join('<br>');
+}
+
+// ── Kart üret ───────────────────────────────────────────
 function buildCards() {
   const grid = document.getElementById('product-grid');
   PRODUCTS.forEach(p => {
@@ -393,13 +464,13 @@ function buildCards() {
     div.dataset.code = p.kod;
     div.dataset.kat  = p.kat;
     div.innerHTML = `
-      <div class="card-img">
-        <img src="${p.img}" alt="Ürün ${p.kod}" loading="lazy" width="300" height="200">
+      <div class="card-img" onclick="openLB2('${p.kod}')">
+        <img src="${p.img}" alt="Ürün ${p.kod}" loading="lazy" width="300" height="260">
       </div>
       <div class="card-body">
         <div class="card-code">${p.kod}</div>
         ${featsHTML(p.features)}
-        <button class="btn-add" onclick="addToCart(this,'${p.kod}','${p.img}')">Sepete Ekle</button>
+        <button class="btn-add" onclick="event.stopPropagation();addToCart('${p.kod}')">Sepete Ekle</button>
       </div>`;
     grid.appendChild(div);
   });
@@ -429,11 +500,10 @@ function applyFilters() {
     card.classList.toggle('hidden', !match);
     if (match) visible++;
   });
-  const total = activeCat === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.kat === activeCat).length;
   const infoEl = document.getElementById('grid-info');
   infoEl.textContent = q
-    ? `${visible} sonuç: "${document.getElementById('search').value}" — hover: büyüteç · tıkla: tam ekran`
-    : `${visible} ürün — hover: büyüteç · tıkla: tam ekran`;
+    ? `${visible} sonuç: "${document.getElementById('search').value}" — hover: büyüteç · tıkla: detay`
+    : `${visible} ürün — hover: büyüteç · tıkla: detay`;
   document.getElementById('no-results').classList.toggle('visible', visible === 0);
 }
 
@@ -459,43 +529,113 @@ function initLens(cardImg) {
     lens.style.backgroundPosition = `${-(ix*ZOOM - LS/2)}px ${-(iy*ZOOM - LS/2)}px`;
   });
   cardImg.addEventListener('mouseleave', () => { lens.style.display = 'none'; });
-  img.addEventListener('click', e => { e.stopPropagation(); openLB(img.src); });
 }
 
-// ── Lightbox ────────────────────────────────────────────
-function openLB(src) {
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lb').classList.add('open');
+// ── Lightbox 2 ──────────────────────────────────────────
+function openLB2(kod) {
+  const p = BY_CODE[kod];
+  if (!p) return;
+  lb2Code = kod;
+  const main = document.getElementById('lb2-main');
+  main.src = p.imgs[0];
+  main.alt = 'Ürün ' + kod;
+  main.classList.remove('zoomed');
+  main.style.transformOrigin = 'center center';
+  const thumbsEl = document.getElementById('lb2-thumbs');
+  thumbsEl.innerHTML = '';
+  if (p.imgs.length > 1) {
+    p.imgs.forEach((src, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'lb2-thumb' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', 'Görsel ' + (i + 1));
+      const timg = document.createElement('img');
+      timg.src = src;
+      timg.alt = '';
+      timg.loading = 'lazy';
+      btn.appendChild(timg);
+      btn.onclick = () => {
+        main.src = src;
+        main.classList.remove('zoomed');
+        main.style.transformOrigin = 'center center';
+        thumbsEl.querySelectorAll('.lb2-thumb').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      };
+      thumbsEl.appendChild(btn);
+    });
+  }
+  document.getElementById('lb2-cat').textContent = p.label;
+  document.getElementById('lb2-code').textContent = p.kod;
+  document.getElementById('lb2-feats').innerHTML = featsForLB(p.features);
+  syncLB2Btn();
+  document.getElementById('lb2').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLB() {
-  document.getElementById('lb').classList.remove('open');
-  document.body.style.overflow = '';
+
+function syncLB2Btn() {
+  const btn = document.getElementById('lb2-add');
+  if (!btn || !lb2Code) return;
+  const inCart = cart.has(lb2Code);
+  btn.textContent = inCart ? '\u2713 Eklendi' : 'Sepete Ekle';
+  btn.classList.toggle('added', inCart);
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB(); closeCart(); } });
+
+function lb2AddCart() {
+  if (!lb2Code) return;
+  addToCart(lb2Code);
+}
+
+function closeLB2() {
+  document.getElementById('lb2').classList.remove('open');
+  document.body.style.overflow = '';
+  lb2Code = null;
+}
+
+function lb2BackdropClick(e) {
+  if (e.target === document.getElementById('lb2')) closeLB2();
+}
+
+function lb2ToggleZoom(img, e) {
+  if (img.classList.contains('zoomed')) {
+    img.classList.remove('zoomed');
+    img.style.transformOrigin = 'center center';
+    return;
+  }
+  const r = img.getBoundingClientRect();
+  const x = ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%';
+  const y = ((e.clientY - r.top)  / r.height * 100).toFixed(1) + '%';
+  img.style.transformOrigin = x + ' ' + y;
+  img.classList.add('zoomed');
+}
 
 // ── Sepet ────────────────────────────────────────────────
-function addToCart(btn, code, img) {
+function addToCart(code) {
   if (cart.has(code)) return;
-  cart.set(code, { code, img });
-  btn.textContent = '✓ Eklendi';
-  btn.classList.add('added');
+  const p = BY_CODE[code];
+  if (!p) return;
+  cart.set(code, { code, img: p.img });
+  syncButton(code);
   renderCart();
 }
+
+function syncButton(code) {
+  const inCart = cart.has(code);
+  document.querySelectorAll('.card[data-code="' + code + '"] .btn-add').forEach(btn => {
+    btn.textContent = inCart ? '\u2713 Eklendi' : 'Sepete Ekle';
+    btn.classList.toggle('added', inCart);
+  });
+  if (lb2Code === code) syncLB2Btn();
+}
+
 function removeFromCart(code) {
   cart.delete(code);
-  document.querySelectorAll('.card').forEach(c => {
-    if (c.dataset.code === code) {
-      const btn = c.querySelector('.btn-add');
-      btn.textContent = 'Sepete Ekle';
-      btn.classList.remove('added');
-    }
-  });
+  syncButton(code);
   renderCart();
 }
+
 function clearCart() {
   [...cart.keys()].forEach(removeFromCart);
 }
+
 function renderCart() {
   const count   = cart.size;
   const countEl = document.getElementById('cart-count');
@@ -514,15 +654,16 @@ function renderCart() {
     item.innerHTML = `
       <img class="cart-item-img" src="${img}" alt="${code}">
       <span class="cart-item-code">${code}</span>
-      <button class="cart-item-remove" onclick="removeFromCart('${code}')" title="Kaldır">×</button>`;
+      <button class="cart-item-remove" onclick="removeFromCart('${code}')" title="Kaldır">\u00d7</button>`;
     listEl.appendChild(item);
   });
   if (count > 0) {
     const codes = [...cart.keys()].join(', ');
-    const msg = encodeURIComponent(`Merhaba, aşağıdaki promosyon ürünlerini incelemek istiyorum:\n${codes}`);
-    waBtn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+    const msg = encodeURIComponent('Merhaba, a\u015fa\u011f\u0131daki promosyon \u00fcr\u00fcnlerini incelemek istiyorum:\n' + codes);
+    waBtn.href = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
   }
 }
+
 function handleWA(e) {
   if (cart.size === 0) { e.preventDefault(); return false; }
   return true;
@@ -536,11 +677,14 @@ function toggleCart() {
   ov.classList.toggle('open', open);
   document.body.style.overflow = open ? 'hidden' : '';
 }
+
 function closeCart() {
   document.getElementById('cart-sidebar').classList.remove('open');
   document.getElementById('cart-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB2(); closeCart(); } });
 
 // ── Init ────────────────────────────────────────────────
 buildCards();
