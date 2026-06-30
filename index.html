@@ -220,6 +220,8 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: var(--space-m);
+      transform-origin: center center;
+      display: inline-block;
     }
     .hero__title {
       font-family: var(--font-heading);
@@ -256,6 +258,13 @@
       color: rgba(255,255,255,0.3);
       letter-spacing: 0.12em;
       text-transform: uppercase;
+    }
+    .hero__location {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: var(--space-m);
     }
     /* GSAP pre-paint hide: .kinetic sınıfı head inline script tarafından eklenir */
     .kinetic .hero__title { opacity: 0; }
@@ -560,7 +569,7 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero" aria-label="Ana tanıtım">
     <div class="hero__content">
-      <p class="hero__tag">3 İş Günü Garantisi · Bursa</p>
+      <p class="hero__tag">3 İş Günü Garantisi</p>
       <h1 class="hero__title">
         <span class="k-line">Markanızın</span>
         <span class="k-line hero__accent">Görünen Yüzü</span>
@@ -571,6 +580,7 @@
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
       </div>
       <p class="hero__services">Promosyon · Kurumsal · Tabela · Davetiye · Araç Giydirme</p>
+      <p class="hero__location">Osmangazi · Bursa</p>
     </div>
   </section>
 
@@ -845,6 +855,14 @@
       stagger: 0.13,
       ease: 'power2.out'
     }, '-=0.3');
+
+    if (tag) {
+      tl.to(tag, { scale: 1.08, duration: 0.12, ease: 'power2.in' }, '+=0.2')
+        .to(tag, { scale: 1.0, duration: 0.55, ease: 'back.out(3)',
+                   boxShadow: '0 0 16px 3px rgba(200,155,60,0.5)' })
+        .to(tag, { boxShadow: '0 0 0 0px rgba(200,155,60,0)',
+                   duration: 0.45, ease: 'power2.out' });
+    }
   }());
   </script>
 </body>
