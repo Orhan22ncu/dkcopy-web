@@ -117,7 +117,7 @@
     .grid-section { flex: 1; padding: 1.5rem; max-width: 1200px; margin: 0 auto; width: 100%; }
     #product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
 
@@ -131,7 +131,7 @@
 
     .card-img {
       position: relative; overflow: hidden;
-      background: var(--color-bg); height: 260px;
+      background: var(--color-bg); height: 320px;
       cursor: zoom-in;
     }
     .card-img img {
@@ -296,10 +296,13 @@
     .footer { background: var(--color-primary); color: var(--color-on-dark); padding: 1.5rem 0; text-align: center; }
     .footer p { font-size: .8rem; opacity: .65; }
 
+    @media (max-width: 900px) {
+      #product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 768px) {
       .header__nav { display: none; }
       .header__logo span { font-size: 1.1rem; }
-      #product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+      #product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
       .card-img { height: 200px; }
       .grid-info-bar { display: none; }
       .cart-sidebar { width: 100%; right: -100%; }
@@ -464,17 +467,23 @@ function buildCards() {
     div.dataset.code = p.kod;
     div.dataset.kat  = p.kat;
     div.innerHTML = `
-      <div class="card-img" onclick="openLB2('${p.kod}')">
-        <img src="${p.img}" alt="Ürün ${p.kod}" loading="lazy" width="300" height="260">
+      <div class="card-img">
+        <img src="${p.img}" alt="Ürün ${p.kod}" loading="lazy" width="300" height="320">
       </div>
       <div class="card-body">
         <div class="card-code">${p.kod}</div>
         ${featsHTML(p.features)}
-        <button class="btn-add" onclick="event.stopPropagation();addToCart('${p.kod}')">Sepete Ekle</button>
+        <button class="btn-add">Sepete Ekle</button>
       </div>`;
+    const ci = div.querySelector('.card-img');
+    ci.addEventListener('click', () => openLB2(p.kod));
+    div.querySelector('.btn-add').addEventListener('click', (e) => {
+      e.stopPropagation();
+      addToCart(p.kod);
+    });
     grid.appendChild(div);
+    initLens(ci);
   });
-  document.querySelectorAll('.card-img').forEach(initLens);
 }
 
 // ── Kategori filtre ──────────────────────────────────────
