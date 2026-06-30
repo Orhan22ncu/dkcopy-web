@@ -196,6 +196,10 @@
     }
 
     /* ===== Hero ===== */
+    @keyframes fadeUpHero {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .hero {
       position: relative;
       min-height: 100vh;
@@ -220,6 +224,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: var(--space-m);
+      animation: fadeUpHero 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .hero__title {
       font-family: var(--font-heading);
@@ -228,6 +233,7 @@
       margin-bottom: var(--space-l);
       line-height: 1.05;
       font-weight: 700;
+      animation: fadeUpHero 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
     }
     .hero__accent {
       color: var(--color-accent);
@@ -242,6 +248,7 @@
       margin-right: auto;
       font-weight: 300;
       line-height: 1.6;
+      animation: fadeUpHero 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
     }
     .hero__actions {
       display: flex;
@@ -249,11 +256,18 @@
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: var(--space-l);
+      animation: fadeUpHero 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
     }
     .hero__location {
       font-size: var(--text-sm);
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.08em;
+      animation: fadeUpHero 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.70s both;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero__tag, .hero__title, .hero__sub, .hero__actions, .hero__location {
+        animation: none;
+      }
     }
 
     /* ===== Services ===== */
