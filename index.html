@@ -196,10 +196,6 @@
     }
 
     /* ===== Hero ===== */
-    @keyframes fadeUpHero {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
     .hero {
       position: relative;
       min-height: 100vh;
@@ -224,7 +220,6 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: var(--space-m);
-      animation: fadeUpHero 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .hero__title {
       font-family: var(--font-heading);
@@ -233,8 +228,8 @@
       margin-bottom: var(--space-m);
       line-height: 1.1;
       font-weight: 700;
-      animation: fadeUpHero 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
     }
+    .hero__title .k-line { display: block; }
     .hero__accent {
       color: var(--color-accent);
       font-style: italic;
@@ -248,27 +243,22 @@
       margin-right: auto;
       font-weight: 300;
       line-height: 1.6;
-      animation: fadeUpHero 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
     }
     .hero__actions {
       display: flex;
       gap: var(--space-m);
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: var(--space-l);
-      animation: fadeUpHero 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+      margin-bottom: var(--space-m);
     }
-    .hero__location {
-      font-size: var(--text-sm);
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.08em;
-      animation: fadeUpHero 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.70s both;
+    .hero__services {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
-    @media (prefers-reduced-motion: reduce) {
-      .hero__tag, .hero__title, .hero__sub, .hero__actions, .hero__location {
-        animation: none;
-      }
-    }
+    /* GSAP pre-paint hide: .kinetic sınıfı head inline script tarafından eklenir */
+    .kinetic .hero__title { opacity: 0; }
 
     /* ===== Services ===== */
     .services {
@@ -542,6 +532,7 @@
       }
     }
   </style>
+  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('kinetic')</script>
 </head>
 <body>
 
@@ -569,18 +560,17 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero" aria-label="Ana tanıtım">
     <div class="hero__content">
-      <p class="hero__tag">Bursa'nın Dijital Baskı Merkezi</p>
+      <p class="hero__tag">3 İş Günü Garantisi · Bursa</p>
       <h1 class="hero__title">
-        Fikrin<br>
-        <span class="hero__accent">Değer</span><br>
-        Kazandığı Yer
+        <span class="k-line">Markanızın</span>
+        <span class="k-line hero__accent">Görünen Yüzü</span>
       </h1>
-      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Her projede zamanında, her çıktıda doğru.</p>
+      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili hız.</p>
       <div class="hero__actions">
         <a href="tel:05324900313" class="btn btn-primary">Hemen Fiyat Al</a>
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
       </div>
-      <p class="hero__location">3 Günde Teslim · Osmangazi, Bursa</p>
+      <p class="hero__services">Promosyon · Kurumsal · Tabela · Davetiye · Araç Giydirme</p>
     </div>
   </section>
 
@@ -729,7 +719,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <img src="/images/logo.svg" alt="DK Copy" width="120" height="36">
-          <p>Fikrin Değer Kazandığı Yer. Profesyonel dijital baskı çözümleriyle markanızı bir adım öne taşıyoruz.</p>
+          <p>Markanızın Görünen Yüzü. Profesyonel dijital baskı çözümleriyle işletmenizi bir adım öne taşıyoruz.</p>
         </div>
         <div class="footer__col">
           <h4>Sayfalar</h4>
@@ -756,7 +746,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2026 DK Copy. Tüm hakları saklıdır. | Fikrin Değer Kazandığı Yer</p>
+        <p>&copy; 2026 DK Copy. Tüm hakları saklıdır. | Markanızın Görünen Yüzü</p>
       </div>
     </div>
   </footer>
@@ -776,35 +766,6 @@
       }, { threshold: 0.15 });
       revealEls.forEach(el => observer.observe(el));
 
-      // GSAP scroll-reveal (yüklenirse)
-      if (typeof gsap !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.reveal').forEach(el => {
-          gsap.fromTo(el, 
-            { opacity: 0, y: 40 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-              }
-            }
-          );
-        });
-        // Hero giriş animasyonu
-        gsap.from('.hero__content', {
-          opacity: 0,
-          y: 60,
-          duration: 1.2,
-          ease: 'power3.out',
-          delay: 0.3
-        });
-      }
-
       // Mobil menü kapatma (link tıklanınca)
       document.querySelectorAll('.header__nav a').forEach(link => {
         link.addEventListener('click', () => {
@@ -814,6 +775,76 @@
     });
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script>
+  (function () {
+    if (typeof gsap === 'undefined') {
+      document.documentElement.classList.remove('kinetic');
+      return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    var title    = document.querySelector('.hero__title');
+    if (!title) return;
+
+    var tag      = document.querySelector('.hero__tag');
+    var sub      = document.querySelector('.hero__sub');
+    var actions  = document.querySelector('.hero__actions');
+    var services = document.querySelector('.hero__services');
+    var support  = [tag, sub, actions, services].filter(Boolean);
+
+    var chars = [];
+    try {
+      title.querySelectorAll('.k-line').forEach(function (line) {
+        var text = line.textContent;
+        line.innerHTML = '';
+        for (var i = 0; i < text.length; i++) {
+          var s = document.createElement('span');
+          s.style.display = 'inline-block';
+          s.textContent = text[i] === ' ' ? ' ' : text[i];
+          line.appendChild(s);
+          chars.push(s);
+        }
+      });
+    } catch (e) {
+      document.documentElement.classList.remove('kinetic');
+      return;
+    }
+
+    if (!chars.length) {
+      document.documentElement.classList.remove('kinetic');
+      return;
+    }
+
+    gsap.set(title, { opacity: 1 });
+    gsap.set(chars, { opacity: 0, y: 30, filter: 'blur(6px)' });
+    gsap.set(support, { opacity: 0, y: 18 });
+
+    chars.forEach(function (c) { c.style.willChange = 'transform, opacity, filter'; });
+
+    var tl = gsap.timeline({
+      onComplete: function () {
+        chars.forEach(function (c) { c.style.willChange = 'auto'; });
+      }
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 0.5,
+      stagger: 0.038,
+      ease: 'power3.out'
+    });
+
+    tl.to(support, {
+      opacity: 1,
+      y: 0,
+      duration: 0.65,
+      stagger: 0.13,
+      ease: 'power2.out'
+    }, '-=0.3');
+  }());
+  </script>
 </body>
 </html>
