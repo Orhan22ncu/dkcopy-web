@@ -9,7 +9,7 @@
   <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dkcopy.com.tr/hakkimizda.html">
-  <meta property="og:image" content="https://dkcopy.com.tr/images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg">
+  <meta property="og:image" content="https://dkcopy.com.tr/images/print_solutions.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://dkcopy.com.tr/hakkimizda.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,12 +164,17 @@
     }
     .hero-about__visual {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+    .hero-about__photo {
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
       aspect-ratio: 4/3;
     }
-    .hero-about__visual img {
+    .hero-about__photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -324,7 +329,7 @@
       .header__nav.open { transform: translateY(0); }
       .mobile-toggle { display: flex; }
       .hero-about__grid { grid-template-columns: 1fr; }
-      .hero-about__visual { aspect-ratio: 16/9; }
+      .hero-about__photo { aspect-ratio: 16/9; }
       .values__grid { grid-template-columns: 1fr; }
       .gallery-strip__grid { grid-template-columns: repeat(2, 1fr); }
       .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -376,12 +381,16 @@
     <section class="hero-about" aria-labelledby="hero-title">
       <div class="container hero-about__grid">
         <div class="hero-about__content reveal">
-          <h1 id="hero-title">Hakkımızda — <span>Fikrin Değer Kazandığı Yer</span></h1>
+          <h1 id="hero-title">Hakkımızda <span>Fikrin Değer Kazandığı Yer</span></h1>
           <p>Her projede estetik, her baskıda disiplin. Kurumsal baskı ve reklam çözümlerinde, markaların ihtiyaç duyduğu tüm hizmetleri tek çatı altında sunuyoruz. Ofis & kurumsal baskılardan tanıtım ve reklam ürünlerine, organizasyon ve davetiye çalışmalarından restoran & kafe baskılarına kadar her aşamada; kaliteli malzeme, net baskı ve profesyonel uygulama anlayışıyla hareket ediyoruz. Tasarımdan baskıya kadar tüm süreci titizlikle yöneterek, işletmenizin hem kurumsal duruşunu hem de sahadaki etkisini güçlendiren sonuçlar sunuyoruz.</p>
         </div>
         <div class="hero-about__visual reveal">
-          <!-- OPAK → hero/atmosfer/arka-plan: gerçek müşteri fotoğrafı -->
-          <img src="images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg" alt="DK Copy baskı atölyesi ve üretim örneği" loading="lazy" width="800" height="600">
+          <div class="hero-about__photo">
+            <img src="images/print_solutions.jpeg" alt="DK Copy print solutions atölyesi" loading="lazy" width="800" height="600">
+          </div>
+          <div class="hero-about__photo">
+            <img src="images/creative_solutions.jpeg" alt="DK Copy creative solutions çalışma alanı" loading="lazy" width="800" height="600">
+          </div>
         </div>
       </div>
     </section>
