@@ -261,6 +261,8 @@
       display: block; user-select: none;
     }
     .lb2-main-img.zoomed { transform: scale(2.5); cursor: zoom-out; }
+    /* Magnifier lens (masaüstü hover): bölge büyütme, mouse-takipli */
+    .lb2-main-img.lens { transform: scale(2.5); cursor: crosshair; transition: none; }
     .lb2-thumbs {
       display: flex; gap: .5rem; padding: .6rem .75rem;
       justify-content: center; flex-wrap: wrap; flex-shrink: 0;
@@ -684,7 +686,41 @@ function lb2BackdropClick(e) {
   if (e.target === document.getElementById('lb2')) closeLB2();
 }
 
+// ── Magnifier lens: masaüstü hover mouse-takip + dokunmatik parmak-sürükle ──
+const LB2_HOVER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+(function initLens() {
+  const img = document.getElementById('lb2-main');
+  if (!img) return;
+  // Dokunmatik: zoom'dayken parmak-sürükle ile bölge gezme
+  img.addEventListener('touchmove', (e) => {
+    if (!img.classList.contains('zoomed')) return;
+    const t = e.touches[0], r = img.getBoundingClientRect();
+    const x = Math.max(0, Math.min(100, (t.clientX - r.left) / r.width * 100));
+    const y = Math.max(0, Math.min(100, (t.clientY - r.top) / r.height * 100));
+    img.style.transformOrigin = x + '% ' + y + '%';
+    e.preventDefault();
+  }, { passive: false });
+  // Masaüstü: hover lens (mouse-takipli büyüteç, rAF-throttle)
+  if (!LB2_HOVER) return;
+  let raf = false, px = 50, py = 50;
+  img.addEventListener('mouseenter', () => { if (img.getAttribute('src')) img.classList.add('lens'); });
+  img.addEventListener('mouseleave', () => {
+    img.classList.remove('lens');
+    img.style.transformOrigin = 'center center';
+  });
+  img.addEventListener('mousemove', (e) => {
+    const r = img.getBoundingClientRect();
+    px = Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100));
+    py = Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100));
+    if (!raf) {
+      raf = true;
+      requestAnimationFrame(() => { img.style.transformOrigin = px + '% ' + py + '%'; raf = false; });
+    }
+  });
+})();
+
 function lb2ToggleZoom(img, e) {
+  if (LB2_HOVER) return;   // masaüstü: lens hover ile; tık-zoom yalnızca dokunmatik
   if (img.classList.contains('zoomed')) {
     img.classList.remove('zoomed');
     img.style.transformOrigin = 'center center';
