@@ -466,29 +466,61 @@
       outline-offset: 2px;
     }
   </style>
+<style>
+/* DK-CANONICAL-HF: birlesik header/footer — self-contained (position'a dokunulmaz) */
+:root{ --header-h: 65px; }
+.header{ top:0; left:0; width:100%; z-index:1000; padding:0; background:rgba(26,26,46,.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(200,155,60,.15); }
+.header__inner{ display:flex; align-items:center; justify-content:space-between; padding:.75rem 2rem; max-width:1200px; margin:0 auto; }
+.header__logo{ display:flex; align-items:center; gap:.5rem; }
+.header__logo img{ height:40px; width:auto; }
+.header__nav{ display:flex; align-items:center; gap:2rem; }
+.header__nav a{ color:#FFFFFF; font-size:clamp(0.875rem, 0.8rem + 0.25vw, 1rem); font-weight:500; text-decoration:none; position:relative; transition:color .3s; }
+.header__nav a::after{ content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#C89B3C; transition:width .3s; }
+.header__nav a:hover{ color:#C89B3C; } .header__nav a:hover::after{ width:100%; }
+.header__nav a.active{ color:#C89B3C; } .header__nav a.active::after{ width:100%; }
+.header__cta{ background:#C89B3C; color:#1A1A2E; padding:.5rem 1.25rem; border-radius:8px; font-weight:600; font-size:clamp(0.875rem, 0.8rem + 0.25vw, 1rem); text-decoration:none; transition:all .3s; }
+.header__cta:hover{ background:#b8892e; transform:scale(1.05); }
+.hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span{ width:28px; height:2px; background:#FFFFFF; transition:all .3s; }
+.footer{ background:#1A1A2E; color:rgba(255,255,255,.7); padding:4rem 0 2rem; border-top:1px solid rgba(200,155,60,.1); text-align:left; }
+.footer .container{ max-width:1200px; margin:0 auto; padding:0 2rem; }
+.footer__grid{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2rem; margin-bottom:2rem; }
+.footer__brand img{ height:36px; margin-bottom:.5rem; filter:brightness(0) invert(1); }
+.footer__brand p{ font-size:clamp(0.875rem, 0.8rem + 0.25vw, 1rem); max-width:280px; opacity:1; color:rgba(255,255,255,.7); }
+.footer__col h4{ color:#FFFFFF; margin-bottom:1rem; font-family:'Playfair Display',serif; font-size:clamp(1rem,.9rem+.5vw,1.25rem); }
+.footer__col a{ display:block; color:rgba(255,255,255,.6); font-size:clamp(0.875rem, 0.8rem + 0.25vw, 1rem); margin-bottom:.5rem; text-decoration:none; transition:color .3s; }
+.footer__col a:hover{ color:#C89B3C; }
+.footer__bottom{ border-top:1px solid rgba(255,255,255,.08); padding-top:2rem; text-align:center; font-size:clamp(0.875rem, 0.8rem + 0.25vw, 1rem); opacity:1; }
+@media (max-width:768px){
+  .header__nav{ display:none; position:absolute; top:100%; left:0; width:100%; background:rgba(26,26,46,.98); flex-direction:column; padding:2rem; gap:1rem; }
+  .header__nav.open{ display:flex; }
+  .hamburger{ display:flex; }
+  .header__cta{ display:none; }
+  .footer__grid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:480px){ .footer__grid{ grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
 
   <!-- ===== HEADER ===== -->
-  <header class="header" role="banner">
+    <header class="header" role="banner">
     <div class="header__inner">
-      <a href="index.html" class="header__logo" aria-label="DK Copy ana sayfa">
-        <!-- OPAK → logo/vektör: logo.svg -->
-        <img src="images/logo.svg" alt="DK Copy logosu" width="40" height="40">
-        <span>DK Copy</span>
+      <a href="index.html" class="header__logo" aria-label="DK Copy Ana Sayfa">
+        <img src="/images/logo.svg" alt="DK Copy Logo" width="120" height="40">
       </a>
-      <button class="header__toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" id="menuToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="hamburger" aria-label="Menüyü aç/kapat" onclick="document.querySelector('.header__nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
       </button>
-      <nav class="header__nav" id="mainNav" role="navigation" aria-label="Ana menü">
+      <nav class="header__nav" role="navigation" aria-label="Ana navigasyon">
         <a href="index.html">Ana Sayfa</a>
         <a href="hizmetler.html" class="active" aria-current="page">Hizmetler</a>
         <a href="hakkimizda.html">Hakkımızda</a>
-        <a href="urunler.html">Ürünler</a>
         <a href="galeri.html">Galeri</a>
+        <a href="urunler.html">Ürünler</a>
         <a href="iletisim.html">İletişim</a>
+        <a href="tel:05324900313" class="header__cta">Hemen Fiyat Al</a>
       </nav>
-      <a href="tel:05324900313" class="header__cta">Hemen Ara</a>
     </div>
   </header>
 
@@ -583,36 +615,39 @@
   </a>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer" role="contentinfo">
+    <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <img src="images/logo.svg" alt="DK Copy logosu" width="40" height="40">
-          <p>Fikrin Değer Kazandığı Yer. 3 günde teslim garantili dijital baskı çözümleri.</p>
+          <img src="/images/logo.svg" alt="DK Copy" width="120" height="36">
+          <p>Markanızın Görünen Yüzü. Profesyonel dijital baskı çözümleriyle işletmenizi bir adım öne taşıyoruz.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Sayfalar</h4>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetler.html">Hizmetler</a>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="galeri.html">Galeri</a>
+          <a href="urunler.html">Ürünler</a>
+          <a href="iletisim.html">İletişim</a>
         </div>
         <div class="footer__col">
           <h4>Hizmetler</h4>
-          <a href="hizmetler.html">Ofis & Kurumsal</a>
-          <a href="hizmetler.html">Tanıtım & Reklam</a>
-          <a href="hizmetler.html">Organizasyon</a>
-          <a href="hizmetler.html">Restoran & Kafe</a>
-        </div>
-        <div class="footer__col">
-          <h4>Kurumsal</h4>
-          <a href="hakkimizda.html">Hakkımızda</a>
-          <a href="galeri.html">Galeri</a>
-          <a href="iletisim.html">İletişim</a>
+          <a href="hizmetler.html">Ofis & Kurumsal Baskılar</a>
+          <a href="hizmetler.html">Tanıtım & Reklam Ürünleri</a>
+          <a href="hizmetler.html">Organizasyon & Davetiye</a>
+          <a href="hizmetler.html">Restoran & Kafe Baskıları</a>
         </div>
         <div class="footer__col">
           <h4>İletişim</h4>
           <a href="tel:05324900313">0532 490 03 13</a>
           <a href="tel:05324301407">0532 430 14 07</a>
           <a href="mailto:info@dkcopy.com.tr">info@dkcopy.com.tr</a>
-          <p style="font-size:var(--text-sm);opacity:0.7;margin-top:var(--space-s)">Soğanlı Mah. 3. Meltem Sok. No: 15D<br>Osmangazi / Bursa</p>
+          <a href="https://maps.google.com/?q=40.2143,29.0435" target="_blank" rel="noopener">Soğanlı Mah. 3. Meltem Sok. No: 15D Osmangazi/Bursa</a>
         </div>
       </div>
       <div class="footer__bottom">
-        &copy; 2026 DK Copy. Tüm hakları saklıdır.
+        <p>&copy; 2026 DK Copy. Tüm hakları saklıdır. | Markanızın Görünen Yüzü</p>
       </div>
     </div>
   </footer>
