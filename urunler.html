@@ -96,28 +96,43 @@
     }
     #cart-count.visible { display: inline-block; }
 
-    .cat-tabs-wrap { background: var(--color-surface); border-bottom: 1px solid rgba(0,0,0,.08); }
-    .cat-tabs {
-      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; align-items: center; gap: .5rem;
-      overflow-x: auto; scrollbar-width: none;
+    /* ── Ürünler layout: sol collapsible kategori sidebar + ürün grid ── */
+    .products-layout {
+      max-width: 1200px; margin: 0 auto; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.5rem;
     }
-    .cat-tabs::-webkit-scrollbar { display: none; }
+    .cat-sidebar {
+      flex: 0 0 220px;
+      background: var(--color-surface); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: .5rem;
+    }
+    .cat-sidebar-toggle {
+      display: none;  /* masaüstü: sidebar hep açık, toggle gizli */
+      width: 100%; align-items: center; justify-content: space-between;
+      padding: .7rem .9rem; border: none; background: none; cursor: pointer;
+      font-family: var(--font-heading); font-size: .95rem; font-weight: 600;
+      color: var(--color-primary);
+    }
+    .cat-toggle-arrow { transition: transform .2s; }
+    .cat-sidebar.collapsed .cat-toggle-arrow { transform: rotate(-90deg); }
+    .cat-tabs { display: flex; flex-direction: column; gap: .25rem; }
+    .cat-sidebar.collapsed .cat-tabs { display: none; }
     .tab {
-      flex-shrink: 0;
-      padding: .75rem 1.1rem; border: none; background: none;
-      font-family: var(--font-body); font-size: .825rem; font-weight: 500;
+      width: 100%; text-align: left;
+      padding: .7rem .9rem; border: none; background: none;
+      font-family: var(--font-body); font-size: .85rem; font-weight: 500;
       color: var(--color-muted); cursor: pointer;
-      border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+      border-radius: 6px; border-left: 3px solid transparent;
+      transition: color .2s, background .2s, border-color .2s;
     }
     .tab span { opacity: .65; font-size: .75rem; }
-    .tab:hover { color: var(--color-text); }
-    .tab.active { color: var(--color-primary); font-weight: 600; border-bottom-color: var(--color-accent); }
+    .tab:hover { color: var(--color-text); background: rgba(0,0,0,.03); }
+    .tab.active { color: var(--color-primary); font-weight: 600; background: rgba(200,155,60,.10); border-left-color: var(--color-accent); }
 
-    .grid-section { flex: 1; padding: 1.5rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .grid-section { flex: 1; min-width: 0; }
     #product-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1.25rem;
     }
 
@@ -283,16 +298,19 @@
     .footer { background: var(--color-primary); color: var(--color-on-dark); padding: 1.5rem 0; text-align: center; }
     .footer p { font-size: .8rem; opacity: .65; }
 
-    @media (max-width: 900px) {
-      #product-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    /* #product-grid auto-fill minmax(220px) kolon sayısını her genişlikte kendi ayarlar
+       — sabit repeat() kolon kuralları kaldırıldı (sidebar yanında dar alanda sıkışmasın) */
     @media (max-width: 768px) {
       .header__nav { display: none; }
       .header__logo span { font-size: 1.1rem; }
-      #product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      #product-grid { gap: 1rem; }
       .card-img { height: 200px; }
       .grid-info-bar { display: none; }
       .cart-sidebar { width: 100%; right: -100%; }
+      /* mobil: sidebar üstte tam-genişlik, açılır-kapanır (default kapalı — JS) */
+      .products-layout { flex-direction: column; padding: 1rem; gap: 1rem; }
+      .cat-sidebar { flex: auto; width: 100%; }
+      .cat-sidebar-toggle { display: flex; }
     }
     @media (max-width: 640px) {
       .lb2-panel { flex-direction: column; max-height: 95vh; border-radius: 8px; }
@@ -344,24 +362,29 @@
     </button>
   </div>
 
-  <div class="cat-tabs-wrap">
-    <div class="cat-tabs" role="tablist" aria-label="Kategoriler">
-      <button class="tab active" data-cat="all" role="tab" aria-selected="true">Tümü <span>(158)</span></button>
-      <button class="tab" data-cat="ajandalar">Ajandalar <span>(22)</span></button>
-      <button class="tab" data-cat="geri_donusumlu_urunler">Geri Dönüşümlü <span>(16)</span></button>
-      <button class="tab" data-cat="kalem_setleri">Kalem Setleri <span>(24)</span></button>
-      <button class="tab" data-cat="metal_kalemler">Metal Kalemler <span>(10)</span></button>
-      <button class="tab" data-cat="organizerler">Organizerler <span>(10)</span></button>
-      <button class="tab" data-cat="roller_kalemler">Roller Kalemler <span>(24)</span></button>
-      <button class="tab" data-cat="tarihsiz_defterler">Tarihsiz Defterler <span>(38)</span></button>
-      <button class="tab" data-cat="tohumlu_ve_kursun_kalemler">Tohumlu &amp; Kurşun <span>(14)</span></button>
-    </div>
-  </div>
+  <div class="products-layout">
+    <aside class="cat-sidebar" id="cat-sidebar">
+      <button class="cat-sidebar-toggle" id="cat-toggle" aria-expanded="true" aria-controls="cat-list">
+        Kategoriler <span class="cat-toggle-arrow" aria-hidden="true">▾</span>
+      </button>
+      <div class="cat-tabs" role="tablist" aria-label="Kategoriler" id="cat-list">
+        <button class="tab active" data-cat="all" role="tab" aria-selected="true">Tümü <span>(158)</span></button>
+        <button class="tab" data-cat="ajandalar">Ajandalar <span>(22)</span></button>
+        <button class="tab" data-cat="geri_donusumlu_urunler">Geri Dönüşümlü <span>(16)</span></button>
+        <button class="tab" data-cat="kalem_setleri">Kalem Setleri <span>(24)</span></button>
+        <button class="tab" data-cat="metal_kalemler">Metal Kalemler <span>(10)</span></button>
+        <button class="tab" data-cat="organizerler">Organizerler <span>(10)</span></button>
+        <button class="tab" data-cat="roller_kalemler">Roller Kalemler <span>(24)</span></button>
+        <button class="tab" data-cat="tarihsiz_defterler">Tarihsiz Defterler <span>(38)</span></button>
+        <button class="tab" data-cat="tohumlu_ve_kursun_kalemler">Tohumlu &amp; Kurşun <span>(14)</span></button>
+      </div>
+    </aside>
 
-  <section class="grid-section" aria-label="Ürün listesi">
-    <div id="product-grid"></div>
-    <p class="no-results" id="no-results">Aradığınız ürün bulunamadı.</p>
-  </section>
+    <section class="grid-section" aria-label="Ürün listesi">
+      <div id="product-grid"></div>
+      <p class="no-results" id="no-results">Aradığınız ürün bulunamadı.</p>
+    </section>
+  </div>
 
 </div>
 
@@ -502,6 +525,22 @@ function applyFilters() {
 }
 
 document.getElementById('search').addEventListener('input', applyFilters);
+
+// ── Kategori sidebar collapse (mobilde açılır-kapanır; masaüstü hep açık) ──
+(function () {
+  const toggle = document.getElementById('cat-toggle');
+  const sidebar = document.getElementById('cat-sidebar');
+  if (!toggle || !sidebar) return;
+  toggle.addEventListener('click', () => {
+    const collapsed = sidebar.classList.toggle('collapsed');
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+  });
+  // mobilde varsayılan kapalı (grid'i aşağı itmesin)
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    sidebar.classList.add('collapsed');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+})();
 
 // ── Lightbox 2 ──────────────────────────────────────────
 function openLB2(kod) {
