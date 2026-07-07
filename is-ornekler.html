@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DK Copy | Galeri — Baskı Çalışmalarımız</title>
-  <meta name="description" content="DK Copy dijital baskı galerisi. Ofis & kurumsal, tanıtım & reklam, organizasyon & davetiye, restoran & kafe, promosyon, defter & kırtasiye, araç & cam giydirme çalışmaları.">
+  <title>DK Copy | İşlerimizden Örnekler</title>
+  <meta name="description" content="DK Copy'nin teslim ettiği gerçek baskı işlerinden örnekler: davetiye, kurumsal flama, katalog, promosyon ve daha fazlası — ve atölyemizden üretim anları.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -561,6 +561,41 @@
 }
 @media (max-width:480px){ .footer__grid{ grid-template-columns:1fr; } }
 </style>
+<style>
+/* ===== İŞLERİMİZDEN ÖRNEKLER — ek stiller (IRON/sade, animasyonsuz) ===== */
+.section-head { text-align:center; max-width:640px; margin:0 auto var(--space-xl); }
+.section-head h2 { font-family:var(--font-heading); font-size:var(--text-xl); margin-bottom:var(--space-s); }
+.section-head h2 span { color:var(--color-secondary); }
+.section-head p { color:var(--color-muted); font-size:var(--text-base); }
+
+.gallery-grid__item .media-video { position:relative; }
+.gallery-grid__item .play-badge {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:56px; height:56px; background:rgba(200,155,60,.92); color:#1A1A2E;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  pointer-events:none; box-shadow:var(--shadow-lg); transition:transform .3s ease;
+}
+.gallery-grid__item:hover .play-badge { transform:translate(-50%,-50%) scale(1.08); }
+
+.lightbox__content video { max-width:100%; max-height:90vh; border-radius:var(--radius); background:#000; }
+
+.insta-cta { text-align:center; padding:0 0 var(--space-2xl); }
+.insta-cta a {
+  display:inline-flex; align-items:center; gap:var(--space-s);
+  color:var(--color-text); font-weight:600; font-size:var(--text-base);
+  padding:var(--space-s) var(--space-l); border:2px solid var(--color-border);
+  border-radius:50px; transition:all .3s ease;
+}
+.insta-cta a:hover { border-color:var(--color-secondary); color:var(--color-secondary); }
+
+.atolye { padding:var(--space-2xl) 0; background:var(--color-surface); border-top:1px solid var(--color-border); }
+.atolye__strip { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-m); }
+.atolye__item { position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; background:var(--color-primary); }
+.atolye__item video { width:100%; height:100%; object-fit:cover; display:block; }
+.atolye__item span { position:absolute; bottom:0; left:0; width:100%; padding:var(--space-m); background:linear-gradient(transparent,rgba(26,26,46,.85)); color:var(--color-bg); font-size:var(--text-sm); font-weight:500; }
+@media (max-width:1024px){ .atolye__strip{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .atolye__strip{ grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
   <!-- ===== HEADER ===== -->
@@ -576,8 +611,8 @@
         <a href="index.html">Ana Sayfa</a>
         <a href="hizmetler.html">Hizmetler</a>
         <a href="hakkimizda.html">Hakkımızda</a>
-        <a href="galeri.html" class="active" aria-current="page">Galeri</a>
-        <a href="is-ornekler.html">İş Örnekleri</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="is-ornekler.html" class="active" aria-current="page">İş Örnekleri</a>
         <a href="urunler.html">Ürünler</a>
         <a href="iletisim.html">İletişim</a>
         <a href="tel:05324900313" class="header__cta">Hemen Fiyat Al</a>
@@ -589,40 +624,66 @@
   <section class="page-hero">
     <div class="container page-hero__content">
       <h1 class="page-hero__title reveal">
-        Baskı <span>Çalışmalarımız</span>
+        İşlerimizden <span>Örnekler</span>
       </h1>
       <p class="page-hero__subtitle reveal">
-        Her projede estetik, her çıktıda profesyonellik. İşte DK Copy farkıyla hayata geçen çalışmalarımız.
+        DK Copy'nin teslim ettiği gerçek işler ve atölyemizden üretim anları. Her biri fikrin değer kazandığı bir hikâye.
       </p>
     </div>
   </section>
 
-  <!-- ===== FILTER BUTTONS ===== -->
-  <section class="gallery-filters">
+  <!-- ===== İŞLERİMİZDEN ÖRNEKLER (grid + lightbox) ===== -->
+  <section class="gallery-grid" style="padding-top: var(--space-xl);">
     <div class="container">
-      <div class="gallery-filters__inner reveal">
-        <button class="gallery-filters__btn active" data-filter="all">Tümü</button>
-        <button class="gallery-filters__btn" data-filter="ofis-kurumsal">Ofis & Kurumsal</button>
-        <button class="gallery-filters__btn" data-filter="tanitim-reklam">Tanıtım & Reklam</button>
-        <button class="gallery-filters__btn" data-filter="organizasyon-davetiye">Organizasyon & Davetiye</button>
-        <button class="gallery-filters__btn" data-filter="restoran-kafe">Restoran & Kafe</button>
-        <button class="gallery-filters__btn" data-filter="promosyon">Promosyon</button>
-        <button class="gallery-filters__btn" data-filter="defter-kirtasiye">Defter & Kırtasiye</button>
-        <button class="gallery-filters__btn" data-filter="arac-cam">Araç & Cam Giydirme</button>
+      <div class="section-head reveal">
+        <h2>Teslim Ettiğimiz <span>İşler</span></h2>
+        <p>Fotoğrafa veya videoya dokunarak yakından inceleyin.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== MASONRY GALLERY ===== -->
-  <section class="gallery-grid">
-    <div class="container">
       <div class="gallery-grid__masonry" id="galleryMasonry">
-        <!-- Görseller JavaScript ile dinamik yüklenecek -->
+        <!-- İçerik JavaScript ile yüklenir -->
       </div>
     </div>
   </section>
 
-  <!-- ===== LIGHTBOX ===== -->
+  <!-- ===== INSTAGRAM (galeri altı, sade) ===== -->
+  <section class="insta-cta">
+    <div class="container reveal">
+      <a href="https://instagram.com/dk_copy" target="_blank" rel="noopener">
+        <i data-lucide="instagram" size="20"></i>
+        Tüm işlerimiz Instagram'da → @dk_copy
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== ATÖLYEDEN (sessiz-döngü şerit) ===== -->
+  <section class="atolye">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Atölye<span>den</span></h2>
+        <p>Üretim, kesim ve baskı — işin mutfağından anlar.</p>
+      </div>
+      <div class="atolye__strip reveal">
+        <div class="atolye__item">
+          <video src="/images/videos/atolye-video-1.mp4" poster="/images/videos/atolye-video-1.jpg" muted loop playsinline preload="metadata"></video>
+          <span>UV Baskı — Madalyon</span>
+        </div>
+        <div class="atolye__item">
+          <video src="/images/videos/atolye-video-2.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="metadata"></video>
+          <span>Dijital Baskı</span>
+        </div>
+        <div class="atolye__item">
+          <video src="/images/videos/atolye-video-3.mp4" poster="/images/videos/atolye-video-3.jpg" muted loop playsinline preload="metadata"></video>
+          <span>Etiket Baskı</span>
+        </div>
+        <div class="atolye__item">
+          <video src="/images/videos/atolye-video-4.mp4" poster="/images/videos/atolye-video-4.jpg" muted loop playsinline preload="metadata"></video>
+          <span>Kesim / Plotter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX (foto + video) ===== -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox__close" id="lightboxClose" aria-label="Kapat">
       <i data-lucide="x" size="32"></i>
@@ -633,8 +694,8 @@
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Sonraki">
       <i data-lucide="chevron-right" size="24"></i>
     </button>
-    <div class="lightbox__content">
-      <img id="lightboxImage" src="" alt="DK Copy baskı çalışması">
+    <div class="lightbox__content" id="lightboxContent">
+      <!-- foto veya video JS ile yerleştirilir -->
     </div>
   </div>
 
@@ -711,105 +772,124 @@
       });
     }
 
-    // ===== Gallery Images =====
-    const galleryImages = [
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_33.jpeg', category: 'ofis-kurumsal', label: 'Ofis & Kurumsal Baskı' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_32.jpeg', category: 'ofis-kurumsal', label: 'Ofis & Kurumsal Baskı' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_30_1.jpeg', category: 'tanitim-reklam', label: 'Tanıtım & Reklam Ürünü' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_30.jpeg', category: 'tanitim-reklam', label: 'Tanıtım & Reklam Ürünü' },
-      { src: 'images/galeri_ref_29.jpeg', category: 'organizasyon-davetiye', label: 'Organizasyon & Davetiye' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_28_2.jpeg', category: 'organizasyon-davetiye', label: 'Organizasyon & Davetiye' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_28_1.jpeg', category: 'restoran-kafe', label: 'Restoran & Kafe Baskısı' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_28.jpeg', category: 'restoran-kafe', label: 'Restoran & Kafe Baskısı' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_27.jpeg', category: 'promosyon', label: 'Promosyon Ürünü' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_26.jpeg', category: 'promosyon', label: 'Promosyon Ürünü' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_25_1.jpeg', category: 'defter-kirtasiye', label: 'Defter & Kırtasiye' },
-      { src: 'images/WhatsApp_Image_2026-06-24_at_12_52_25.jpeg', category: 'defter-kirtasiye', label: 'Defter & Kırtasiye' },
-      { src: 'images/IMG_0303.jpeg', category: 'ofis-kurumsal', label: 'Ofis & Kurumsal Baskı' },
-      { src: 'images/IMG_0302.jpeg', category: 'tanitim-reklam', label: 'Tanıtım & Reklam Ürünü' },
-      { src: 'images/IMG_0301_2.jpeg', category: 'organizasyon-davetiye', label: 'Organizasyon & Davetiye' },
-      { src: 'images/IMG_0300.jpeg', category: 'restoran-kafe', label: 'Restoran & Kafe Baskısı' },
-      { src: 'images/IMG_0299.jpeg', category: 'promosyon', label: 'Promosyon Ürünü' },
-      { src: 'images/IMG_0298.jpeg', category: 'defter-kirtasiye', label: 'Defter & Kırtasiye' },
-      { src: 'images/IMG_0297.jpeg', category: 'arac-cam', label: 'Araç & Cam Giydirme' }
+    // ===== İçerik: fotoğraflar + ürün videoları (yalnız gerçek DK Copy işleri) =====
+    const galleryItems = [
+      { type:'image', src:'/images/is-ornek-01.jpg', label:'Tanıtım Bayrağı' },
+      { type:'image', src:'/images/is-ornek-03.jpg', label:'Kurumsal Flama' },
+      { type:'image', src:'/images/is-ornek-04.jpg', label:'Roll-up Banner' },
+      { type:'image', src:'/images/is-ornek-05.jpg', label:'Masa Bayrağı' },
+      { type:'video', src:'/images/videos/is-video-1.mp4', poster:'/images/videos/is-video-1.jpg', label:'Pop-up Kart' },
+      { type:'image', src:'/images/is-ornek-06.jpg', label:'Tekstil Baskı' },
+      { type:'image', src:'/images/is-ornek-07.jpg', label:'Davetiye' },
+      { type:'image', src:'/images/is-ornek-08.jpg', label:'Doğum Günü Konsepti' },
+      { type:'video', src:'/images/videos/is-video-2.mp4', poster:'/images/videos/is-video-2.jpg', label:'Şeffaf Etiket' },
+      { type:'image', src:'/images/is-ornek-09.jpg', label:'Doğum Günü Konsepti' },
+      { type:'image', src:'/images/is-ornek-10.jpg', label:'Bardak Altı / Coaster' },
+      { type:'video', src:'/images/videos/is-video-3.mp4', poster:'/images/videos/is-video-3.jpg', label:'Ambalaj / Kutu Baskı' },
+      { type:'image', src:'/images/is-ornek-12.jpg', label:'Katalog' },
+      { type:'image', src:'/images/is-ornek-13.jpg', label:'Nikah Davetiyesi' },
+      { type:'video', src:'/images/videos/is-video-4.mp4', poster:'/images/videos/is-video-4.jpg', label:'Pop-up Kart' },
+      { type:'image', src:'/images/is-ornek-14.jpg', label:'Davetiye' },
+      { type:'image', src:'/images/is-ornek-15.jpg', label:'Tanıtım Kitapçığı' },
+      { type:'video', src:'/images/videos/is-video-5.mp4', poster:'/images/videos/is-video-5.jpg', label:'Bardak Altı' },
+      { type:'image', src:'/images/is-ornek-17.jpg', label:'Hatıra Diploması' },
+      { type:'image', src:'/images/is-ornek-18.jpg', label:'Doğum Günü Konsepti' },
+      { type:'video', src:'/images/videos/is-video-6.mp4', poster:'/images/videos/is-video-6.jpg', label:'Hediye Kutusu' },
+      { type:'image', src:'/images/is-ornek-19.jpg', label:'Davetiye' },
+      { type:'image', src:'/images/is-ornek-20.jpg', label:'Nikah Şekeri' },
+      { type:'video', src:'/images/videos/is-video-7.mp4', poster:'/images/videos/is-video-7.jpg', label:'Ambalaj Baskı' },
+      { type:'image', src:'/images/is-ornek-21.jpg', label:'Kartvizit' },
+      { type:'image', src:'/images/is-ornek-25.jpg', label:'Doğum Günü Konsepti' }
     ];
 
     const galleryMasonry = document.getElementById('galleryMasonry');
-    let currentFilter = 'all';
     let currentIndex = 0;
-    let filteredImages = [...galleryImages];
 
-    // Render gallery
-    function renderGallery(filter = 'all') {
+    function renderGallery() {
       galleryMasonry.innerHTML = '';
-      currentFilter = filter;
-      
-      filteredImages = filter === 'all' 
-        ? [...galleryImages]
-        : galleryImages.filter(img => img.category === filter);
-      
-      filteredImages.forEach((img, index) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-grid__item reveal';
-        item.dataset.index = index;
-        item.innerHTML = `
-          <img src="${img.src}" alt="DK Copy baskı çalışması" loading="lazy">
-          <div class="gallery-grid__item-overlay">
-            <span>${img.label}</span>
-            <div class="icon">
-              <i data-lucide="search" size="16"></i>
+      galleryItems.forEach((item, index) => {
+        const el = document.createElement('div');
+        el.className = 'gallery-grid__item reveal';
+        el.dataset.index = index;
+        if (item.type === 'video') {
+          el.innerHTML = `
+            <div class="media-video">
+              <img src="${item.poster}" alt="${item.label} — DK Copy" loading="lazy">
+              <div class="play-badge"><i data-lucide="play" size="24"></i></div>
             </div>
-          </div>
-        `;
-        item.addEventListener('click', () => openLightbox(index));
-        galleryMasonry.appendChild(item);
+            <div class="gallery-grid__item-overlay"><span>${item.label}</span></div>
+          `;
+        } else {
+          el.innerHTML = `
+            <img src="${item.src}" alt="${item.label} — DK Copy" loading="lazy">
+            <div class="gallery-grid__item-overlay">
+              <span>${item.label}</span>
+              <div class="icon"><i data-lucide="search" size="16"></i></div>
+            </div>
+          `;
+        }
+        el.addEventListener('click', () => openLightbox(index));
+        galleryMasonry.appendChild(el);
       });
-      
       lucide.createIcons();
     }
 
-    // ===== Filter Buttons =====
-    const filterBtns = document.querySelectorAll('.gallery-filters__btn');
-    
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderGallery(btn.dataset.filter);
-      });
-    });
-
-    // ===== Lightbox =====
+    // ===== Lightbox (foto + video; video kapanınca/geçince durur) =====
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxContent = document.getElementById('lightboxContent');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
 
+    function stopLightboxVideo() {
+      const v = lightboxContent.querySelector('video');
+      if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
+    }
+
+    function showItem(index) {
+      stopLightboxVideo();
+      lightboxContent.innerHTML = '';
+      const item = galleryItems[index];
+      if (item.type === 'video') {
+        const v = document.createElement('video');
+        v.src = item.src;
+        v.poster = item.poster;
+        v.controls = true;
+        v.playsInline = true;
+        v.setAttribute('preload', 'metadata');
+        lightboxContent.appendChild(v);
+        v.play().catch(() => {});
+      } else {
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.label + ' — DK Copy';
+        lightboxContent.appendChild(img);
+      }
+    }
+
     function openLightbox(index) {
       currentIndex = index;
-      lightboxImage.src = filteredImages[index].src;
+      showItem(index);
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      stopLightboxVideo();
       lightbox.classList.remove('open');
+      lightboxContent.innerHTML = '';
       document.body.style.overflow = '';
     }
 
     function navigateLightbox(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = filteredImages.length - 1;
-      if (currentIndex >= filteredImages.length) currentIndex = 0;
-      lightboxImage.src = filteredImages[currentIndex].src;
+      currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
+      showItem(currentIndex);
     }
 
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
     lightboxNext.addEventListener('click', () => navigateLightbox(1));
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -817,13 +897,26 @@
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
 
-    // Click outside to close
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // ===== Initialize =====
-    renderGallery('all');
+    // ===== Atölyeden: viewport'ta oynat, dışında duraklat (sessiz döngü) =====
+    const atolyeVideos = document.querySelectorAll('.atolye__item video');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { en.target.play().catch(() => {}); }
+          else { en.target.pause(); }
+        });
+      }, { threshold: 0.25 });
+      atolyeVideos.forEach(v => io.observe(v));
+    } else {
+      atolyeVideos.forEach(v => v.play().catch(() => {}));
+    }
+
+    // ===== Başlat =====
+    renderGallery();
   </script>
 </body>
 </html>
