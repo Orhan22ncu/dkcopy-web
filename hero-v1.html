@@ -1005,6 +1005,7 @@
     a.src = srcs[0]; a.muted = true;
     a.play().then(function () { a.classList.add('on'); }).catch(function () {});
     setInterval(function () {
+      if (window.__heroPaused) return; /* vitrin (onizleme.html) durdurduysa rotasyon bekler */
       i = (i + 1) % srcs.length;
       var next = layers[1 - act], cur = layers[act];
       next.src = srcs[i]; next.muted = true;

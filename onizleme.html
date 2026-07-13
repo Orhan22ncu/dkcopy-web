@@ -15,75 +15,184 @@
       background: #F8F5EE;
       color: #1A1A2E;
       min-height: 100vh;
-      padding: 3rem 1.5rem;
+      padding: 2.5rem 1rem 4rem;
     }
-    .wrap { max-width: 1100px; margin: 0 auto; }
-    h1 {
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .head { text-align: center; margin-bottom: 2.5rem; }
+    .head h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 1.2rem + 2vw, 2.6rem);
-      margin-bottom: 0.5rem;
-    }
-    .lead { color: rgba(26,26,46,0.65); margin-bottom: 2.5rem; max-width: 640px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .card {
-      display: block;
-      background: #fff;
-      border: 1px solid rgba(200,155,60,0.25);
-      border-radius: 12px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(26,26,46,0.14); }
-    .card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
-    .card__body { padding: 1.25rem; }
-    .card__tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #8F6B23;
+      font-size: clamp(1.5rem, 1.1rem + 2vw, 2.4rem);
       margin-bottom: 0.4rem;
     }
-    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.4rem; }
-    .card p { font-size: 0.9rem; color: rgba(26,26,46,0.65); line-height: 1.55; }
-    .note { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(26,26,46,0.45); }
+    .head p { color: rgba(26,26,46,0.6); font-size: 0.95rem; }
+
+    .variant { margin-bottom: 3.5rem; }
+    .variant__bar {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+      padding: 0 0.25rem;
+    }
+    .variant__chip {
+      flex-shrink: 0;
+      background: #C89B3C;
+      color: #1A1A2E;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+    }
+    .variant__bar p {
+      flex: 1 1 200px;
+      font-size: 0.92rem;
+      color: rgba(26,26,46,0.7);
+    }
+    .variant__open {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #1A1A2E;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .variant__open:hover { background: #C89B3C; color: #1A1A2E; }
+
+    /* Tarayıcı-çerçevesi görünümü: canlı gömme büyük ve net */
+    .variant__frame {
+      border: 1px solid rgba(26,26,46,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(26,26,46,0.12);
+    }
+    .variant__chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.55rem 0.9rem;
+      background: #ECE7DB;
+      border-bottom: 1px solid rgba(26,26,46,0.08);
+    }
+    .variant__chrome i {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(26,26,46,0.18);
+    }
+    .variant__chrome span {
+      margin-left: 0.5rem;
+      font-size: 0.7rem;
+      color: rgba(26,26,46,0.45);
+      letter-spacing: 0.05em;
+    }
+    .variant iframe {
+      display: block;
+      width: 100%;
+      height: min(82vh, 700px);
+      border: 0;
+      /* Sayfa scroll'unu çalmasın; etkileşim "Tam ekran aç" ile */
+      pointer-events: none;
+      background: #F8F5EE;
+    }
+    @media (max-width: 600px) {
+      .variant iframe { height: 72vh; }
+      .variant__bar p { flex-basis: 100%; order: 3; }
+    }
+    .note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(26,26,46,0.45);
+      max-width: 560px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Anasayfa Varyant Önizlemeleri</h1>
-    <p class="lead">Üç seçenek de mevcut anasayfadan daha aydınlık; hepsinde gerçek DK Copy atölye görüntüleri kullanıldı. Beğendiğiniz seçeneğe tıklayıp tam sayfa inceleyebilirsiniz.</p>
-    <div class="grid">
-      <a class="card" href="hero-v1.html">
-        <img src="/images/videos/atolye-video-2.jpg" alt="V1 önizleme — tam ekran atölye videosu">
-        <div class="card__body">
-          <span class="card__tag">Seçenek 1</span>
-          <h2>Tam-Ekran Atölye Videosu</h2>
-          <p>Atölye videoları tüm ekranda dönüşümlü oynar; üzerine açık krem tonlu bir katman gelir, başlık koyu ve net okunur.</p>
-        </div>
-      </a>
-      <a class="card" href="hero-v2.html">
-        <img src="/images/videos/atolye-video-4.jpg" alt="V2 önizleme — split hero video montajı">
-        <div class="card__body">
-          <span class="card__tag">Seçenek 2</span>
-          <h2>Yazı Solda, Videolar Sağda</h2>
-          <p>Solda açık zeminde başlık ve butonlar; sağda çerçeve içinde dört atölye videosu (dijital, UV, etiket, kesim) birlikte oynar.</p>
-        </div>
-      </a>
-      <a class="card" href="hero-v3.html">
-        <img src="/images/videos/atolye-video-1.jpg" alt="V3 önizleme — aydınlık palet, hafif video">
-        <div class="card__body">
-          <span class="card__tag">Seçenek 3</span>
-          <h2>Aydınlık Zemin, Hafif Video</h2>
-          <p>En sade seçenek: sıcak krem zemin öne çıkar, atölye videosu arka planda çok hafif hissedilir.</p>
-        </div>
-      </a>
+    <div class="head">
+      <h1>Anasayfa Önizlemeleri</h1>
+      <p>Üç tasarım da aşağıda canlı görünümüyle — beğendiğinizi tam ekran açabilirsiniz.</p>
     </div>
-    <p class="note">Bu sayfalar önizleme amaçlıdır; mevcut yayındaki anasayfa değişmedi. Mobil cihazlarda videolar yerine fotoğraflar gösterilir (hız için).</p>
+
+    <section class="variant">
+      <div class="variant__bar">
+        <span class="variant__chip">Seçenek 1</span>
+        <p>Atölye videoları tüm ekranda, aydınlık krem katmanla.</p>
+        <a class="variant__open" href="hero-v1.html" target="_blank" rel="noopener">Tam ekran aç ↗</a>
+      </div>
+      <div class="variant__frame">
+        <div class="variant__chrome"><i></i><i></i><i></i><span>dkcopy — anasayfa · seçenek 1</span></div>
+        <iframe data-src="hero-v1.html" title="Seçenek 1 canlı önizleme — tam ekran atölye videosu" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant__bar">
+        <span class="variant__chip">Seçenek 2</span>
+        <p>Yazı solda açık panelde, dört atölye videosu sağda çerçevede.</p>
+        <a class="variant__open" href="hero-v2.html" target="_blank" rel="noopener">Tam ekran aç ↗</a>
+      </div>
+      <div class="variant__frame">
+        <div class="variant__chrome"><i></i><i></i><i></i><span>dkcopy — anasayfa · seçenek 2</span></div>
+        <iframe data-src="hero-v2.html" title="Seçenek 2 canlı önizleme — split video montajı" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant__bar">
+        <span class="variant__chip">Seçenek 3</span>
+        <p>Sıcak krem zemin, atölye videosu arka planda çok hafif.</p>
+        <a class="variant__open" href="hero-v3.html" target="_blank" rel="noopener">Tam ekran aç ↗</a>
+      </div>
+      <div class="variant__frame">
+        <div class="variant__chrome"><i></i><i></i><i></i><span>dkcopy — anasayfa · seçenek 3</span></div>
+        <iframe data-src="hero-v3.html" title="Seçenek 3 canlı önizleme — aydınlık palet, hafif video" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <p class="note">Bu sayfa önizleme amaçlıdır; yayındaki anasayfa değişmedi. Telefonda videolar yerine fotoğraflar gösterilir (hız için) — tasarımın video hâli bilgisayarda izlenebilir.</p>
   </div>
+
+  <script>
+  // Lazy-load: iframe yalnız görünüme yaklaşınca yüklenir.
+  // Aynı-domain: görünümden çıkan varyantın videoları durdurulur,
+  // dönünce sürer — aynı anda çok video oynamaz.
+  (function () {
+    var frames = document.querySelectorAll('iframe[data-src]');
+    function setVideos(frame, running) {
+      try {
+        frame.contentWindow.__heroPaused = !running; // V1 rotasyonu bu bayrağa bakar
+        var doc = frame.contentDocument;
+        if (!doc) return;
+        doc.querySelectorAll('.hero video').forEach(function (v) {
+          if (!v.src) return; // mobil fallback: hiç yüklenmemiş
+          if (running) { v.play().catch(function () {}); } else { v.pause(); }
+        });
+      } catch (e) { /* yüklenme öncesi erişim — yoksay */ }
+    }
+    // Yükleme erken (250px marj), oynatma yalnız gerçekten görünürken (%25+)
+    var loadIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var f = entry.target;
+        if (entry.isIntersecting && !f.src) f.src = f.dataset.src;
+      });
+    }, { rootMargin: '250px 0px', threshold: 0 });
+    var playIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        setVideos(entry.target, entry.isIntersecting);
+      });
+    }, { threshold: 0.25 });
+    frames.forEach(function (f) { loadIO.observe(f); playIO.observe(f); });
+  })();
+  </script>
 </body>
 </html>
