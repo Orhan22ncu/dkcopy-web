@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DK Copy — Anasayfa Önizleme V2 · Başlık Üstte + 4'lü Yatay Video Şerit</title>
+  <title>DK Copy — Anasayfa Önizleme V2 · 4-Video Yatay Arka Plan Bandı</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.'nın dijital baskı merkezi.">
   <meta property="og:title" content="DK Copy — Profesyonel Dijital Baskı, Bursa">
@@ -195,26 +195,71 @@
       transition: all 0.3s;
     }
 
-    /* ===== Hero V2 — Başlık üstte, 4 atölye videosu tam-genişlik yatay şeritte
-       (2x2 sağ-panel montajı sayfadan taşıyordu → 1x4 yatay şerit, taşma sıfır) ===== */
+    /* ===== Hero V2 — 4 atölye videosu YATAY ARKA PLAN BANDI (dördü de arka planda),
+       yazı önde buzlu panelde okunur; tek ekrana sığar, taşma sıfır ===== */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: var(--space-l);
       overflow: hidden;
-      background: linear-gradient(135deg, #FDFBF6 0%, #F3EDE0 100%);
-      padding: 120px 4vw 100px;
+      background: #F8F5EE;
+      padding: 100px var(--space-l) 80px;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      background: #F8F5EE;
+      z-index: 0;
+    }
+    .hero__bg-item { position: relative; overflow: hidden; }
+    .hero__bg-item img,
+    .hero__bg-item video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__bg-item video { opacity: 0; transition: opacity 0.9s ease; }
+    .hero__bg-item video.on { opacity: 1; }
+    .hero__bg-item span {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(26,26,46,0.55);
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      z-index: 2;
+    }
+    /* Hafif aydınlık örtü: videolar net görünür, panel okunurluğu taşır */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(248,245,238,0.30);
+      z-index: 1;
     }
     .hero__content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 900px;
-      padding: 0;
+      max-width: 780px;
+      padding: var(--space-l) var(--space-xl);
+      background: rgba(253,251,246,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(200,155,60,0.35);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(26,26,46,0.16);
     }
     .hero__tag {
       font-size: var(--text-sm);
@@ -248,6 +293,7 @@
       margin-right: auto;
       font-weight: 400;
       line-height: 1.6;
+      text-wrap: balance; /* widow önleme — orijinal hero genişliğiyle birebir (580px) */
     }
     .hero__actions {
       display: flex;
@@ -271,73 +317,15 @@
       text-transform: uppercase;
       margin-top: var(--space-m);
     }
-    /* Altın çizgili çerçevede 1x4 yatay atölye şeridi — konteynıra tam sığar */
-    .hero__media {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-m);
-      width: 100%;
-      max-width: 1280px;
-      padding: var(--space-m);
-      border: 1px solid rgba(200,155,60,0.45);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.55);
-      box-shadow: 0 24px 60px rgba(26,26,46,0.14);
-    }
-    .hero__media-item {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      height: clamp(220px, 36vh, 420px);
-      min-width: 0; /* grid item taşma emniyeti */
-      background: #EDE6D6;
-    }
-    .hero__media-item img,
-    .hero__media-item video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hero__media-item video { opacity: 0; transition: opacity 0.9s ease; }
-    .hero__media-item video.on { opacity: 1; }
-    .hero__media-item span {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      background: linear-gradient(transparent, rgba(26,26,46,0.72));
-      color: #fff;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      z-index: 1;
-    }
     @media (max-width: 768px) {
-      .hero {
-        gap: var(--space-l);
-        padding: 100px var(--space-m) 100px;
-        min-height: auto;
+      .hero { padding: 90px var(--space-m) 80px; }
+      /* Mobil: arka plan 2x2 döşenir (taşma yok); ilk karede hafif video oynar */
+      .hero__bg {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
       }
-      .hero__content { max-width: 100%; }
-      /* Mobil: şerit içi yatay kaydırma (snap) — sayfa genişliği taşmaz,
-         statik-fallback deseni aynen korunur (video yüklenmez, poster img) */
-      .hero__media {
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: 72%;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-      }
-      .hero__media-item {
-        height: 320px;
-        scroll-snap-align: start;
-      }
+      .hero__bg-item span { display: none; }
+      .hero__content { padding: var(--space-l) var(--space-m); }
     }
     /* GSAP pre-paint hide: .kinetic sınıfı head inline script tarafından eklenir */
     .kinetic .hero__title { opacity: 0; }
@@ -349,9 +337,9 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      padding: 0.65rem 0;
-      background: rgba(248,245,238,0.72);
-      border-top: 1px solid rgba(26,26,46,0.08);
+      padding: 0.8rem 0;
+      background: rgba(248,245,238,0.9);
+      border-top: 1px solid rgba(26,26,46,0.1);
       backdrop-filter: blur(6px);
       z-index: 3;
     }
@@ -368,13 +356,13 @@
       white-space: nowrap;
     }
     .hero__marquee-group span {
-      font-size: var(--text-sm);
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(26,26,46,0.55);
+      color: rgba(26,26,46,0.85);
     }
-    .hero__marquee-group span.dot { color: var(--color-accent); }
+    .hero__marquee-group span.dot { color: #8F6B23; }
     @keyframes marqueeSlide {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -715,42 +703,42 @@
     </div>
   </header>
 
-  <!-- ===== HERO V2: split — açık panel + çerçeveli atölye video montajı ===== -->
+  <!-- ===== HERO V2: 4 atölye videosu yatay arka plan bandı, yazı önde panelde ===== -->
   <section class="hero" id="hero" aria-label="Ana tanıtım">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-2.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-2.mp4" data-mobil-src="/images/videos/atolye-video-2-mobil.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none"></video>
+        <span>Dijital Baskı</span>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-1.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-1.mp4" poster="/images/videos/atolye-video-1.jpg" muted loop playsinline preload="none"></video>
+        <span>UV Baskı</span>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-3.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-3.mp4" poster="/images/videos/atolye-video-3.jpg" muted loop playsinline preload="none"></video>
+        <span>Etiket Baskı</span>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-4.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-4.mp4" poster="/images/videos/atolye-video-4.jpg" muted loop playsinline preload="none"></video>
+        <span>Kesim / Plotter</span>
+      </div>
+    </div>
     <div class="hero__content">
       <p class="hero__tag">3 İş Günü Garantisi</p>
       <h1 class="hero__title">
         <span class="k-line">Markanızın</span>
         <span class="k-line hero__accent">Görünen Yüzü</span>
       </h1>
-      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili hız.</p>
+      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili&nbsp;hız.</p>
       <div class="hero__actions">
         <a href="tel:05324900313" class="btn btn-primary">Hemen Fiyat Al</a>
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
       </div>
       <p class="hero__location">Osmangazi · Bursa</p>
-    </div>
-    <div class="hero__media" aria-label="Atölyeden görüntüler">
-      <div class="hero__media-item">
-        <img src="/images/videos/atolye-video-2.jpg" alt="Dijital baskı — DK Copy atölyesi" loading="eager">
-        <video data-src="/images/videos/atolye-video-2.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span>Dijital Baskı</span>
-      </div>
-      <div class="hero__media-item">
-        <img src="/images/videos/atolye-video-1.jpg" alt="UV baskı — DK Copy atölyesi" loading="eager">
-        <video data-src="/images/videos/atolye-video-1.mp4" poster="/images/videos/atolye-video-1.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span>UV Baskı</span>
-      </div>
-      <div class="hero__media-item">
-        <img src="/images/videos/atolye-video-3.jpg" alt="Etiket baskı — DK Copy atölyesi" loading="eager">
-        <video data-src="/images/videos/atolye-video-3.mp4" poster="/images/videos/atolye-video-3.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span>Etiket Baskı</span>
-      </div>
-      <div class="hero__media-item">
-        <img src="/images/videos/atolye-video-4.jpg" alt="Kesim ve plotter — DK Copy atölyesi" loading="eager">
-        <video data-src="/images/videos/atolye-video-4.mp4" poster="/images/videos/atolye-video-4.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <span>Kesim / Plotter</span>
-      </div>
     </div>
     <div class="hero__marquee" aria-label="Hizmetlerimiz: Promosyon, Kurumsal, Tabela, Davetiye">
       <div class="hero__marquee-track">
@@ -1051,19 +1039,25 @@
   });
   </script>
 
-  <!-- Hero montaj videoları: yalnız masaüstü; mobil / reduced-motion / veri-tasarrufunda
-       video HİÇ yüklenmez, statik poster görselleri kalır -->
+  <!-- Arka plan videoları: masaüstünde dördü de; mobilde yalnız İLK kare hafif (480p) video —
+       reduced-motion / veri-tasarrufunda hiç yüklenmez, statik posterler kalır -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var desktop  = window.matchMedia('(min-width: 769px)').matches;
     var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saveData = navigator.connection && navigator.connection.saveData;
-    if (!desktop || reduced || saveData) return;
-    document.querySelectorAll('.hero__media-item video[data-src]').forEach(function (v) {
-      v.src = v.dataset.src;
+    if (reduced || saveData) return;
+    var desktop = window.matchMedia('(min-width: 769px)').matches;
+    var vids = document.querySelectorAll('.hero__bg-item video[data-src]');
+    function baslat(v, src) {
+      v.src = src;
       v.muted = true;
       v.play().then(function () { v.classList.add('on'); }).catch(function () {});
-    });
+    }
+    if (desktop) {
+      vids.forEach(function (v) { baslat(v, v.dataset.src); });
+    } else if (vids[0]) {
+      baslat(vids[0], vids[0].dataset.mobilSrc || vids[0].dataset.src);
+    }
   });
   </script>
 </body>

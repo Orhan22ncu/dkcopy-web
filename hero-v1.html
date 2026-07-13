@@ -268,6 +268,7 @@
       margin-right: auto;
       font-weight: 400;
       line-height: 1.6;
+      text-wrap: balance; /* widow önleme — orijinal hero genişliğiyle birebir (580px) */
     }
     .hero__actions {
       display: flex;
@@ -301,9 +302,9 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      padding: 0.65rem 0;
-      background: rgba(248,245,238,0.72);
-      border-top: 1px solid rgba(26,26,46,0.08);
+      padding: 0.8rem 0;
+      background: rgba(248,245,238,0.9);
+      border-top: 1px solid rgba(26,26,46,0.1);
       backdrop-filter: blur(6px);
       z-index: 2;
     }
@@ -320,13 +321,13 @@
       white-space: nowrap;
     }
     .hero__marquee-group span {
-      font-size: var(--text-sm);
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(26,26,46,0.55);
+      color: rgba(26,26,46,0.85);
     }
-    .hero__marquee-group span.dot { color: var(--color-accent); }
+    .hero__marquee-group span.dot { color: #8F6B23; }
     @keyframes marqueeSlide {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -677,7 +678,7 @@
         <span class="k-line">Markanızın</span>
         <span class="k-line hero__accent">Görünen Yüzü</span>
       </h1>
-      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili hız.</p>
+      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili&nbsp;hız.</p>
       <div class="hero__actions">
         <a href="tel:05324900313" class="btn btn-primary">Hemen Fiyat Al</a>
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
@@ -983,8 +984,8 @@
   });
   </script>
 
-  <!-- Hero video rotasyonu: yalnız masaüstü; mobil / reduced-motion / veri-tasarrufunda
-       video HİÇ yüklenmez, statik poster zemin kalır -->
+  <!-- Hero video: masaüstünde 4'lü rotasyon; mobilde TEK hafif video (480p) oynar —
+       reduced-motion / veri-tasarrufunda hiç yüklenmez, statik poster zemin kalır -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     var a = document.getElementById('heroVidA');
@@ -993,7 +994,14 @@
     var desktop  = window.matchMedia('(min-width: 769px)').matches;
     var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saveData = navigator.connection && navigator.connection.saveData;
-    if (!desktop || reduced || saveData) return;
+    if (reduced || saveData) return;
+    if (!desktop) {
+      /* Mobil: tek optimize video, rotasyon yok */
+      a.src = '/images/videos/atolye-video-2-mobil.mp4';
+      a.muted = true;
+      a.play().then(function () { a.classList.add('on'); }).catch(function () {});
+      return;
+    }
 
     var srcs = [
       '/images/videos/atolye-video-2.mp4',  /* Dijital Baskı */

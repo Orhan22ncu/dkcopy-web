@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DK Copy — Anasayfa Önizleme V3 · Aydınlık Palet + Subtle Video</title>
+  <title>DK Copy — Anasayfa Önizleme V3 · Aydınlık Zemin + Çerçeveli Video Aksan</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.'nın dijital baskı merkezi.">
   <meta property="og:title" content="DK Copy — Profesyonel Dijital Baskı, Bursa">
@@ -195,45 +195,62 @@
       transition: all 0.3s;
     }
 
-    /* ===== Hero V3 — Aydınlık palet (sıcak antrasit/krem) + subtle atölye videosu ===== */
+    /* ===== Hero V3 — Aydınlık/temiz zemin, DOMİNANT başlık, video arka plan DEĞİL:
+       çerçeveli tek aksan öğesi (V1'den net ayrım) ===== */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: var(--space-l);
       overflow: hidden;
-      background: linear-gradient(180deg, #FBF8F1 0%, #F3EDE0 55%, #EAE2CF 100%);
-      padding-top: 80px;
-    }
-    /* Video hafif arka planda: düşük opaklık, doygunluk kısılmış */
-    .hero__video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 2s ease;
-      filter: saturate(0.85);
-      z-index: 0;
-    }
-    .hero__video.on { opacity: 0.14; }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center,
-        rgba(251,248,241,0) 30%,
-        rgba(251,248,241,0.85) 100%);
-      z-index: 1;
+      background: linear-gradient(180deg, #FBF8F1 0%, #F3EDE0 60%, #EDE5D3 100%);
+      padding: 110px var(--space-l) 100px;
     }
     .hero__content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 900px;
-      padding: var(--space-l);
+      max-width: 1000px;
+      padding: 0;
+    }
+    /* Çerçeveli video: beyaz paspartu + altın çizgi, tek öğe */
+    .hero__frame {
+      position: relative;
+      z-index: 2;
+      width: min(680px, 92vw);
+      padding: 0.6rem 0.6rem 0;
+      background: #fff;
+      border: 1px solid rgba(200,155,60,0.5);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(26,26,46,0.16);
+    }
+    .hero__frame-media {
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #EDE6D6;
+    }
+    .hero__frame-media img,
+    .hero__frame-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__frame-media video { opacity: 0; transition: opacity 0.9s ease; }
+    .hero__frame-media video.on { opacity: 1; }
+    .hero__frame-cap {
+      padding: 0.55rem 0;
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(43,40,54,0.5);
     }
     .hero__tag {
       font-size: var(--text-sm);
@@ -247,10 +264,10 @@
     }
     .hero__title {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 1.5rem + 3.5vw, 5.5rem);
+      font-size: clamp(2.6rem, 1.6rem + 4.5vw, 6.8rem); /* dominant başlık */
       color: #2B2836; /* sıcak antrasit — saf siyah değil */
       margin-bottom: var(--space-m);
-      line-height: 1.1;
+      line-height: 1.08;
       font-weight: 700;
     }
     .hero__title .k-line { display: block; }
@@ -267,6 +284,7 @@
       margin-right: auto;
       font-weight: 400;
       line-height: 1.6;
+      text-wrap: balance; /* widow önleme — orijinal hero genişliğiyle birebir (580px) */
     }
     .hero__actions {
       display: flex;
@@ -300,9 +318,9 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-      padding: 0.65rem 0;
-      background: rgba(248,245,238,0.72);
-      border-top: 1px solid rgba(26,26,46,0.08);
+      padding: 0.8rem 0;
+      background: rgba(248,245,238,0.9);
+      border-top: 1px solid rgba(26,26,46,0.1);
       backdrop-filter: blur(6px);
       z-index: 2;
     }
@@ -319,13 +337,13 @@
       white-space: nowrap;
     }
     .hero__marquee-group span {
-      font-size: var(--text-sm);
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(26,26,46,0.55);
+      color: rgba(26,26,46,0.85);
     }
-    .hero__marquee-group span.dot { color: var(--color-accent); }
+    .hero__marquee-group span.dot { color: #8F6B23; }
     @keyframes marqueeSlide {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -666,21 +684,27 @@
     </div>
   </header>
 
-  <!-- ===== HERO V3: aydınlık palet, atölye videosu hafif arka planda ===== -->
+  <!-- ===== HERO V3: aydınlık zemin, dominant başlık, çerçeveli tek video aksan ===== -->
   <section class="hero" id="hero" aria-label="Ana tanıtım">
-    <video id="heroVid" class="hero__video" data-src="/images/videos/atolye-video-2.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="hero__content">
       <p class="hero__tag">3 İş Günü Garantisi</p>
       <h1 class="hero__title">
         <span class="k-line">Markanızın</span>
         <span class="k-line hero__accent">Görünen Yüzü</span>
       </h1>
-      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili hız.</p>
+      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili&nbsp;hız.</p>
       <div class="hero__actions">
         <a href="tel:05324900313" class="btn btn-primary">Hemen Fiyat Al</a>
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
       </div>
       <p class="hero__location">Osmangazi · Bursa</p>
+    </div>
+    <div class="hero__frame">
+      <div class="hero__frame-media">
+        <img src="/images/videos/atolye-video-4.jpg" alt="DK Copy atölyesi — kesim ve baskı">
+        <video id="heroVid" data-src="/images/videos/atolye-video-4.mp4" data-mobil-src="/images/videos/atolye-video-4-mobil.mp4" poster="/images/videos/atolye-video-4.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+      </div>
+      <p class="hero__frame-cap">Atölyemizden — Kesim &amp; Baskı</p>
     </div>
     <div class="hero__marquee" aria-label="Hizmetlerimiz: Promosyon, Kurumsal, Tabela, Davetiye">
       <div class="hero__marquee-track">
@@ -981,8 +1005,8 @@
   });
   </script>
 
-  <!-- Subtle hero videosu: yalnız masaüstü; mobil / reduced-motion / veri-tasarrufunda
-       video HİÇ yüklenmez, aydınlık gradient zemin kalır -->
+  <!-- Çerçeveli video: masaüstünde tam, mobilde hafif (480p) sürüm oynar —
+       reduced-motion / veri-tasarrufunda hiç yüklenmez, statik poster kalır -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     var v = document.getElementById('heroVid');
@@ -990,8 +1014,8 @@
     var desktop  = window.matchMedia('(min-width: 769px)').matches;
     var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saveData = navigator.connection && navigator.connection.saveData;
-    if (!desktop || reduced || saveData) return;
-    v.src = v.dataset.src;
+    if (reduced || saveData) return;
+    v.src = desktop ? v.dataset.src : (v.dataset.mobilSrc || v.dataset.src);
     v.muted = true;
     v.play().then(function () { v.classList.add('on'); }).catch(function () {});
   });
