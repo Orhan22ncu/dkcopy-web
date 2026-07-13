@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DK Copy — Anasayfa Önizleme V2 · Split Hero (Panel + Video Montaj)</title>
+  <title>DK Copy — Anasayfa Önizleme V2 · Başlık Üstte + 4'lü Yatay Video Şerit</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.'nın dijital baskı merkezi.">
   <meta property="og:title" content="DK Copy — Profesyonel Dijital Baskı, Bursa">
@@ -195,23 +195,25 @@
       transition: all 0.3s;
     }
 
-    /* ===== Hero V2 — Split: solda açık panel, sağda çerçeveli video montajı ===== */
+    /* ===== Hero V2 — Başlık üstte, 4 atölye videosu tam-genişlik yatay şeritte
+       (2x2 sağ-panel montajı sayfadan taşıyordu → 1x4 yatay şerit, taşma sıfır) ===== */
     .hero {
       position: relative;
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: var(--space-xl);
+      justify-content: center;
+      gap: var(--space-l);
       overflow: hidden;
       background: linear-gradient(135deg, #FDFBF6 0%, #F3EDE0 100%);
-      padding: 130px 5vw 90px;
+      padding: 120px 4vw 100px;
     }
     .hero__content {
       position: relative;
       z-index: 2;
-      text-align: left;
-      max-width: 640px;
+      text-align: center;
+      max-width: 900px;
       padding: 0;
     }
     .hero__tag {
@@ -241,14 +243,16 @@
       font-size: var(--text-lg);
       color: rgba(26,26,46,0.72);
       margin-bottom: var(--space-l);
-      max-width: 520px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
       font-weight: 400;
       line-height: 1.6;
     }
     .hero__actions {
       display: flex;
       gap: var(--space-m);
-      justify-content: flex-start;
+      justify-content: center;
       flex-wrap: wrap;
       margin-bottom: var(--space-m);
     }
@@ -267,13 +271,15 @@
       text-transform: uppercase;
       margin-top: var(--space-m);
     }
-    /* Sağ panel: altın çizgili çerçeve içinde 2x2 atölye montajı */
+    /* Altın çizgili çerçevede 1x4 yatay atölye şeridi — konteynıra tam sığar */
     .hero__media {
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--space-m);
+      width: 100%;
+      max-width: 1280px;
       padding: var(--space-m);
       border: 1px solid rgba(200,155,60,0.45);
       border-radius: 16px;
@@ -284,7 +290,8 @@
       position: relative;
       border-radius: 10px;
       overflow: hidden;
-      aspect-ratio: 4/5;
+      height: clamp(220px, 36vh, 420px);
+      min-width: 0; /* grid item taşma emniyeti */
       background: #EDE6D6;
     }
     .hero__media-item img,
@@ -309,14 +316,28 @@
       letter-spacing: 0.06em;
       z-index: 1;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .hero {
-        grid-template-columns: 1fr;
         gap: var(--space-l);
-        padding: 110px var(--space-l) 100px;
+        padding: 100px var(--space-m) 100px;
         min-height: auto;
       }
       .hero__content { max-width: 100%; }
+      /* Mobil: şerit içi yatay kaydırma (snap) — sayfa genişliği taşmaz,
+         statik-fallback deseni aynen korunur (video yüklenmez, poster img) */
+      .hero__media {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 72%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      .hero__media-item {
+        height: 320px;
+        scroll-snap-align: start;
+      }
     }
     /* GSAP pre-paint hide: .kinetic sınıfı head inline script tarafından eklenir */
     .kinetic .hero__title { opacity: 0; }
