@@ -42,16 +42,25 @@
     /* ── Hero: enerjik, eğik forma marquee ── */
     .fhero {
       position: relative;
-      min-height: 88vh;
+      height: 100vh;
+      min-height: 620px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       overflow: hidden;
       background:
         radial-gradient(ellipse 70% 60% at 20% 30%, rgba(200,155,60,.14) 0%, rgba(200,155,60,0) 60%),
         linear-gradient(160deg, #1A1A2E 0%, #12121F 55%, #0D0D1A 100%);
-      padding: 130px 6vw 0;
+      padding: 80px 6vw 0;
       color: #fff;
+    }
+    /* Metin bloğu kalan alanda dikey ortalanır; şerit hero'nun ALT BANDI olur —
+       ikisi birlikte 100vh içinde */
+    .fhero__ic {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
     }
     .fhero__tag {
       display: inline-block;
@@ -63,7 +72,7 @@
     }
     .fhero__title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 1.6rem + 4vw, 5.4rem);
+      font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.6rem);
       line-height: 1.06; font-weight: 700;
       max-width: 820px;
     }
@@ -85,17 +94,19 @@
 
     /* Eğik çift-sıra forma şeridi */
     .fhero__strip {
-      margin: 3.2rem -8vw 0;
+      margin: 0 -8vw;
       transform: rotate(-2.5deg);
+      flex-shrink: 0;
     }
     .frow { display: flex; width: max-content; gap: 1rem; padding: .5rem 0; }
-    .frow--a .frow__track { animation: kayA 42s linear infinite; }
-    .frow--b .frow__track { animation: kayB 48s linear infinite; }
+    /* sakin/premium akış — süre JS'te px/sn sabit hızla hesaplanır (track genişliğine göre) */
+    .frow--a .frow__track { animation: kayA 60s linear infinite; }
+    .frow--b .frow__track { animation: kayB 66s linear infinite; }
     .frow__track { display: flex; gap: 1rem; width: max-content; }
     @keyframes kayA { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes kayB { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     .fcard-mini {
-      width: 150px; height: 200px;
+      width: 138px; height: 184px;
       border-radius: 10px;
       background: #fff;
       padding: 6px;
@@ -105,6 +116,11 @@
     .fcard-mini img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
     @media (prefers-reduced-motion: reduce) {
       .frow__track { animation: none !important; }
+    }
+    /* kısa ekranlarda şerit tek sıraya iner — CTA'lar asla itilmez */
+    @media (max-height: 800px) {
+      .frow--b { display: none; }
+      .fcard-mini { width: 112px; height: 150px; }
     }
 
     /* ── Renk filtre barı ── */
@@ -204,13 +220,15 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="fhero" aria-label="Forma mağazası tanıtım">
-    <div>
+    <div class="fhero__ic">
+      <div>
       <span class="fhero__tag">DK Copy Forma Mağazası</span>
       <h1 class="fhero__title">Formanız Burada<br><em>Tasarlanır</em></h1>
       <p class="fhero__sub">Takımınıza, firmanıza, okulunuza ya da etkinliğinize — 1.000'den fazla hazır tasarım. Renginizi seçin, kodu gönderin; isim, numara ve logonuzla kişiye özel basalım.</p>
       <div class="fhero__actions">
         <a href="#tasarimlar" class="btn btn-gold">Tasarımlara Göz At</a>
         <a href="https://wa.me/905324900313?text=Merhaba%2C%20forma%20bask%C4%B1s%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum." class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp'tan Sor</a>
+      </div>
       </div>
     </div>
     <div class="fhero__strip" aria-hidden="true">
@@ -304,13 +322,19 @@
   }
   document.addEventListener('keydown', e => { if (e.key==='Escape') fkapat(); });
 
-  // Hero şeridi: formalar iki sırada, sonsuz kayar (grup 2x kopya)
+  // Hero şeridi: ilk 80 forma iki sırada, sonsuz kayar (grup 2x kopya).
+  // Hız sabit px/sn (sakin) — süre track genişliğinden hesaplanır.
   function strip() {
-    const yariA = FORMA_PRODUCTS.filter((_,i)=>i%2===0), yariB = FORMA_PRODUCTS.filter((_,i)=>i%2===1);
+    const havuz = FORMA_PRODUCTS.slice(0, 80);
+    const yariA = havuz.filter((_,i)=>i%2===0), yariB = havuz.filter((_,i)=>i%2===1);
+    const HIZ = 45; // px/sn — premium/sakin
     [['frowA',yariA],['frowB',yariB]].forEach(([id,arr]) => {
       const t = document.getElementById(id);
       const grup = arr.map(p=>`<div class="fcard-mini"><img src="${p.img}" alt="" loading="lazy"></div>`).join('');
       t.innerHTML = grup + grup; // seamless -50%
+      requestAnimationFrame(() => {
+        t.style.animationDuration = Math.round((t.scrollWidth/2) / HIZ) + 's';
+      });
     });
   }
 
