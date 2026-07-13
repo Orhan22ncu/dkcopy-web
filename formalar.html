@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy — Forma Mağazası · 1.000+ Özel Tasarım</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="DK Copy Forma Mağazası — takımınıza ve size özel 1.000+ hazır forma tasarımı, kişiye özel baskı.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1A1A2E;
+      --color-accent: #C89B3C;
+      --color-surface: #F8F5EE;
+      --color-on-dark: #FFFFFF;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 10px;
+      --container: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--color-surface); color: var(--color-primary); -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Header (DK canonical) ── */
+    .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(26,26,46,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,155,60,.15); }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; padding: .75rem 2rem; max-width: var(--container); margin: 0 auto; }
+    .header__logo img { height: 40px; width: auto; }
+    .header__nav { display: flex; align-items: center; gap: 2rem; }
+    .header__nav a { color: #fff; font-size: .9rem; font-weight: 500; position: relative; transition: color .3s; }
+    .header__nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width .3s; }
+    .header__nav a:hover { color: var(--color-accent); } .header__nav a:hover::after { width: 100%; }
+    .header__cta { background: var(--color-accent); color: var(--color-primary); padding: .5rem 1.25rem; border-radius: 8px; font-weight: 600; font-size: .9rem; transition: all .3s; }
+    .header__cta:hover { background: #b8892e; transform: scale(1.05); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 28px; height: 2px; background: #fff; }
+
+    /* ── Hero: enerjik, eğik forma marquee ── */
+    .fhero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(200,155,60,.14) 0%, rgba(200,155,60,0) 60%),
+        linear-gradient(160deg, #1A1A2E 0%, #12121F 55%, #0D0D1A 100%);
+      padding: 130px 6vw 0;
+      color: #fff;
+    }
+    .fhero__tag {
+      display: inline-block;
+      font-size: .8rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid rgba(200,155,60,.4);
+      padding: .4rem 1rem; border-radius: 999px;
+      margin-bottom: 1.2rem;
+    }
+    .fhero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 1.6rem + 4vw, 5.4rem);
+      line-height: 1.06; font-weight: 700;
+      max-width: 820px;
+    }
+    .fhero__title em { color: var(--color-accent); font-style: italic; }
+    .fhero__sub {
+      margin-top: 1.1rem;
+      font-size: clamp(1rem, .9rem + .5vw, 1.25rem);
+      color: rgba(255,255,255,.72);
+      font-weight: 300;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .fhero__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 2rem; border-radius: 8px; font-weight: 600; font-size: .9rem; border: none; cursor: pointer; transition: all .3s; }
+    .btn-gold { background: var(--color-accent); color: var(--color-primary); }
+    .btn-gold:hover { background: #b8892e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,155,60,.3); }
+    .btn-ghost { background: transparent; border: 2px solid rgba(255,255,255,.7); color: #fff; }
+    .btn-ghost:hover { background: #fff; color: var(--color-primary); }
+
+    /* Eğik çift-sıra forma şeridi */
+    .fhero__strip {
+      margin: 3.2rem -8vw 0;
+      transform: rotate(-2.5deg);
+    }
+    .frow { display: flex; width: max-content; gap: 1rem; padding: .5rem 0; }
+    .frow--a .frow__track { animation: kayA 42s linear infinite; }
+    .frow--b .frow__track { animation: kayB 48s linear infinite; }
+    .frow__track { display: flex; gap: 1rem; width: max-content; }
+    @keyframes kayA { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes kayB { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .fcard-mini {
+      width: 150px; height: 200px;
+      border-radius: 10px;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      flex-shrink: 0;
+    }
+    .fcard-mini img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+    @media (prefers-reduced-motion: reduce) {
+      .frow__track { animation: none !important; }
+    }
+
+    /* ── Renk filtre barı ── */
+    .fbar {
+      position: sticky; top: 64px; z-index: 100;
+      background: rgba(248,245,238,.94); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(26,26,46,.08);
+      padding: .8rem 4vw;
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+    }
+    .fpill {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .42rem 1rem; border-radius: 999px;
+      border: 1px solid rgba(26,26,46,.16);
+      background: #fff; cursor: pointer;
+      font-family: var(--font-body); font-size: .82rem; font-weight: 500; color: var(--color-primary);
+      transition: all .25s;
+    }
+    .fpill i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,.15); }
+    .fpill span { color: rgba(26,26,46,.45); font-size: .74rem; }
+    .fpill:hover { border-color: var(--color-accent); transform: translateY(-1px); }
+    .fpill.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .fpill.active span { color: rgba(255,255,255,.6); }
+
+    /* ── Grid ── */
+    .fgrid-wrap { max-width: var(--container); margin: 0 auto; padding: 2.2rem 4vw 4rem; }
+    .fgrid-info { font-size: .82rem; color: rgba(26,26,46,.5); margin-bottom: 1.1rem; }
+    .fgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 1.3rem; }
+    .fcard {
+      background: #fff; border-radius: var(--radius);
+      overflow: hidden; cursor: pointer;
+      border: 1px solid rgba(26,26,46,.07);
+      box-shadow: 0 2px 10px rgba(26,26,46,.05);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .fcard:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(26,26,46,.13); border-color: rgba(200,155,60,.5); }
+    .fcard__img { aspect-ratio: 3/4; background: #fff; }
+    .fcard__img img { width: 100%; height: 100%; object-fit: cover; }
+    .fcard__body { padding: .8rem .95rem 1rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(26,26,46,.06); }
+    .fcard__kod { font-weight: 600; font-size: .92rem; letter-spacing: .02em; }
+    .fcard__renk { font-size: .72rem; color: rgba(26,26,46,.45); }
+    .fdaha { display: block; margin: 2.4rem auto 0; }
+
+    /* ── Modal ── */
+    .fmodal { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; background: rgba(13,13,26,.78); padding: 1.2rem; }
+    .fmodal.open { display: flex; }
+    .fmodal__box { background: #fff; border-radius: 14px; max-width: 860px; width: 100%; max-height: 92vh; overflow: auto; display: grid; grid-template-columns: 1.15fr 1fr; }
+    .fmodal__img { background: #fff; }
+    .fmodal__img img { width: 100%; height: 100%; object-fit: contain; }
+    .fmodal__info { padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: .9rem; }
+    .fmodal__cat { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #8F6B23; font-weight: 600; }
+    .fmodal__kod { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; }
+    .fmodal__desc { font-size: .9rem; color: rgba(26,26,46,.65); line-height: 1.65; }
+    .fmodal__close { position: absolute; top: 14px; right: 16px; background: rgba(26,26,46,.55); color: #fff; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; }
+    .fmodal__boxwrap { position: relative; max-width: 860px; width: 100%; }
+    @media (max-width: 700px) {
+      .fmodal__box { grid-template-columns: 1fr; }
+      .fhero { padding-top: 110px; }
+    }
+
+    /* ── Footer (kısa) ── */
+    .footer { background: var(--color-primary); color: rgba(255,255,255,.7); padding: 2.6rem 4vw; text-align: center; font-size: .85rem; }
+    .footer a { color: var(--color-accent); }
+
+    @media (max-width: 768px) {
+      .header__nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(26,26,46,.98); flex-direction: column; padding: 2rem; gap: 1rem; }
+      .header__nav.open { display: flex; }
+      .hamburger { display: flex; }
+      .header__cta { display: none; }
+      .fcard-mini { width: 118px; height: 158px; }
+      .fbar { top: 56px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="DK Copy Ana Sayfa">
+        <img src="/images/logo.svg" alt="DK Copy Logo" width="120" height="40">
+      </a>
+      <button class="hamburger" aria-label="Menüyü aç/kapat" onclick="document.querySelector('.header__nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header__nav" role="navigation">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="is-ornekler.html">İş Örnekleri</a>
+        <a href="urunler.html">Ürünler</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="tel:05324900313" class="header__cta">Hemen Fiyat Al</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fhero" aria-label="Forma mağazası tanıtım">
+    <div>
+      <span class="fhero__tag">DK Copy Forma Mağazası</span>
+      <h1 class="fhero__title">Formanız Burada<br><em>Tasarlanır</em></h1>
+      <p class="fhero__sub">Takımınıza, firmanıza, okulunuza ya da etkinliğinize — 1.000'den fazla hazır tasarım. Renginizi seçin, kodu gönderin; isim, numara ve logonuzla kişiye özel basalım.</p>
+      <div class="fhero__actions">
+        <a href="#tasarimlar" class="btn btn-gold">Tasarımlara Göz At</a>
+        <a href="https://wa.me/905324900313?text=Merhaba%2C%20forma%20bask%C4%B1s%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum." class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp'tan Sor</a>
+      </div>
+    </div>
+    <div class="fhero__strip" aria-hidden="true">
+      <div class="frow frow--a"><div class="frow__track" id="frowA"></div></div>
+      <div class="frow frow--b"><div class="frow__track" id="frowB"></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ RENK FİLTRE ═══ -->
+  <nav class="fbar" id="tasarimlar" aria-label="Renk filtresi"></nav>
+
+  <!-- ═══ GRID ═══ -->
+  <main class="fgrid-wrap">
+    <div class="fgrid" id="fgrid"></div>
+    <button class="btn btn-gold fdaha" id="fdaha" hidden>Daha Fazla Göster</button>
+  </main>
+
+  <!-- ═══ MODAL ═══ -->
+  <div class="fmodal" id="fmodal" onclick="if(event.target===this)fkapat()">
+    <div class="fmodal__boxwrap">
+      <button class="fmodal__close" onclick="fkapat()" aria-label="Kapat">×</button>
+      <div class="fmodal__box">
+        <div class="fmodal__img"><img id="fmodal-img" src="" alt=""></div>
+        <div class="fmodal__info">
+          <span class="fmodal__cat" id="fmodal-renk"></span>
+          <span class="fmodal__kod" id="fmodal-kod"></span>
+          <p class="fmodal__desc">Bu tasarım; isim, numara, logo ve sponsor baskısıyla takımınıza özel üretilir. Kodu WhatsApp'tan gönderin, ölçü ve adet bilgisiyle hemen fiyat verelim.</p>
+          <a class="btn btn-gold" id="fmodal-wa" href="#" target="_blank" rel="noopener">Bu Formayı WhatsApp'tan Sor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 DK Copy — Forma Mağazası · <a href="urunler.html">Tüm Ürünler</a> · <a href="tel:05324900313">0532 490 03 13</a></p>
+  </footer>
+
+  <script src="/formalar-data.js"></script>
+  <script>
+  // FORMA_PRODUCTS: [{kod, img, renk}]
+  const RENK_NOKTA = { 'Kırmızı':'#C0392B','Turuncu':'#E67E22','Sarı':'#F1C40F','Yeşil':'#27AE60','Turkuaz':'#1ABC9C','Mavi':'#2980B9','Lacivert':'#1A1A2E','Mor':'#8E44AD','Siyah':'#111','Beyaz':'#fff','Gri':'#95A5A6' };
+  const PARTI = 60; // kademeli render: parça boyu
+  let aktifRenk = 'Tümü', gosterilen = 0, liste = [];
+
+  function pillBar() {
+    const sayilar = {};
+    FORMA_PRODUCTS.forEach(p => sayilar[p.renk] = (sayilar[p.renk]||0)+1);
+    const bar = document.querySelector('.fbar');
+    const renkler = ['Tümü', ...Object.keys(RENK_NOKTA).filter(r => sayilar[r])];
+    bar.innerHTML = renkler.map(r => {
+      const n = r==='Tümü' ? FORMA_PRODUCTS.length : sayilar[r];
+      const dot = r==='Tümü' ? 'conic-gradient(#C0392B,#F1C40F,#27AE60,#2980B9,#8E44AD,#C0392B)' : RENK_NOKTA[r];
+      return `<button class="fpill${r===aktifRenk?' active':''}" data-renk="${r}"><i style="background:${dot}"></i>${r} <span>(${n})</span></button>`;
+    }).join('');
+    bar.querySelectorAll('.fpill').forEach(b => b.onclick = () => { aktifRenk = b.dataset.renk; pillBar(); yenile(); });
+  }
+
+  function yenile() {
+    liste = aktifRenk==='Tümü' ? FORMA_PRODUCTS : FORMA_PRODUCTS.filter(p => p.renk===aktifRenk);
+    gosterilen = 0;
+    document.getElementById('fgrid').innerHTML = '';
+    parcaBas();
+  }
+
+  function parcaBas() {
+    const grid = document.getElementById('fgrid');
+    liste.slice(gosterilen, gosterilen+PARTI).forEach(p => {
+      const d = document.createElement('div');
+      d.className = 'fcard';
+      d.innerHTML = `<div class="fcard__img"><img src="${p.img}" alt="Forma tasarımı ${p.kod}" loading="lazy"></div>
+        <div class="fcard__body"><span class="fcard__kod">${p.kod}</span><span class="fcard__renk">${p.renk}</span></div>`;
+      d.onclick = () => fac(p);
+      grid.appendChild(d);
+    });
+    gosterilen = Math.min(gosterilen+PARTI, liste.length);
+    document.getElementById('fdaha').hidden = gosterilen >= liste.length;
+  }
+  document.getElementById('fdaha').onclick = parcaBas;
+
+  function fac(p) {
+    document.getElementById('fmodal-img').src = p.img;
+    document.getElementById('fmodal-kod').textContent = p.kod;
+    document.getElementById('fmodal-renk').textContent = 'Forma · ' + p.renk;
+    document.getElementById('fmodal-wa').href = 'https://wa.me/905324900313?text=' + encodeURIComponent(`Merhaba, ${p.kod} kodlu forma tasarımı için fiyat almak istiyorum.`);
+    document.getElementById('fmodal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function fkapat() {
+    document.getElementById('fmodal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key==='Escape') fkapat(); });
+
+  // Hero şeridi: formalar iki sırada, sonsuz kayar (grup 2x kopya)
+  function strip() {
+    const yariA = FORMA_PRODUCTS.filter((_,i)=>i%2===0), yariB = FORMA_PRODUCTS.filter((_,i)=>i%2===1);
+    [['frowA',yariA],['frowB',yariB]].forEach(([id,arr]) => {
+      const t = document.getElementById(id);
+      const grup = arr.map(p=>`<div class="fcard-mini"><img src="${p.img}" alt="" loading="lazy"></div>`).join('');
+      t.innerHTML = grup + grup; // seamless -50%
+    });
+  }
+
+  pillBar(); yenile(); strip();
+  </script>
+</body>
+</html>
