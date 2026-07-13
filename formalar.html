@@ -53,14 +53,13 @@
       padding: 80px 6vw 1.5rem;
       color: #2B2836;
     }
-    /* Metin bloğu kalan alanda dikey ortalanır; şerit hero'nun ALT BANDI olur —
-       ikisi birlikte 100vh içinde */
+    /* Metin üstte (bant asla üzerinden geçmez — z-index'te de üstte);
+       bant kalan alanda DİKEY ORTALANIR, metnin altından açılı akar */
     .fhero__ic {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 0;
+      flex: 0 0 auto;
+      margin-top: 3vh;
+      position: relative;
+      z-index: 2;
     }
     .fhero__tag {
       display: inline-block;
@@ -93,11 +92,17 @@
     .btn-ghost { background: transparent; border: 2px solid #2B2836; color: #2B2836; }
     .btn-ghost:hover { background: #2B2836; color: #fff; }
 
-    /* Eğik çift-sıra forma şeridi */
+    /* Eğik çift-sıra forma şeridi — kalan alanda dikey ortalı, metnin ALTINDA */
     .fhero__strip {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       margin: 0 -8vw;
-      transform: rotate(-1.8deg);
-      flex-shrink: 0;
+      transform: rotate(-4deg);
+      position: relative;
+      z-index: 1;
     }
     .frow { display: flex; width: max-content; gap: 1rem; padding: .5rem 0; }
     /* sakin/premium akış — süre JS'te px/sn sabit hızla hesaplanır (track genişliğine göre) */
@@ -123,6 +128,9 @@
     @media (max-height: 800px) {
       .fcard-mini { width: 102px; height: 136px; }
       .frow { padding: .35rem 0; }
+    }
+    @media (max-height: 700px) {
+      .fcard-mini { width: 86px; height: 114px; }
     }
 
     /* ── Renk filtre barı ── */
