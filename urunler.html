@@ -69,16 +69,6 @@
       padding: .75rem 1.5rem; display: flex; align-items: center; gap: 1rem;
       box-shadow: 0 2px 12px rgba(0,0,0,.25);
     }
-    .search-wrap { flex: 1; max-width: 440px; position: relative; }
-    .search-wrap svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); opacity: .45; pointer-events: none; }
-    #search {
-      width: 100%; height: 38px; padding: 0 14px 0 36px;
-      border: none; border-radius: 8px; background: rgba(255,255,255,.15);
-      color: #fff; font-size: .875rem; font-family: var(--font-body); outline: none;
-      transition: background .2s;
-    }
-    #search::placeholder { color: rgba(255,255,255,.5); }
-    #search:focus { background: rgba(255,255,255,.22); }
     .grid-info-bar { flex: 1; color: rgba(255,255,255,.55); font-size: .8rem; padding-left: .5rem; }
     .cart-btn {
       flex-shrink: 0;
@@ -388,11 +378,7 @@
 <div class="page-body">
 
   <div class="shop-bar">
-    <div class="search-wrap">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="search" type="search" placeholder="Ürün kodu veya özellik ara…" autocomplete="off" aria-label="Ürün ara">
-    </div>
-    <span class="grid-info-bar" id="grid-info">515 ürün — hover: büyüteç · tıkla: detay</span>
+    <span class="grid-info-bar" id="grid-info">775 ürün — hover: büyüteç · tıkla: detay</span>
     <button class="cart-btn" onclick="toggleCart()" aria-label="Sepeti aç">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Sepetim
@@ -593,24 +579,16 @@ document.querySelectorAll('.tab').forEach(btn => {
 });
 
 function applyFilters() {
-  const q = document.getElementById('search').value.trim().toLowerCase();
   const cards = document.querySelectorAll('.card[data-code]');
   let visible = 0;
   cards.forEach(card => {
-    const catMatch = activeCat === 'all' || card.dataset.kat === activeCat;
-    const code = card.dataset.code.toLowerCase();
-    const match = catMatch && (!q || code.includes(q));
+    const match = activeCat === 'all' || card.dataset.kat === activeCat;
     card.classList.toggle('hidden', !match);
     if (match) visible++;
   });
-  const infoEl = document.getElementById('grid-info');
-  infoEl.textContent = q
-    ? `${visible} sonuç: "${document.getElementById('search').value}" — tıkla: detay`
-    : `${visible} ürün — tıkla: detay`;
+  document.getElementById('grid-info').textContent = `${visible} ürün — tıkla: detay`;
   document.getElementById('no-results').classList.toggle('visible', visible === 0);
 }
-
-document.getElementById('search').addEventListener('input', applyFilters);
 
 // ── Kategori sidebar collapse (mobilde açılır-kapanır; masaüstü hep açık) ──
 (function () {
