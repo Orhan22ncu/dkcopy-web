@@ -983,8 +983,8 @@
   });
   </script>
 
-  <!-- Hero video: masaüstünde 4'lü rotasyon; mobilde TEK hafif video (480p) oynar —
-       reduced-motion / veri-tasarrufunda hiç yüklenmez, statik poster zemin kalır -->
+  <!-- Hero video: YALNIZ masaüstünde 4'lü rotasyon. KURAL: mobilde hero videosu
+       HİÇ oynamaz — src atanmaz, play() çağrılmaz; statik poster zemin gösterilir -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     var a = document.getElementById('heroVidA');
@@ -993,14 +993,7 @@
     var desktop  = window.matchMedia('(min-width: 769px)').matches;
     var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saveData = navigator.connection && navigator.connection.saveData;
-    if (reduced || saveData) return;
-    if (!desktop) {
-      /* Mobil: tek optimize video, rotasyon yok */
-      a.src = '/images/videos/atolye-video-2-mobil.mp4';
-      a.muted = true;
-      a.play().then(function () { a.classList.add('on'); }).catch(function () {});
-      return;
-    }
+    if (!desktop || reduced || saveData) return;
 
     var srcs = [
       '/images/videos/atolye-video-2.mp4',  /* Dijital Baskı */

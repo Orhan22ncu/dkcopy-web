@@ -692,7 +692,7 @@
     <div class="hero__bg" aria-hidden="true">
       <div class="hero__bg-item">
         <img src="/images/videos/atolye-video-2.jpg" alt="" loading="eager">
-        <video data-src="/images/videos/atolye-video-2.mp4" data-mobil-src="/images/videos/atolye-video-2-mobil.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none"></video>
+        <video data-src="/images/videos/atolye-video-2.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none"></video>
       </div>
       <div class="hero__bg-item">
         <img src="/images/videos/atolye-video-1.jpg" alt="" loading="eager">
@@ -1019,25 +1019,19 @@
   });
   </script>
 
-  <!-- Arka plan videoları: masaüstünde dördü de; mobilde yalnız İLK kare hafif (480p) video —
-       reduced-motion / veri-tasarrufunda hiç yüklenmez, statik posterler kalır -->
+  <!-- Arka plan videoları: YALNIZ masaüstünde dördü de oynar. KURAL: mobilde hero
+       videosu HİÇ oynamaz — src atanmaz, play() çağrılmaz; poster fotoğraflar kalır -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
+    var desktop  = window.matchMedia('(min-width: 769px)').matches;
     var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var saveData = navigator.connection && navigator.connection.saveData;
-    if (reduced || saveData) return;
-    var desktop = window.matchMedia('(min-width: 769px)').matches;
-    var vids = document.querySelectorAll('.hero__bg-item video[data-src]');
-    function baslat(v, src) {
-      v.src = src;
+    if (!desktop || reduced || saveData) return;
+    document.querySelectorAll('.hero__bg-item video[data-src]').forEach(function (v) {
+      v.src = v.dataset.src;
       v.muted = true;
       v.play().then(function () { v.classList.add('on'); }).catch(function () {});
-    }
-    if (desktop) {
-      vids.forEach(function (v) { baslat(v, v.dataset.src); });
-    } else if (vids[0]) {
-      baslat(vids[0], vids[0].dataset.mobilSrc || vids[0].dataset.src);
-    }
+    });
   });
   </script>
 </body>
