@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DK Copy — Anasayfa Varyant Önizlemeleri</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F8F5EE;
+      color: #1A1A2E;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 1.2rem + 2vw, 2.6rem);
+      margin-bottom: 0.5rem;
+    }
+    .lead { color: rgba(26,26,46,0.65); margin-bottom: 2.5rem; max-width: 640px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card {
+      display: block;
+      background: #fff;
+      border: 1px solid rgba(200,155,60,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(26,26,46,0.14); }
+    .card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+    .card__body { padding: 1.25rem; }
+    .card__tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8F6B23;
+      margin-bottom: 0.4rem;
+    }
+    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.4rem; }
+    .card p { font-size: 0.9rem; color: rgba(26,26,46,0.65); line-height: 1.55; }
+    .note { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(26,26,46,0.45); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Anasayfa Varyant Önizlemeleri</h1>
+    <p class="lead">Üç seçenek de mevcut anasayfadan daha aydınlık; hepsinde gerçek DK Copy atölye görüntüleri kullanıldı. Beğendiğiniz seçeneğe tıklayıp tam sayfa inceleyebilirsiniz.</p>
+    <div class="grid">
+      <a class="card" href="hero-v1.html">
+        <img src="/images/videos/atolye-video-2.jpg" alt="V1 önizleme — tam ekran atölye videosu">
+        <div class="card__body">
+          <span class="card__tag">Seçenek 1</span>
+          <h2>Tam-Ekran Atölye Videosu</h2>
+          <p>Atölye videoları tüm ekranda dönüşümlü oynar; üzerine açık krem tonlu bir katman gelir, başlık koyu ve net okunur.</p>
+        </div>
+      </a>
+      <a class="card" href="hero-v2.html">
+        <img src="/images/videos/atolye-video-4.jpg" alt="V2 önizleme — split hero video montajı">
+        <div class="card__body">
+          <span class="card__tag">Seçenek 2</span>
+          <h2>Yazı Solda, Videolar Sağda</h2>
+          <p>Solda açık zeminde başlık ve butonlar; sağda çerçeve içinde dört atölye videosu (dijital, UV, etiket, kesim) birlikte oynar.</p>
+        </div>
+      </a>
+      <a class="card" href="hero-v3.html">
+        <img src="/images/videos/atolye-video-1.jpg" alt="V3 önizleme — aydınlık palet, hafif video">
+        <div class="card__body">
+          <span class="card__tag">Seçenek 3</span>
+          <h2>Aydınlık Zemin, Hafif Video</h2>
+          <p>En sade seçenek: sıcak krem zemin öne çıkar, atölye videosu arka planda çok hafif hissedilir.</p>
+        </div>
+      </a>
+    </div>
+    <p class="note">Bu sayfalar önizleme amaçlıdır; mevcut yayındaki anasayfa değişmedi. Mobil cihazlarda videolar yerine fotoğraflar gösterilir (hız için).</p>
+  </div>
+</body>
+</html>
