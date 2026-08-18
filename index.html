@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DK Copy — Profesyonel Dijital Baskı, Bursa</title>
-  <meta name="description" content="Ofis & kurumsal baskı, tanıtım & reklam ürünleri, organizasyon & davetiye, restoran baskıları, promosyon, defter & kırtasiye ve araç giydirme. 3 iş gününde teslim.'nın dijital baskı merkezi.">
-  <meta property="og:title" content="DK Copy — Profesyonel Dijital Baskı, Bursa">
-  <meta property="og:description" content="DK Copy — Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.'nın dijital baskı merkezi.">
+  <title>DK Copy | Profesyonel Dijital Baskı, Bursa</title>
+  <meta name="description" content="Bursa'nın profesyonel dijital baskı merkezi. Ofis &amp; kurumsal baskı, tanıtım ürünleri, davetiye, promosyon ve araç giydirme. 3 iş gününde teslim.">
+  <meta property="og:title" content="DK Copy | Profesyonel Dijital Baskı, Bursa">
+  <meta property="og:description" content="Bursa'nın profesyonel dijital baskı merkezi. 7 hizmet kategorisinde 3 iş gününde teslim garantisi.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dkcopy.com.tr">
   <meta property="og:image" content="/images/logo.svg">
@@ -195,20 +195,53 @@
       transition: all 0.3s;
     }
 
-    /* ===== Hero ===== */
+    /* ===== Hero V2 — 4 atölye videosu yan yana TAM EKRAN arka plan (her biri %25 × tam boy),
+       metin doğrudan koyu-şeffaf scrim üstünde; strip DAHİL her şey 100vh içinde ===== */
     .hero {
       position: relative;
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(180deg, #1A1A2E 0%, #0D0D1A 100%);
-      padding-top: 80px;
+      background: var(--color-primary);
+      padding: 80px var(--space-l) 3.5rem; /* alt: kayan şerit payı */
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 0;
+    }
+    .hero__bg-item { position: relative; overflow: hidden; }
+    .hero__bg-item img,
+    .hero__bg-item video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__bg-item video { opacity: 0; transition: opacity 0.9s ease; }
+    .hero__bg-item video.on { opacity: 1; }
+    /* Koyu-şeffaf scrim: videolar görünür, metin doğrudan okunur */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 62% 52% at 50% 46%, rgba(13,13,26,0.42) 0%, rgba(13,13,26,0) 100%),
+        linear-gradient(180deg,
+          rgba(13,13,26,0.72) 0%,
+          rgba(13,13,26,0.54) 45%,
+          rgba(13,13,26,0.76) 100%);
+      z-index: 1;
     }
     .hero__content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       text-align: center;
       max-width: 900px;
       padding: var(--space-l);
@@ -230,6 +263,7 @@
       margin-bottom: var(--space-m);
       line-height: 1.1;
       font-weight: 700;
+      text-shadow: 0 2px 24px rgba(13,13,26,0.45);
     }
     .hero__title .k-line { display: block; }
     .hero__accent {
@@ -238,13 +272,14 @@
     }
     .hero__sub {
       font-size: var(--text-lg);
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.88);
       margin-bottom: var(--space-l);
       max-width: 580px;
       margin-left: auto;
       margin-right: auto;
-      font-weight: 300;
+      font-weight: 300; /* orijinal index hero ile birebir — 2 satır */
       line-height: 1.6;
+      text-shadow: 0 1px 12px rgba(13,13,26,0.5);
     }
     .hero__actions {
       display: flex;
@@ -253,21 +288,72 @@
       flex-wrap: wrap;
       margin-bottom: var(--space-m);
     }
-    .hero__services {
-      font-size: var(--text-xs);
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .hero .btn-outline {
+      border-color: rgba(255,255,255,0.85);
+      color: #FFFFFF;
+    }
+    .hero .btn-outline:hover {
+      background: #FFFFFF;
+      color: var(--color-primary);
     }
     .hero__location {
       font-size: 0.65rem;
-      color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.55);
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-top: var(--space-m);
     }
+    @media (max-width: 768px) {
+      .hero { padding: 80px var(--space-m) 3.5rem; }
+      /* Mobil: arka plan 2x2 poster döşenir; video mobilde HİÇ oynamaz (JS guard) */
+      .hero__bg {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    }
     /* GSAP pre-paint hide: .kinetic sınıfı head inline script tarafından eklenir */
     .kinetic .hero__title { opacity: 0; }
+
+    /* ===== Alt-şerit: kesintisiz kayan hizmet bandı ===== */
+    .hero__marquee {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      padding: 0.8rem 0;
+      background: rgba(248,245,238,0.9);
+      border-top: 1px solid rgba(26,26,46,0.1);
+      backdrop-filter: blur(6px);
+      z-index: 3;
+    }
+    .hero__marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeSlide 26s linear infinite;
+    }
+    .hero__marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 2.75rem;
+      padding-right: 2.75rem;
+      white-space: nowrap;
+    }
+    .hero__marquee-group span {
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(26,26,46,0.85);
+    }
+    .hero__marquee-group span.dot { color: #8F6B23; }
+    @keyframes marqueeSlide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero__marquee-track { animation: none; }
+    }
 
     /* ===== Services ===== */
     .services {
@@ -601,21 +687,52 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO V2: 4 video yan yana tam-ekran arka plan + koyu-şeffaf scrim ===== -->
   <section class="hero" id="hero" aria-label="Ana tanıtım">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-2.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-2.mp4" poster="/images/videos/atolye-video-2.jpg" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/sihirli-bardak.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/sihirli-bardak.mp4" poster="/images/videos/sihirli-bardak.jpg" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-3.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-3.mp4" poster="/images/videos/atolye-video-3.jpg" muted loop playsinline preload="none"></video>
+      </div>
+      <div class="hero__bg-item">
+        <img src="/images/videos/atolye-video-4.jpg" alt="" loading="eager">
+        <video data-src="/images/videos/atolye-video-4.mp4" poster="/images/videos/atolye-video-4.jpg" muted loop playsinline preload="none"></video>
+      </div>
+    </div>
     <div class="hero__content">
       <p class="hero__tag">3 İş Günü Garantisi</p>
       <h1 class="hero__title">
         <span class="k-line">Markanızın</span>
         <span class="k-line hero__accent">Görünen Yüzü</span>
       </h1>
-      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili hız.</p>
+      <p class="hero__sub">Promosyon ürünleri, kurumsal baskı ve ofis kırtasiyesinde kalite. Tek adres, garantili&nbsp;hız.</p>
       <div class="hero__actions">
         <a href="tel:05324900313" class="btn btn-primary">Hemen Fiyat Al</a>
         <a href="urunler.html" class="btn btn-outline">Ürünleri Gör</a>
       </div>
-      <p class="hero__services">Promosyon · Kurumsal · Tabela · Davetiye · Araç Giydirme</p>
       <p class="hero__location">Osmangazi · Bursa</p>
+    </div>
+    <div class="hero__marquee" aria-label="Hizmetlerimiz: Promosyon, Kurumsal, Tabela, Davetiye">
+      <div class="hero__marquee-track">
+        <div class="hero__marquee-group">
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+        </div>
+        <div class="hero__marquee-group" aria-hidden="true">
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+          <span>Promosyon</span><span class="dot">·</span><span>Kurumsal</span><span class="dot">·</span><span>Tabela</span><span class="dot">·</span><span>Davetiye</span><span class="dot">·</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -714,27 +831,27 @@
       <div class="testimonials__carousel" role="list">
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Baskı kalitesi ve teslim süresi gerçekten çok iyiydi. Kartvizit ve broşürler tam istediğimiz gibi çıktı, kesinlikle tavsiye ederim."</blockquote>
-          <figcaption class="testimonial-card__author">— Ahmet K.</figcaption>
+          <figcaption class="testimonial-card__author">Ahmet K.</figcaption>
         </figure>
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Restoran menülerimizi yeniledik, hem malzeme kalitesi hem de tasarım süreci çok profesyoneldi. Müşterilerden bile olumlu geri dönüş aldık."</blockquote>
-          <figcaption class="testimonial-card__author">— Elif Y.</figcaption>
+          <figcaption class="testimonial-card__author">Elif Y.</figcaption>
         </figure>
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Davetiye ve organizasyon baskılarında çok titiz çalışıyorlar. En küçük detay bile atlanmadı, sonuç beklediğimizin üzerindeydi."</blockquote>
-          <figcaption class="testimonial-card__author">— Mehmet T.</figcaption>
+          <figcaption class="testimonial-card__author">Mehmet T.</figcaption>
         </figure>
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Promosyon ürünleri ve tişört baskılarında bizi hiç uğraştırmadan süreci yönettikleri için çok memnun kaldım. Zamanında ve sorunsuz teslim edildi."</blockquote>
-          <figcaption class="testimonial-card__author">— Burcu A.</figcaption>
+          <figcaption class="testimonial-card__author">Burcu A.</figcaption>
         </figure>
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Araç giydirme ve cam kaplama yaptırdık, işçilik temiz ve kalıcı. Uzun süredir çalışıyoruz, kalite hiç düşmedi."</blockquote>
-          <figcaption class="testimonial-card__author">— Hasan D.</figcaption>
+          <figcaption class="testimonial-card__author">Hasan D.</figcaption>
         </figure>
         <figure class="testimonial-card reveal" role="listitem">
           <blockquote class="testimonial-card__text">"Kurumsal baskılarımızın tamamını buradan yaptırıyoruz. İletişim hız ve kalite açısından güvenle çalışılabilecek bir firma."</blockquote>
-          <figcaption class="testimonial-card__author">— Sercan Ö.</figcaption>
+          <figcaption class="testimonial-card__author">Sercan Ö.</figcaption>
         </figure>
       </div>
     </div>
@@ -899,6 +1016,22 @@
         .to(tag, { boxShadow: '0 0 0 0px rgba(200,155,60,0)',
                    duration: 0.45, ease: 'power2.out' });
     }
+  });
+  </script>
+
+  <!-- Arka plan videoları: YALNIZ masaüstünde dördü de oynar. KURAL: mobilde hero
+       videosu HİÇ oynamaz — src atanmaz, play() çağrılmaz; poster fotoğraflar kalır -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var desktop  = window.matchMedia('(min-width: 769px)').matches;
+    var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (!desktop || reduced || saveData) return;
+    document.querySelectorAll('.hero__bg-item video[data-src]').forEach(function (v) {
+      v.src = v.dataset.src;
+      v.muted = true;
+      v.play().then(function () { v.classList.add('on'); }).catch(function () {});
+    });
   });
   </script>
 </body>
