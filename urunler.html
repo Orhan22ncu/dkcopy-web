@@ -119,6 +119,40 @@
     .tab.active { color: var(--color-primary); font-weight: 600; background: rgba(200,155,60,.10); border-left-color: var(--color-accent); }
 
     .grid-section { flex: 1; min-width: 0; }
+
+    /* === Ürün arama === */
+    .search-bar {
+      display: flex; align-items: center; gap: .75rem;
+      background: var(--color-surface); border: 1px solid rgba(26,26,46,.10);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: .35rem .6rem .35rem 1rem; margin-bottom: 1.25rem;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .search-bar:focus-within { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(200,155,60,.18), var(--shadow); }
+    .search-bar svg { flex: none; width: 18px; height: 18px; stroke: var(--color-muted); transition: stroke .2s; }
+    .search-bar:focus-within svg { stroke: var(--color-accent); }
+    #product-search {
+      flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+      font-family: var(--font-body); font-size: .95rem; color: var(--color-text);
+      padding: .55rem 0;
+    }
+    #product-search::placeholder { color: var(--color-muted); }
+    #product-search::-webkit-search-cancel-button { display: none; }
+    .search-clear {
+      flex: none; display: none; border: 0; background: rgba(26,26,46,.06);
+      width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+      color: var(--color-text); font-size: .85rem; line-height: 1;
+      align-items: center; justify-content: center;
+    }
+    .search-clear:hover { background: rgba(26,26,46,.12); }
+    .search-bar.has-text .search-clear { display: flex; }
+    .search-count {
+      flex: none; font-size: .8rem; color: var(--color-muted);
+      white-space: nowrap; padding-right: .4rem;
+    }
+    @media (max-width: 768px) {
+      .search-count { display: none; }
+    }
     #product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);   /* masaüstü: sidebar yanında 3 ürün yan yana */
@@ -604,6 +638,12 @@
     </aside>
 
     <section class="grid-section" aria-label="Ürün listesi">
+      <div class="search-bar" id="search-bar" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        <input type="search" id="product-search" placeholder="Ürün kodu veya adı yazın (örn. 6240, kalem, termos)" autocomplete="off" aria-label="Ürün ara">
+        <button type="button" class="search-clear" id="search-clear" aria-label="Aramayı temizle">✕</button>
+        <span class="search-count" id="search-count"></span>
+      </div>
       <div id="product-grid"></div>
       <p class="no-results" id="no-results">Aradığınız ürün bulunamadı.</p>
     </section>
@@ -760,16 +800,73 @@ document.querySelectorAll('.tab').forEach(btn => {
   });
 });
 
+// ── Arama ────────────────────────────────────────────────
+const CAT_LABELS = {};
+document.querySelectorAll('.tab[data-cat]').forEach(b => {
+  CAT_LABELS[b.dataset.cat] = (b.textContent || '').toLocaleLowerCase('tr');
+});
+function trFold(s) { return (s || '').toLocaleLowerCase('tr'); }
+const HAYSTACK = {};
+PRODUCTS.forEach(p => {
+  HAYSTACK[p.kod] = trFold([p.kod, p.label, CAT_LABELS[p.kat] || '', p.features || ''].join(' '));
+});
+let query = '';
+
 function applyFilters() {
   const cards = document.querySelectorAll('.card[data-code]');
   let visible = 0;
   cards.forEach(card => {
-    const match = activeCat === 'all' || card.dataset.kat === activeCat;
+    const catOk = activeCat === 'all' || card.dataset.kat === activeCat;
+    const qOk = !query || (HAYSTACK[card.dataset.code] || '').includes(query);
+    const match = catOk && qOk;
     card.classList.toggle('hidden', !match);
     if (match) visible++;
   });
   document.getElementById('no-results').classList.toggle('visible', visible === 0);
+  const cnt = document.getElementById('search-count');
+  if (cnt) cnt.textContent = visible + ' ürün';
 }
+
+(function () {
+  const bar = document.getElementById('search-bar');
+  const input = document.getElementById('product-search');
+  const clearBtn = document.getElementById('search-clear');
+  if (!bar || !input || !clearBtn) return;
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    input.placeholder = 'Ürün kodu veya adı ara';
+  }
+  function selectAllTab() {
+    if (activeCat === 'all') return;
+    activeCat = 'all';
+    document.querySelectorAll('.tab').forEach(b => {
+      const on = b.dataset.cat === 'all';
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', String(on));
+    });
+  }
+  input.addEventListener('input', () => {
+    query = trFold(input.value.trim());
+    bar.classList.toggle('has-text', query.length > 0);
+    if (query) selectAllTab();
+    applyFilters();
+  });
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    query = '';
+    bar.classList.remove('has-text');
+    applyFilters();
+    input.focus();
+  });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Escape') clearBtn.click(); });
+  // URL ile arama: urunler.html?q=6240
+  const q0 = new URLSearchParams(location.search).get('q');
+  if (q0) {
+    input.value = q0;
+    query = trFold(q0.trim());
+    bar.classList.toggle('has-text', query.length > 0);
+    if (query) selectAllTab();
+  }
+})();
 
 // ── Kategori sidebar collapse (mobilde açılır-kapanır; masaüstü hep açık) ──
 (function () {
@@ -988,6 +1085,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB2()
 
 // ── Init ────────────────────────────────────────────────
 buildCards();
+applyFilters();
 </script>
 </body>
 </html>
